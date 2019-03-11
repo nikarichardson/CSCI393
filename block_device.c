@@ -1,5 +1,3 @@
-// Veronica Richardson
-// richardv@reed.edu
 // Block Device
 
 #include "block_device.h"
