@@ -1,0 +1,88 @@
+Welcome! You can exit by pressing Ctrl+C at any time...
+    allocated root INode
+created everest_small.dev with 100 blocks of 256 bytes per block
+successfully mounted everest_small.dev 
+    allocated INode @ address 1 
+    allocated INode @ address 2 
+inode_map[1] has status 1 
+inode_map[2] has status 1 
+inode_map[3] has status 0 
+    allocated INode @ address 3 
+    freed INode @ address 3
+inode_map[3] has status 0 
+    inode @ address 3 is already free.
+unmount successful
+successfully mounted everest_small.dev 
+inode_map[1] has status 1 
+inode_map[2] has status 1 
+inode_map[3] has status 0 
+    allocated INode @ address 3 
+    allocated INode @ address 4 
+    allocated INode @ address 5 
+    allocated INode @ address 6 
+    allocated INode @ address 7 
+    allocated INode @ address 8 
+    allocated INode @ address 9 
+    allocated INode @ address 10 
+    allocated INode @ address 11 
+    allocated INode @ address 12 
+    allocated INode @ address 13 
+    allocated INode @ address 14 
+    allocated INode @ address 15 
+    allocated INode @ address 16 
+    allocated INode @ address 17 
+    allocated INode @ address 18 
+    allocated INode @ address 19 
+    allocated INode @ address 20 
+    allocated INode @ address 21 
+    allocated INode @ address 22 
+    allocated INode @ address 23 
+    allocated INode @ address 24 
+    allocated INode @ address 25 
+    allocated INode @ address 26 
+    allocated INode @ address 27 
+    allocated INode @ address 28 
+    allocated INode @ address 29 
+    allocated INode @ address 30 
+    allocated INode @ address 31 
+    allocated INode @ address 32 
+    allocated INode @ address 33 
+unmount successful
+successfully mounted everest_small.dev 
+inode_map[3] has status 1 
+inode_map[4] has status 1 
+inode_map[5] has status 1 
+inode_map[6] has status 1 
+inode_map[7] has status 1 
+inode_map[8] has status 1 
+inode_map[9] has status 1 
+inode_map[10] has status 1 
+inode_map[11] has status 1 
+inode_map[12] has status 1 
+inode_map[13] has status 1 
+inode_map[14] has status 1 
+    freed INode @ address 3
+    freed INode @ address 4
+    freed INode @ address 5
+    freed INode @ address 6
+    freed INode @ address 7
+    freed INode @ address 8
+    freed INode @ address 9
+    freed INode @ address 10
+    freed INode @ address 11
+    freed INode @ address 12
+    freed INode @ address 13
+    freed INode @ address 14
+inode_map[3] has status 0 
+inode_map[4] has status 0 
+inode_map[5] has status 0 
+inode_map[6] has status 0 
+inode_map[7] has status 0 
+inode_map[8] has status 0 
+inode_map[9] has status 0 
+inode_map[10] has status 0 
+inode_map[11] has status 0 
+inode_map[12] has status 0 
+inode_map[13] has status 0 
+inode_map[14] has status 0 
+unmount successful
