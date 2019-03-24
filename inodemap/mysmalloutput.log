@@ -1,0 +1,66 @@
+Welcome! You can exit by pressing Ctrl+C at any time...
+    allocated root INode
+created testpy.dev with 100 blocks of 256 bytes per block
+successfully mounted testpy.dev 
+100 blocks in Block Map
+1111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    allocated 15
+    allocated 16
+    allocated 17
+    allocated 18
+    allocated 19
+    allocated 20
+    allocated 21
+    allocated 22
+    allocated 23
+    allocated 24
+    allocated 25
+    allocated 26
+    allocated 27
+    allocated 28
+    allocated 29
+    allocated 30
+    allocated 31
+    allocated 32
+    allocated 33
+    allocated 34
+    allocated 35
+    allocated 36
+    allocated 37
+    allocated 38
+    allocated 39
+    allocated 40
+    allocated 41
+    allocated 42
+    allocated 43
+    allocated 44
+    allocated 45
+    allocated 46
+    allocated 47
+    allocated 48
+    allocated 49
+    allocated 50
+    allocated 51
+    allocated 52
+    allocated 53
+    allocated 54
+    allocated 55
+    allocated 56
+    allocated 57
+    allocated 58
+    allocated 59
+    allocated 60
+    allocated 61
+    allocated 62
+    allocated 63
+    allocated 64
+100 blocks in Block Map
+1111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000
+unmount successful
+successfully mounted testpy.dev 
+100 blocks in Block Map
+0101010101010101010101010101010101010101010101010111111111111111100000000000000000000000000000000000
+    allocated 0
+    allocated 2
+    allocated 4
+unmount successful

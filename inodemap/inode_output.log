@@ -1,0 +1,20 @@
+Welcome! You can exit by pressing Ctrl+C at any time...
+    allocated root INode
+created everest.dev with 100 blocks of 1024 bytes per block
+successfully mounted everest.dev 
+    allocated INode @ address 1 
+    allocated INode @ address 2 
+inode_map[1] has status 1 
+inode_map[2] has status 1 
+inode_map[3] has status 0 
+    allocated INode @ address 3 
+    freed INode @ address 3
+inode_map[3] has status 0 
+    inode @ address 3 is already free.
+unmount successful
+successfully mounted everest.dev 
+inode_map[1] has status 1 
+inode_map[2] has status 1 
+inode_map[3] has status 0 
+    allocated INode @ address 3 
+unmount successful
