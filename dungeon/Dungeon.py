@@ -19,7 +19,7 @@ class Dungeon:
         self.db = sqlite3.connect(self.dungeon_map)
         self.c = self.db.cursor()
         self.current_room = self.getEntranceOrCreateDatabase()
-        self.doLook()
+        self.doLook(0)
         
         self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
 
@@ -38,10 +38,10 @@ class Dungeon:
             elif words[0] in ('new'):
                 self.c.execute("DROP TABLE rooms")
                 self.current_room = self.getEntranceOrCreateDatabase()
-                print("The previous dungeon has been destroyed (⊙_☉) ")
+                print("The previous dungeon has been destroyed (⊙_⊙) ")
 
             elif words[0] == 'look':
-                self.doLook()
+                self.doLook(1)
 
             elif words[0] == 'go':
                 # move to an adjacent room.
@@ -56,7 +56,7 @@ class Dungeon:
                     print("You can't go that way!! ಥ_ಥ")
                 else:
                     self.current_room = new_room_p[0]
-                    self.doLook()
+                    self.doLook(0)
 
             elif words[0] == 'dig':
                 # TODO: only allow this if the player is a super-user
@@ -106,21 +106,34 @@ class Dungeon:
         self.db.close()
 
     # describe this room and its exits
-    def doLook(self):
-        # todo: change the schema so we mark rooms as we visit them,
+    def doLook(self,force_florid):
+        # Todo completed: change the schema so we mark rooms as we visit them,
         # and show the florid description only the first time we visit
         # a room, or if someone types "look" explicitly (so will
         # probably want a force_florid optional parameter to this function)
 
-        ## Determine if we've already visited this room or not. 
-        self.c.execute("SELECT visit FROM rooms WHERE id={}".format(self.current_room))
-        status = self.c.fetchone()[0]
+        if force_florid == 0:
+            ## Determine if we've already visited this room or not. 
+            self.c.execute("SELECT visit FROM rooms WHERE id={}".format(self.current_room))
+            status = self.c.fetchone()[0]
 
-        if status == 0:         ## we have not visited this room yet—give florid descrition
+            if status == 0:        
+                ## we have not visited this room yet—give florid descrition
+                self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
+                print(self.c.fetchone()[0])
+
+                ## update visit integer mark this room as visited
+                self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
+
+            else:                   
+                ## we've visited this room already—give simple description
+                self.c.execute("SELECT short_desc FROM rooms WHERE id={}".format(self.current_room))
+                print(self.c.fetchone()[0])
+
+
+        ## Give the full-description since force-florid is switched on. 
+        else: 
             self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
-            print(self.c.fetchone()[0])
-        else:                   ## we've visited this room already—give simple description
-            self.c.execute("SELECT short_desc FROM rooms WHERE id={}".format(self.current_room))
             print(self.c.fetchone()[0])
 
         ## Present the available exits, if any 
