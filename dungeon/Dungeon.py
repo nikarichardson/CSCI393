@@ -4,8 +4,7 @@ import fileinput
 import sqlite3
 import readline
 
-## In Progress
-## Dungeon adapted from Dylan's code 
+## Dungeon project built off Dylan's code. 
 
 class Dungeon:
     """
@@ -35,19 +34,21 @@ class Dungeon:
                 break
 
             # destroy the dungeon and start over
-            # maybe we should ask "are you sure?"
-            elif words[0] in ('new'):
-                self.c.execute("DROP TABLE rooms")
-                self.current_room = self.getEntranceOrCreateDatabase()
-                print("The previous dungeon has been destroyed (⊙_⊙) ")
+            elif words[0] == 'new':
+                print("Type 1 to go forward with this operation, unless you've recognized the importance of preserving cultural artifacts like python dungeons!") 
+                answer = int(input("Are you sure? "))
+                if answer == 1: 
+                    self.c.execute("DROP TABLE rooms")
+                    self.current_room = self.getEntranceOrCreateDatabase()
+                    print("The previous dungeon has been destroyed (⊙_⊙) ")
+                else:
+                    print("You've made a noble decision, warrior.")
 
             elif words[0] == 'look':
                 self.doLook(1)
 
             elif words[0] == 'go':
                 # move to an adjacent room.
-                # todo - allow someone to type the direction of an
-                # adjacent room without "go"
                 if len(words) < 2:
                     print("usage: go <direction>")
                     continue
@@ -58,6 +59,19 @@ class Dungeon:
                 else:
                     self.current_room = new_room_p[0]
                     self.doLook(0)
+
+            elif words[0] == 'e' or words[0] == 'w' or words[0] == 'n' or words[0] == 's': 
+                # move to an adjacent room.
+                # we allow someone to type the direction of an
+                # adjacent room without "go"
+                self.c.execute("SELECT to_room FROM exits WHERE from_room = {} AND dir='{}'".format(self.current_room, words[0]))
+                new_room_p = self.c.fetchone()
+                if (new_room_p == None):
+                    print("You can't go that way!! ಥ_ಥ")
+                else:
+                    self.current_room = new_room_p[0]
+                    self.doLook(0)
+
 
             elif words[0] == 'dig':
                 # TODO: only allow this if the player is a super-user
@@ -108,10 +122,9 @@ class Dungeon:
 
     # describe this room and its exits
     def doLook(self,force_florid):
-        # Todo completed: change the schema so we mark rooms as we visit them,
-        # and show the florid description only the first time we visit
+        # We show the florid description only the first time we visit
         # a room, or if someone types "look" explicitly (so will
-        # probably want a force_florid optional parameter to this function)
+        # probably want a force_florid optional parameter to this function) 
 
         if force_florid == 0:
             ## Determine if we've already visited this room or not. 
