@@ -3,7 +3,7 @@ SQLite Dungeon
 
 Adapted from Dylan's Dungeon code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. Image from RPG Maker VX with my character sprite in my dungeon design map. 
-<br>
+<br><br><br>
 <img src="https://66.media.tumblr.com/d471e4f3dee7aca7d07468ae89225edb/tumblr_ppnk1hKli51tk06jno1_540.jpg" align="right"> 
 
 This dungeon has rooms and exits. You can *spawn* a monster, *place* loot, *take* loot, and engage in combat with the monsters inside the dungeon. Users with a pick-axe in their inventory can *dig* rooms.
