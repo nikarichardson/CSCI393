@@ -4,7 +4,7 @@ SQLite Dungeon
 Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon</a> code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map. This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a pick-axe in their inventory can <i>dig</i>  rooms. 
 
-`Monster:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon `Loot:` plain-chest,golden-chest,steel-chest,mini-chest,mana-crystal,pick-axe,potion,book,tome,ring  `Weapons` sword,pick-axe, bow 
+`Monster:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon `Loot:` plain-chest,golden-chest,steel-chest,mini-chest,mana-crystal,pick-axe,potion,book,tome,ring  `Weapons:` sword,pick-axe, bow 
 
 The currently populated tables are `rooms` and `exits`. The schema for these tables are:
 
