@@ -129,18 +129,21 @@ class Dungeon:
                 # we only allow one object per room 
                 # get the name of the loot available in this room 
                 self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
-                item = str(self.c.fetchone()[0]) 
+                item = self.c.fetchone()[0] 
 
-                print("Are you sure you want to take {}?".format(item)) 
+                print("Are you sure you want to take {}?".format(str(item)))  
                 answer = int(input("Press 1 to confirm."))
-             
+        
                 if answer == 1:
+                    # insert item into inventory 
+                    query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
+                    self.c.execute(query) 
+
+                    print("You took {}!".format(item))
                     # remove loot from the room (update table)
                     self.c.execute("UPDATE rooms SET loot = 'none' WHERE id={}".format(self.current_room))
 
-                    # insert item into inventory 
-                    self.c.execute("INSERT INTO inventory (name) VALUES ({}".format(item))
-                    print("You took {}!".format(item))
+
                 continue 
 
                 
