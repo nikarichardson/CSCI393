@@ -26,7 +26,7 @@ class Dungeon:
 
     ## CLASSES (implement-later?): hero, warrior, mage, priest
 
-    ## SKILLS (imeplement-later?): attack, guard, double-attack,triple-attack,heal
+    ## SKILLS (implement-later?): attack, guard, double-attack,triple-attack,heal
 
 
     def repl(self):
