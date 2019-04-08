@@ -8,6 +8,15 @@ Written in Python with SQLite3 as back-end. Image from RPG Maker VX with my char
 
 This dungeon has rooms and exits. You can *spawn* a monster, *place* loot, *take* loot, and engage in combat with the monsters inside the dungeon. Users with a pick-axe in their inventory can *dig* rooms.
 
+**Monster:**
+minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon
+ 
+**Loot:**
+plain-chest,golden-chest,steel-chest,mini-chest,mana-crystal,pick-axe,potion,book,tome,ring 
+
+**Weapons**
+sword,pick-axe,bow 
+
 The currently populated tables are `rooms` and `exits`. The schema for these tables are:
 
 `CREATE TABLE rooms (id INTEGER PRIMARY KEY AUTOINCREMENT, short_desc TEXT, florid_desc TEXT)`
@@ -24,7 +33,7 @@ direction, which can be any single word, but should be something that
 sounds like a direction (e.g., north, south, up, down, northeast,
 etc.).
 
-These exits are uni-directional - so to connect two rooms via exits
+The exits are uni-directional - so to connect two rooms via exits
 requires two entries in the database. For example, if room2 is east of
 room1, there would be a from_room = 1, to_room = 2, dir = "east" link,
 and most often, that would correspond to another entry in the table
