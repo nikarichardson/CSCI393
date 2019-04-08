@@ -2,33 +2,8 @@ SQLite Dungeon
 ==============
 
 Adapted from Dylan's Dungeon code from Spring 2019 Operating systems. 
-Written in Python with SQLite3 as back-end. 
-
-Image from RPG Maker VX with my character sprite in a designed dungeon map (ง •̀_•́)ง
+Written in Python with SQLite3 as back-end. Image from RPG Maker VX with my character sprite in a designed dungeon map (ง •̀_•́)ง
 <img src="https://66.media.tumblr.com/d471e4f3dee7aca7d07468ae89225edb/tumblr_ppnk1hKli51tk06jno1_540.jpg" align="right"> 
-
---------
-
-Here is an example session:
-
-```
-$ python3 Dungeon.py
-Welcome to the dungeon. Try 'look' 'go' and 'dig'
-You are standing at the entrance of what appears to be a vast, complex cave.
-There are exits in these directions:
-> dig e w | Chandelier room | You are in a considerably large room, inexplicably illuminated by a rough-hewn chandelier that is encrusted with glowing jewels.
-> look
-You are standing at the entrance of what appears to be a vast, complex cave.
-There are exits in these directions: e
-> go e
-You are in a considerably large room, inexplicably illuminated by a rough-hewn chandelier that is encrusted with glowing jewels.
-There are exits in these directions: w
-> go w
-You are standing at the entrance of what appears to be a vast, complex cave.
-There are exits in these directions: e
-> q
-bye!
-```
 
 The schema
 ----------
@@ -56,6 +31,30 @@ and most often, that would correspond to another entry in the table
 with from_room = 2, to_room = 1, dir = "west". When a user digs a
 tunnel between rooms, they supply labels for both directions, forward
 and back.
+
+--------
+
+Here is an example session:
+
+```
+$ python3 Dungeon.py
+Welcome to the dungeon. Try 'look' 'go' and 'dig'
+You are standing at the entrance of what appears to be a vast, complex cave.
+There are exits in these directions:
+> dig e w | Chandelier room | You are in a considerably large room, inexplicably illuminated by a rough-hewn chandelier that is encrusted with glowing jewels.
+> look
+You are standing at the entrance of what appears to be a vast, complex cave.
+There are exits in these directions: e
+> go e
+You are in a considerably large room, inexplicably illuminated by a rough-hewn chandelier that is encrusted with glowing jewels.
+There are exits in these directions: w
+> go w
+You are standing at the entrance of what appears to be a vast, complex cave.
+There are exits in these directions: e
+> q
+bye!
+```
+
 
 Things to do
 ------------
