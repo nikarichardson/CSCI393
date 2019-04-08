@@ -3,7 +3,9 @@ SQLite Dungeon
 
 Adapted from Dylan's Dungeon code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. 
-<img src="https://66.media.tumblr.com/5fd54d5007528c043a02b02b3c3fdbc7/tumblr_ppngynthxK1tk06jno1_640.png"> 
+
+
+<img src="https://66.media.tumblr.com/d471e4f3dee7aca7d07468ae89225edb/tumblr_ppnk1hKli51tk06jno1_540.jpg"> 
 
 --------
 
