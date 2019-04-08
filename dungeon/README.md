@@ -3,6 +3,7 @@ SQLite Dungeon
 
 Adapted from Dylan's Dungeon code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. Image from RPG Maker VX with my character sprite in a designed dungeon map (ง •̀_•́)ง
+<br>
 <img src="https://66.media.tumblr.com/d471e4f3dee7aca7d07468ae89225edb/tumblr_ppnk1hKli51tk06jno1_540.jpg" align="right"> 
 
 This dungeon has rooms and exits. You can *spawn* a monster, *place* loot, *take* loot, and engage in combat with the monsters inside the dungeon. Users with a pick-axe in their inventory can *dig* rooms.
@@ -36,19 +37,29 @@ and back.
 Here is an example session:
 
 ```
-$ python3 Dungeon.py
-Welcome to the dungeon. Try 'look' 'go' and 'dig'
-You are standing at the entrance of what appears to be a vast, complex cave.
-There are exits in these directions:
-> dig e w | Chandelier room | You are in a considerably large room, inexplicably illuminated by a rough-hewn chandelier that is encrusted with glowing jewels.
-> look
-You are standing at the entrance of what appears to be a vast, complex cave.
+------------------------------------------------------------------------------------------------
+  _/_/_/                                                                                        
+   _/    _/     _/    _/      _/_/_/         _/_/_/       _/_/        _/_/       _/_/_/         
+  _/    _/     _/    _/      _/    _/     _/    _/     _/_/_/_/    _/    _/     _/    _/        
+ _/    _/     _/    _/      _/    _/     _/    _/     _/          _/    _/     _/    _/         
+_/_/_/         _/_/_/      _/    _/       _/_/_/       _/_/_/      _/_/       _/    _/          
+                                         _/                                                     
+                                       _/_/                                                     
+                                       
+Welcome to the dungeon ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,
+'dig' to create a new room, and 'new' to start the dungeon creation process over again.
+Use 'check' to survey your inventory, 'take' to steal loot, and 'place' to leave loot behind.
+entrance
+No items in this room.
 There are exits in these directions: e
-> go e
-You are in a considerably large room, inexplicably illuminated by a rough-hewn chandelier that is encrusted with glowing jewels.
+> e
+chandelier room
+No items in this room.
+There's a fairy in this room! (ง •̀_•́)ง 
 There are exits in these directions: w
-> go w
-You are standing at the entrance of what appears to be a vast, complex cave.
+> w
+entrance
+No items in this room.
 There are exits in these directions: e
 > q
 bye!
