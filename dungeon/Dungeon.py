@@ -118,12 +118,12 @@ class Dungeon:
             elif words[0] == 'spawn':
                 # spawn a monster object
                 print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
-                my_monster = str(input("Choose a monster object."))
+                my_monster = str(input("Type the name of a monster object."))
    
-                ## now we need to update the current room with the monster object 
-                self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
-                self.c.execute("INSERT INTO mobs (name,health,room_id) VALUES ({},100,{}".format(my_monster,self.current_room))
-                print("You've spawned a {}.".format(answer))
+                ## now we need to update the table of monster objects and 'place' the monster in the room 
+                monster = "ghost"
+                self.c.execute("INSERT INTO mobs (name,health,room_id) VALUES ({},100,{}".format(monster,self.current_room))
+                print("You've spawned a {}.".format(my_monster))
 
             elif words[0] == 'take':
                 # we only allow one object per room 
@@ -168,16 +168,18 @@ class Dungeon:
 
             elif words[0] == 'place':
                 # place loot command 
-                answer = str(input("Choose an item from your inventory."))
+                item = str(input("Choose an item from your inventory: "))
                 # update the room with the chosen loot 
-                self.c.execute("UPDATE rooms SET loot = answer WHERE id={}".format(self.current_room))
-
-                print("You've placed {} in the room.".format(answer))
+                #self.c.execute("UPDATE rooms SET loot = {} WHERE id={}".format(item,self.current_room))
+                query = 'UPDATE rooms SET loot = ("{}") WHERE id=("{}")'.format(item,self.current_room)
+                self.c.execute(query) 
+                print("You've placed {} in the room.".format(item))
                 
                 ## remove this item from our inventory now 
                 ## right now we are assuming that user will only ask to place an item
                 ## that is actually in their inventory 
-                self.c.execute("DELETE FROM inventory WHERE name={}".format(answer))
+                query = 'DELETE FROM inventory WHERE name=("{}")'.format(item)
+                self.c.execute(query)
 
             # todo: if player ends turn in a room with a hostile mob
             # figure out how to handle combat.
@@ -215,6 +217,11 @@ class Dungeon:
                     print("This room contains a {}.".format(item)) 
                 else:
                     print("Nothing is in this room.") 
+
+                ## inform visitor of monsters, if any 
+                self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+                if self.c.fetchone() != NULL:
+                    printf("There's a {} in this room! (ง •̀_•́)ง ".format(self.c.fetchone()[0]))
 
                 ## update visit integer mark this room as visited
                 self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
@@ -264,7 +271,7 @@ class Dungeon:
             self.c.execute("DROP TABLE if exists exits")
             ## API: rooms will keep track of the name of the loot item that they contain, if any 
             self.c.execute("CREATE TABLE rooms (id INTEGER PRIMARY KEY AUTOINCREMENT, short_desc TEXT, florid_desc TEXT, visit INTEGER, loot TEXT)")
-            self.c.execute("CREATE TABLE mobs (id INTEGER PRIMARY KEY AUTOINCREMENT, desc TEXT, health INTEGER, room_id INTEGER)")
+            self.c.execute("CREATE TABLE mobs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, health INTEGER, room_id INTEGER)")
             self.c.execute("CREATE TABLE exits (from_room INTEGER, to_room INTEGER, dir TEXT)")
             # table for loot items
             self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
