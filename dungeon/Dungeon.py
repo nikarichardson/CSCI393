@@ -118,11 +118,11 @@ class Dungeon:
             elif words[0] == 'spawn':
                 # spawn a monster object
                 print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
-                my_monster = str(input("Type the name of a monster object."))
+                my_monster = str(input("Type the name of a monster object: "))
    
                 ## now we need to update the table of monster objects and 'place' the monster in the room 
-                monster = "ghost"
-                self.c.execute("INSERT INTO mobs (name,health,room_id) VALUES ({},100,{}".format(monster,self.current_room))
+                query = 'INSERT INTO mobs (name,health,room_id) VALUES ("{}",100,"{}")'.format(my_monster,self.current_room)
+                self.c.execute(query)
                 print("You've spawned a {}.".format(my_monster))
 
             elif words[0] == 'take':
@@ -132,7 +132,7 @@ class Dungeon:
                 item = self.c.fetchone()[0] 
 
                 print("Are you sure you want to take {}?".format(str(item)))  
-                answer = int(input("Press 1 to confirm."))
+                answer = int(input("Press 1 to confirm: "))
         
                 if answer == 1:
                     # insert item into inventory 
@@ -216,12 +216,12 @@ class Dungeon:
                 if item != 'none':
                     print("This room contains a {}.".format(item)) 
                 else:
-                    print("Nothing is in this room.") 
+                    print("No items in this room.") 
 
                 ## inform visitor of monsters, if any 
                 self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-                if self.c.fetchone() != NULL:
-                    printf("There's a {} in this room! (ง •̀_•́)ง ".format(self.c.fetchone()[0]))
+                if str(self.c.fetchone()) != 'None':
+                    print("There's a {} in this room! (ง •̀_•́)ง ".format(self.c.fetchone()[0]))
 
                 ## update visit integer mark this room as visited
                 self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
@@ -238,7 +238,12 @@ class Dungeon:
                 if item != 'none':
                     print("This room contains a {}.".format(item)) 
                 else:
-                    print("Nothing is in this room.") 
+                    print("No items in this room.") 
+
+                ## inform visitor of monsters, if any 
+                self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+                if str(self.c.fetchone()) != 'None':
+                    print("There's a {} in this room! (ง •̀_•́)ง ".format(self.c.fetchone()[0]))
 
 
         ## Give the full-description since force-florid is switched on. 
@@ -268,7 +273,7 @@ class Dungeon:
             self.c.execute("DROP TABLE if exists mobs")
             self.c.execute("DROP TABLE if exists inventory")
             self.c.execute("DROP TABLE if exists loot")
-            self.c.execute("DROP TABLE if exists exits")
+            self.c.execute("DROP TABLE if exists exits") 
             ## API: rooms will keep track of the name of the loot item that they contain, if any 
             self.c.execute("CREATE TABLE rooms (id INTEGER PRIMARY KEY AUTOINCREMENT, short_desc TEXT, florid_desc TEXT, visit INTEGER, loot TEXT)")
             self.c.execute("CREATE TABLE mobs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, health INTEGER, room_id INTEGER)")
