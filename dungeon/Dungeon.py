@@ -103,7 +103,7 @@ class Dungeon:
                     if item[0] == 'shovel': 
                         yes_shovel = True 
 
-                if yes_shovel = True: 
+                if yes_shovel == True: 
                     descs = line.split("|")
                     words = descs[0].split()
                     if len(words) < 3 or len(descs) != 4:
@@ -273,7 +273,7 @@ class Dungeon:
         print("There are exits in these directions: ", end='')
         count = 0 
         for exit in self.c.fetchall():
-            print("{}".format(exit[0]), end='')
+            print("{} ".format(exit[0]), end='')
             count = count + 1 
         if count == 0:
             print("none found", end='')
@@ -299,7 +299,23 @@ class Dungeon:
             self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
             # table for inventory 
             self.c.execute("CREATE TABLE inventory (name TEXT)")
+            ## create entrance
             self.c.execute("INSERT INTO rooms (florid_desc, short_desc,visit,loot) VALUES ('You are standing at the entrance of what appears to be a vast, complex cave.', 'entrance',0,'none')")
+            
+            ## create shovel room 
+            brief = "shovel room"
+            florid = "You are in a small, darkly-lit room."
+            loot = "shovel"
+            query = 'INSERT INTO rooms (short_desc, florid_desc,visit,loot) VALUES ("{}", "{}","{}","{}")'.format(brief,florid,0,loot)
+            # print (query)
+            self.c.execute(query)
+            new_room_id = self.c.lastrowid
+            # now add tunnels in both directions
+            query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(self.current_room, new_room_id,"n")
+            self.c.execute(query)
+            query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, self.current_room,"s")
+            self.c.execute(query)
+
             self.db.commit()
 
         # now we know the db exists - fetch the first room, which is
