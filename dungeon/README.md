@@ -4,31 +4,18 @@ SQLite Dungeon
 Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon</a> code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map. This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms. 
 
-`Monster:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon `Loot:` plain-chest,golden-chest,steel-chest,mini-chest,mana-crystal,pick-axe,potion,book,tome,ring,shovel  `Weapons:` sword,pick-axe, bow 
-
-The currently populated tables are `rooms` and `exits`. The schema for these tables are:
-
-`CREATE TABLE rooms (id INTEGER PRIMARY KEY AUTOINCREMENT, short_desc TEXT, florid_desc TEXT)`
-
-Each room has a primary key,
-
-  * a *florid description*, which is the description you first see when entering a room (or when you use the `look` command)
-  * a *brief description* which is the description you see on subsequent visits to a room
-
-`CREATE TABLE exits (from_room INTEGER, to_room INTEGER, dir TEXT)`
+`Monster:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon `Loot:` plain-chest,golden-chest,steel-chest,mini-chest,mana-crystal,pick-axe,potion,book,tome,ring,shovel,herb,shield `Weapons:` sword,pick-axe,bow,dagger,spear,claw,crossbow `Classes:` hero, warrior, mage, priest `Skills:` attack,guard,double-attack,triple-attack,heal `States:` knockout,rage,confusion,sleep,immortal,blind,rage,normal,dead
 
 Rooms are connected to each other by exits. An exit from a room has a
 direction, which can be any single word, but should be something that
 sounds like a direction (e.g., north, south, up, down, northeast,
-etc.).
+etc.). Exits are uni-directional.
 
-The exits are uni-directional - so to connect two rooms via exits
-requires two entries in the database. For example, if room2 is east of
-room1, there would be a from_room = 1, to_room = 2, dir = "east" link,
-and most often, that would correspond to another entry in the table
-with from_room = 2, to_room = 1, dir = "west". When a user digs a
-tunnel between rooms, they supply labels for both directions, forward
-and back.
+A player has a collection of stats: a weapon, an armor item of choice, a health parameter (mana),a state, and a class. If the player
+loses all her mana she will not be able to move around the dungeon anymore. The default class is `hero`. You can only change your class
+by finding certain items. 
+
+Combat is simple: the player has an *attack-power* (ATP) level and a *defend-power* (DEF) level. You can increase either one through combat experience or by gaining items in the rooms.  
 
 --------
 
@@ -43,22 +30,48 @@ Here is an example session:
 _/_/_/         _/_/_/      _/    _/       _/_/_/       _/_/_/      _/_/       _/    _/          
                                          _/                                                     
                                        _/_/                                                     
-                                       
+
 Welcome to the dungeon ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,
 'dig' to create a new room, and 'new' to start the dungeon creation process over again.
-Use 'check' to survey your inventory, 'take' to steal loot, and 'place' to leave loot behind.
-entrance
+Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,
+'view' to check your stats, 'spawn' to create monsters, and 'fight' to engage in combat.
+You are standing at the entrance of what appears to be a vast, complex cave.
 No items in this room.
-There are exits in these directions: e
+There are exits in these directions: n 
+> dig e w | library | A library? In the middle of a dungeon? How excellent, how unlikely! | tome
+Sorry, only users with a shovel in their inventory can dig rooms.
+> n
+You are in a small, darkly-lit room.
+This room contains a shovel.
+There are exits in these directions: s 
+> take
+Are you sure you want to take shovel?
+Press 1 to confirm: 1
+You took shovel!
+> check
+You have in your inventory: shovel 
+> dig e w | library | A library? In the middle of a dungeon? How excellent, how unlikely! | tome
+> look
+You are in a small, darkly-lit room.
+There are exits in these directions: s e 
 > e
-chandelier room
-No items in this room.
-There's a fairy in this room! (ง •̀_•́)ง 
-There are exits in these directions: w
-> w
-entrance
-No items in this room.
-There are exits in these directions: e
-> q
-bye!
+A library? In the middle of a dungeon? How excellent, how unlikely!
+This room contains a tome.
+There are exits in these directions: w 
+> place
+Choose an item from your inventory: shovel
+You've placed shovel in the room.
+> place
+Choose an item from your inventory: potion
+You don't have a potion in your inventory. Use 'check' to survey your current inventory.
+> fight
+There are no monsters in this room.
+> spawn
+You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.
+Type the name of a monster object: chimera
+You've spawned a chimera.
+> look
+There's a chimera in this room (ง •̀_•́)ง 
+> fight
+Get ready to fight chimera (ง •̀_•́)ง 
 ```
