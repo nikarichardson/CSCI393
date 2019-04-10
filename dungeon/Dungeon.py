@@ -36,18 +36,6 @@ class Dungeon:
         self.c = self.db.cursor()
         self.current_room = self.getEntranceOrCreateDatabase()
 
-        ## create shovel room 
-        brief = "shovel room"
-        florid = "You are in a small, darkly-lit room."
-        loot = "shovel"
-        query = 'INSERT INTO rooms (short_desc, florid_desc,visit,loot) VALUES ("{}", "{}","{}","{}")'.format(brief,florid,0,loot)
-        self.c.execute(query)
-        new_room_id = self.c.lastrowid
-        # now add tunnels in both directions
-        query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(self.current_room, new_room_id,"n")
-        self.c.execute(query)
-        query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, self.current_room,"s")
-        self.c.execute(query)
 
         self.doLook(0)
         
@@ -75,7 +63,7 @@ class Dungeon:
                     self.c.execute("DROP TABLE loot")
                     self.c.execute("DROP TABLE exits")
                     self.c.execute("DROP TABLE stats")  
-                    # self.current_room = self.getEntranceOrCreateDatabase()
+                    self.current_room = self.getEntranceOrCreateDatabase()
                     print("The previous dungeon has been destroyed (⊙_⊙) ")
                     break
                 else:
@@ -255,15 +243,26 @@ class Dungeon:
                 # place loot command 
                 item = str(input("Choose an item from your inventory: "))
                 # update the room with the chosen loot 
-                query = 'UPDATE rooms SET loot = ("{}") WHERE id=("{}")'.format(item,self.current_room)
-                self.c.execute(query) 
-                print("You've placed {} in the room.".format(item))
+                self.c.execute("SELECT name FROM inventory") 
+                has_item = False 
+
+                for x in self.c.fetchall():
+                    if str(x[0]) == item: 
+                        has_item = True 
+
+                if has_item == False:
+                    print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(item))
+                    continue 
+                else: 
+                    query = 'UPDATE rooms SET loot = ("{}") WHERE id=("{}")'.format(item,self.current_room)
+                    self.c.execute(query) 
+                    print("You've placed {} in the room.".format(item))
                 
-                ## remove this item from our inventory now 
-                ## right now we are assuming that user will only ask to place an item
-                ## that is actually in their inventory 
-                query = 'DELETE FROM inventory WHERE name=("{}")'.format(item)
-                self.c.execute(query)
+                    ## remove this item from our inventory now 
+                    ## right now we are assuming that user will only ask to place an item
+                    ## that is actually in their inventory 
+                    query = 'DELETE FROM inventory WHERE name=("{}")'.format(item)
+                    self.c.execute(query)
 
             # todo: if player ends turn in a room with a hostile mob
             # figure out how to handle combat.
@@ -324,7 +323,7 @@ class Dungeon:
                 else:
                     self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
                     monster = self.c.fetchone()[0] 
-                    print("There's a {} in this room! (ง •̀_•́)ง ".format(monster))
+                    print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
 
                 ## update visit integer mark this room as visited
                 self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
@@ -350,7 +349,7 @@ class Dungeon:
                 else:
                     self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
                     monster = self.c.fetchone()[0] 
-                    print("There's a {} in this room! (ง •̀_•́)ง ".format(monster))
+                    print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
 
 
         ## Give the full-description since force-florid is switched on. 
@@ -403,6 +402,19 @@ class Dungeon:
         # the entrance
         self.c.execute("SELECT MIN(id) FROM rooms")
         entrance_p = self.c.fetchone()
+        
+        brief = "shovel room"
+        florid = "You are in a small, darkly-lit room."
+        loot = "shovel"
+        query = 'INSERT INTO rooms (short_desc, florid_desc,visit,loot) VALUES ("{}", "{}","{}","{}")'.format(brief,florid,0,loot)
+        self.c.execute(query)
+        new_room_id = self.c.lastrowid
+        # now add tunnels in both directions
+        query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(entrance_p[0], new_room_id,"n")
+        self.c.execute(query) 
+        query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, entrance_p[0],"s")
+        self.c.execute(query)
+
         return entrance_p[0]
     
 
@@ -428,5 +440,6 @@ if __name__ == '__main__':
 
     print("Welcome to the dungeon ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
     print("'dig' to create a new room, and 'new' to start the dungeon creation process over again.")
-    print("Use 'check' to survey your inventory, 'take' to steal loot, and 'place' to leave loot behind.")
+    print("Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,")
+    print("'view' to check your stats, 'spawn' to create monsters, and 'fight' to engage in combat.")
     d.repl()
