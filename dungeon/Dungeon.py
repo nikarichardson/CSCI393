@@ -35,7 +35,7 @@ class Dungeon:
         self.db = sqlite3.connect(self.dungeon_map)
         self.c = self.db.cursor()
         self.current_room = self.getEntranceOrCreateDatabase()
-        
+
         ## create shovel room 
         brief = "shovel room"
         florid = "You are in a small, darkly-lit room."
@@ -70,8 +70,14 @@ class Dungeon:
                 answer = int(input("Are you sure? "))
                 if answer == 1: 
                     self.c.execute("DROP TABLE rooms")
-                    self.current_room = self.getEntranceOrCreateDatabase()
+                    self.c.execute("DROP TABLE mobs")
+                    self.c.execute("DROP TABLE Inventory")
+                    self.c.execute("DROP TABLE loot")
+                    self.c.execute("DROP TABLE exits")
+                    self.c.execute("DROP TABLE stats")  
+                    # self.current_room = self.getEntranceOrCreateDatabase()
                     print("The previous dungeon has been destroyed (⊙_⊙) ")
+                    break
                 else:
                     print("You've made a noble decision, warrior.")
 
@@ -156,11 +162,12 @@ class Dungeon:
                 ## now we need to update the table of monster objects and 'place' the monster in the room 
                 query = 'INSERT INTO mobs (name,health,atp_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
                 self.c.execute(query)
-                print("You've spawned a {}.".format(my_monster))
-
+            
+                # Debugging stuff here ...
                 self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
                 monster = self.c.fetchone()[0] 
-                print("monster {}.".format(monster))
+                print("You've spawned a {}.".format(monster))
+             
 
             elif words[0] == 'take':
                 # we only allow one object per room 
@@ -236,7 +243,7 @@ class Dungeon:
 
                 for item in self.c.fetchall():
                     print("You have in your inventory: ",end='')
-                    print("{}".format(item[0]), end='')
+                    print("{} ".format(item[0]), end='')
                     count = count + 1 
 
                 if count == 0:
@@ -265,7 +272,9 @@ class Dungeon:
                 if str(self.c.fetchone()) == 'None':
                     print("There are no monsters in this room.")
                 else:
-                    print("Get ready to fight {} (ง •̀_•́)ง ".format(str(self.c.fetchone())))
+                    self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster = self.c.fetchone()[0] 
+                    print("Get ready to fight {} (ง •̀_•́)ง ".format(monster))
 
                 ## STATE 
                 self.c.execute("SELECT state from stats")
@@ -313,7 +322,9 @@ class Dungeon:
                 if str(self.c.fetchone()) == 'None':
                     pass
                 else:
-                    print("There's a {} in this room! (ง •̀_•́)ง ".format(str(self.c.fetchone()[0])))
+                    self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster = self.c.fetchone()[0] 
+                    print("There's a {} in this room! (ง •̀_•́)ง ".format(monster))
 
                 ## update visit integer mark this room as visited
                 self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
@@ -337,7 +348,9 @@ class Dungeon:
                 if str(self.c.fetchone()) == 'None':
                     pass
                 else:
-                    print("There's a {} in this room! (ง •̀_•́)ง ".format(str(self.c.fetchone()[0])))
+                    self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster = self.c.fetchone()[0] 
+                    print("There's a {} in this room! (ง •̀_•́)ง ".format(monster))
 
 
         ## Give the full-description since force-florid is switched on. 
