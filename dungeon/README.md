@@ -18,7 +18,7 @@ by finding certain items.
 Combat is simple: the player has an *attack-power* (ATP) level and a *defend-power* (DEF) level. You can increase either one through combat experience or by gaining items in the rooms.  
 
 Only users with a <b>Monster Crystal</b> in their inventory can spawn monsters. Similarly, a player must have a shovel in her inventory to dig 
-new rooms. <img src="https://66.media.tumblr.com/f2247a7bd787d0d0d3584a9df5a91964/tumblr_pq80wrkP4R1tk06jno1_640.png" height="100" width="100" align="right">
+new rooms. <img src="https://66.media.tumblr.com/c3dee66743dcae9b27be041078173276/tumblr_pq8129ihmp1tk06jno1_250.png" height="100" width="70" align="right">
 
 Multi-player feature has not been implemented because I have a lifelong hatred of multiplayer games. Probably because I never went to kindergarten
 and never learned how to play well with the other kids (~‾▿‾)~
