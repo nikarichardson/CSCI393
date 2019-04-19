@@ -4,7 +4,9 @@ SQLite Dungeon
 Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon</a> code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map. This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms. 
 
-`Monster:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon `Loot:` plain-chest,golden-chest,steel-chest,mini-chest,mana-crystal,potion,book,tome,ring,shovel,herb,shield `Weapons:` sword,pick-axe,bow,dagger,spear,claw,crossbow `Classes:` hero, warrior, mage, priest `Skills:` attack,guard,double-attack,triple-attack,heal `States:` knockout,rage,confusion,sleep,immortal,blind,rage,normal,dead
+`Monster:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon, dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, kleptomaniac-squirrel 🐿  `Loot:` plain-chest,golden-chest,steel-chest,mini-chest,mana-crystal,potion,book,tome,ring,shovel,herb,shield,apple,crown-of-awesome 👑 `Weapons:` sword,pick-axe,bow,dagger,spear,claw,crossbow `Classes:` hero, warrior, mage, priest `Skills:` attack,guard,double-attack,triple-attack,heal `States:` knockout,rage,confusion,sleep,immortal,blind,rage,normal,dead
+
+Items include their possible uses in the description. As an example, you can read a `green book` 📗,`red book`📘, or `orange book` 📙 to increase your player skills. Eating an `apple` 🍎 increases your health. 
 
 Rooms are connected to each other by exits. An exit from a room has a
 direction, which can be any single word, but should be something that
