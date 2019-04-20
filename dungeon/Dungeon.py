@@ -6,38 +6,49 @@ import readline
 
 ## Dungeon project built off Dylan's code. 
 shovel = None
+never_before = True  
 
 
 class Dungeon:
     """
     """
- 
 
     dungeon_map = "dungeon.map"
     prompt = '> '
    
-    ## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake 🐍 
-    ## succubus, werewolf, zombie, skeleton, vampire, giant-ant 🐜, bat 🦇, dinosaur-of-yore 🦕
-    ## chimera, cerberus, spider, ghost, fairy, 🐉 dragon, bee-of-disproportionate-size 🐝, 
-    ## mostly-friendly-wolf 🐺, kleptomaniac-squirrel-of-doom🐿,taco 🌮, pineapple 🍍, the-great-mage 🧙‍♂️
+    ## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
+    ## succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
+    ## dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, pineapple 🍍,
+    ## kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜, mermaid 🧜‍♀️, elf 🧝, unicorn 🦄
+    ## owl 🦉, whale 🐳, dolphin 🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
+    ## zombie🧟, monarch-butterfly 🦋, evil-shrimp 🦐, alien 🛸, time ⏱, bad-weather ⛈, god-of-north-wind 🌬, umbrella 🌂, fire 🔥
+    ## jack-o-lantern 🎃
 
     ## LOOT / ITEMS : plain-chest, golden-chest, steel-chest, mini-chest
-    ## mana-crystal, pick-axe, potion, book, tome, ring, herb, shield, monster crystal,
-    ## crown of awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international)
-    ## space station, tent ⛺️, teleportation stone 
+    ## mana-crystal, pick-axe, potion, blue-book 📘, green-book 📗, orange-book 📙, tome 📖, ring, herb, shield, crystal,
+    ## crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international
+    ## space station), tent ⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, mushroom 🍄, tulip 🌷, beer 🥃, 
+    ## candle 🕯, bed 🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, grapes 🍇, peach 🍑
+    ## cherry 🍒, strawberry 🍓, kiwi 🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream 🍨, grandma's-pie 🥧
+    ## honey 🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍, volcanic-mountain 🌋, paradise-island 🏝, 
+    ## Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, statue-of-liberty 🗽, money-bag 💰 
 
-    ## WEAPONS : sword, pick-axe,bow 🏹 ,dagger,spear,claw,crossbow
+    ## WEAPONS : sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨, wand 
 
-    ## CLASSES : hero, warrior, mage, priest
+    ## GUILDS:  Guild-of-Mages, Guild-of-The-Dark-Arts 👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
+    ## Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆  
+
+    ## CLASSES : hero, warrior, mage, priest, scholar
 
     ## SKILLS : attack, guard, double-attack,triple-attack,heal
 
-    ## STATES : knockout, rage, confusion, sleep, immortal, blind, rage, normal 
-
+    ## STATES : knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal, dead 🤯
+    ## extremely-intellectual🧐, unbearably-cool 🤠, sick 🤒, cat 😼, not-ready-for-adult-life 🧖‍♀️, snail 🐌, on-spring-break 🍹
 
     def repl(self):
         cmd = ''
         global shovel
+        global never_before
 
         self.db = sqlite3.connect(self.dungeon_map)
         self.c = self.db.cursor()
@@ -112,7 +123,11 @@ class Dungeon:
             elif words[0] == 'dig':
                 # only users with a shovel in their inventory can dig rooms
                 yes_shovel = False
- 
+
+                # get current user status 
+                self.c.execute("SELECT status from stats") 
+                my_status = self.c.fetchone()[0] 
+
                 # check inventory for a shovel 
                 self.c.execute("SELECT name FROM inventory") 
 
@@ -120,7 +135,7 @@ class Dungeon:
                     if item[0] == 'shovel': 
                         yes_shovel = True 
 
-                if yes_shovel == True: 
+                if yes_shovel == True or my_status == "super":  
                     descs = line.split("|")
                     words = descs[0].split()
                     if len(words) < 3 or len(descs) != 4:
@@ -149,21 +164,45 @@ class Dungeon:
 
 
             elif words[0] == 'spawn':
-                # to-do: only players with Monster Crystal can spawn a monster 
-                # spawn a monster object
-                print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
-                my_monster = str(input("Type the name of a monster object: "))
+                # only users with a shovel in their inventory can dig rooms
+                yes_crystal = False
+ 
+                # get current user status 
+                self.c.execute("SELECT status from stats") 
+                my_status = self.c.fetchone()[0] 
 
-                ## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
+                # check inventory for a shovel 
+                self.c.execute("SELECT name FROM inventory") 
 
-                ## now we need to update the table of monster objects and 'place' the monster in the room 
-                query = 'INSERT INTO mobs (name,health,atp_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
-                self.c.execute(query)
+                for item in self.c.fetchall():
+                    if item[0] == 'crystal': 
+                        yes_crystal = True 
+
+                if yes_crystal == True or my_status == "super":
+                    # to-do: only players with Monster Crystal can spawn a monster 
+                    # spawn a monster object
+                    print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
+                    my_monster = str(input("Type the name of a monster object: "))
+
+                    ## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
+
+                    ## now we need to update the table of monster objects and 'place' the monster in the room 
+                    query = 'INSERT INTO mobs (name,health,atp_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
+                    self.c.execute(query)
             
-                # Debugging stuff here ...
-                self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-                monster = self.c.fetchone()[0] 
-                print("You've spawned a {}.".format(monster))
+                    # Debugging stuff here ...
+                    self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster = self.c.fetchone()[0] 
+                    print("You've spawned a {}.".format(monster))
+
+                else:
+                    if (never_before == True):
+                        print("I know, I know. It sounds like fun to just spawn a monster out of nothing. But there are limitations in life. I'd like to snap my hands and have all my wishes come true.")
+                        print("This is the adult world, and in order to spawn a monster you need a crystal. So: go get a crystal, and then try again!")
+                        never_before = False
+                    else:
+                        print("Come back when you have a monster crystal!!")
+
              
 
             elif words[0] == 'take':
@@ -220,7 +259,6 @@ class Dungeon:
                 print("     Attack_power : ",end='')
                 print("{}".format(self.c.fetchone()[0]))
 
-
                 ## DEF_POWER
                 self.c.execute("SELECT def_power from stats")
                 print("     Defense_power : ",end='')
@@ -231,7 +269,127 @@ class Dungeon:
                 print("     Exp : ",end='')
                 print("{}".format(self.c.fetchone()[0]))
 
+                ## GUILD
+                self.c.execute("SELECT guild from stats")
+                print("     Guild : ",end='')
+                print("{}".format(self.c.fetchone()[0]))
+
+                ## GOLD 
+                self.c.execute("SELECT gold from stats")
+                print("     Gold : ",end='')
+                print("{}".format(self.c.fetchone()[0]))
+
                 continue
+
+
+            elif words[0] == 'set_status:super':
+                query = 'UPDATE stats SET status = ("{}")'.format("super")
+                self.c.execute(query) 
+                print("You now have super-user privileges.")
+
+            elif words[0] == 'join': 
+                # join a guild for item bonuses 
+                # make sure you are not in a guild already
+                self.c.execute("SELECT guild from stats") 
+                if (self.c.fetchone()[0] != 'none'):
+                    print("Sorry, but you are already in the ",end='')
+                    self.c.execute("SELECT guild from stats") 
+                    print("{}".format(self.c.fetchone()[0]))
+                    print("You may only join one guild at a time.")
+                else: 
+                    answer = int(input("Select a guild to join: Guild-of-Mages(0), Guild-of-The-Dark-Arts👾(1), Guild-of-Chronic-Procrastinators(2),Guild-of-the-Learned(3). "))  
+                    if (answer == 0):
+                        print("You have joined the Guild of Mages!")
+                        print("As a welcome gift, you have received revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome.")
+                        query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Mages")
+                        self.c.execute(query) 
+
+                        # Welcome pack: revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, crown-of-awesome.
+                        #query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
+                        #self.c.execute(query) 
+
+                        # New class is `mage`.
+                        query = 'UPDATE stats SET class = ("{}")'.format("mage")
+                        self.c.execute(query) 
+                        print("Your new class is mage.")
+
+                        # New state is `unbearably cool`. 
+                        query = 'UPDATE stats SET state = ("{}")'.format("unbearably-cool🤠")
+                        self.c.execute(query) 
+                        print("Your new state is unbearably-cool🤠.")
+
+
+
+                    elif (answer == 1):
+                        print("You have joined the Guild of The Dark Arts👾!")
+                        print("As a welcome gift, you have received wand, potion, crystal-ball, and portal. ")
+                        query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Dark-Arts👾")
+                        self.c.execute(query) 
+
+                        # Welcome pack has wand, potion, crystal-ball, and portal. 
+                        #query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
+                        #self.c.execute(query) 
+
+                        # New class is `necromancer`.
+                        query = 'UPDATE stats SET class = ("{}")'.format("nercomancer")
+                        self.c.execute(query) 
+                        print("Your new class is necromancer.")
+
+                         # New state is `immortal`. 
+                        query = 'UPDATE stats SET state = ("{}")'.format("immortal")
+                        self.c.execute(query) 
+                        print("Your new state is immortal.")
+
+
+                    elif (answer == 2):
+                        print("You have joined the Guild of Chronic Procrastinators!")
+                        print("As a welcome gift, you have received tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.")
+                        query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Chronic-Procrastinators")
+                        self.c.execute(query) 
+
+                        # Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.
+                        #query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
+                        #self.c.execute(query)
+
+                        # New state is `not-ready-for-adult-life`. 
+                        query = 'UPDATE stats SET state = ("{}")'.format("not-ready-for-adult-life🧖‍♀️")
+                        self.c.execute(query) 
+                        print("Your new state is not-ready-for-aduralt-life🧖‍♀️.")
+
+                        # New class is `scholar`.
+                        query = 'UPDATE stats SET class = ("{}")'.format("warrior")
+                        self.c.execute(query) 
+                        print("Your new class is warrior.")
+
+
+
+
+                    elif (answer == 3):
+                        print("You have joined the Guild of the Learned!")
+                        print("As a welcome gift, you have received red-book, green-book, orange-book, and tome.")
+                        query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Learned")
+                        self.c.execute(query) 
+
+                        # `Welcome pack has red-book, green-book, orange-book, tome.
+                        #query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
+                        #self.c.execute(query) 
+
+
+                        # New class is `scholar`.
+                        query = 'UPDATE stats SET class = ("{}")'.format("scholar")
+                        self.c.execute(query) 
+                        print("Your new class is scholar.")
+
+                        # New state is extremely-intellectual🧐
+                        query = 'UPDATE stats SET state = ("{}")'.format("extremely-intellectual🧐")
+                        self.c.execute(query) 
+                        print("Your new state is extremely-intellectual🧐.")
+
+
+                    else:
+                        print("That's not a valid guild number!")
+                        continue
+
 
             elif words[0] == 'check':
                 # check inventory for object 
@@ -288,9 +446,104 @@ class Dungeon:
                 self.c.execute("SELECT state from stats")
                 state = self.c.fetchone()[0]
 
-                if state == 'dead':
+                ## STATS: health,state,weapon,armor,class,atp_power,def_power,exp,guild,gold
+                self.c.execute("SELECT health from stats")
+                curr_health = int(self.c.fetchone()[0]) 
+                self.c.execute("SELECT atp_power from stats")
+                curr_atk = int(self.c.fetchone()[0]) 
+                self.c.execute("SELECT def_power from stats")
+                curr_def = int(self.c.fetchone()[0]) 
+
+                if state == 'dead🤯':
                     print("You are dead! Game over.")
                     break
+
+                elif state == 'knockout😖':
+                    ## Knockout decreases attack power by 200  
+                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk-100)
+                    self.c.execute(query) 
+
+                elif state == 'rage😡': 
+                    ## Rage gives attack power boost of 100 
+                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk+100)
+                    self.c.execute(query)  
+
+                elif state == 'confusion😖': 
+                    ## Confusion decreases attack power by 25 
+                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk-25)
+                    self.c.execute(query)  
+
+                elif state == 'fear😱': 
+                    ## Fear increases defense power by 100 
+                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def+100)
+                    self.c.execute(query)  
+
+                elif state == 'asleep😴':  
+                    ## Asleep decreases defense power by 200  
+                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-200)
+                    self.c.execute(query) 
+
+
+                elif state == 'immortal😎':  
+                    ## Immortality increases defense power by 10,000 
+                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def+10000)
+                    self.c.execute(query) 
+
+                elif state == 'blind😵':  
+                    ## Blind decreases defense power by 400 
+                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-400)
+                    self.c.execute(query) 
+
+                elif state == 'extremely-intellectual🧐': 
+                    ## Being extremely intellectual decreases health by 500 
+                    query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(health-500)
+                    self.c.execute(query) 
+
+                elif state == 'unbearably-cool🤠': 
+                    ## Being unbearably cool increases attack power by 10,000 
+                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk+10000)
+                    self.c.execute(query) 
+
+                elif state == 'sick🤒':
+                    ## Sickness decreases attack power by 60 
+                    self.c.execute("SELECT atp_power from stats")
+                    curr_atk = int(self.c.fetchone()[0]) 
+                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk-60)
+                    self.c.execute(query) 
+
+                elif state == 'cat😼': 
+                    ## Being a cat increases attack power by 500 
+                    self.c.execute("SELECT atp_power from stats")
+                    curr_atk = int(self.c.fetchone()[0]) 
+                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk+500)
+                    self.c.execute(query) 
+
+                elif state == 'not-ready-for-adult-life🧖‍♀️': 
+                    ## Not ready for adult life decreases defense power by 500
+                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-500)
+                    self.c.execute(query) 
+
+                elif state == 'snail🐌': 
+                    ## Snail decreases defense power by 10,000,0000
+                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-100000000)
+                    self.c.execute(query) 
+
+                elif state == 'on-spring-break🍹': 
+                    ## On spring break increases health by 500 
+                    query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(curr_health+500)
+                    self.c.execute(query) 
+
+                else:
+                    continue 
+
+
+                ## After battle, return player stats to original before boost/decrease from state 
+                ##query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(curr_health)
+                ##self.c.execute(query)
+                ##query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def)
+                ##self.c.execute(query)  
+                ##query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk)
+                ##self.c.execute(query) 
 
             else:
                 print("unknown command {}".format(words[0]))
@@ -398,8 +651,8 @@ class Dungeon:
             self.c.execute("CREATE TABLE mobs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, health INTEGER,atp_power INTEGER,def_power INTEGER,exp INTEGER,room_id INTEGER)")
             self.c.execute("CREATE TABLE exits (from_room INTEGER, to_room INTEGER, dir TEXT)")
             # table for stats 
-            self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atp_power INTEGER,def_power INTEGER,exp INTEGER)")
-            self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atp_power,def_power,exp) VALUES (100,'normal','none','none','hero',10,10,0)")
+            self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atp_power INTEGER,def_power INTEGER,exp INTEGER,guild TEXT, gold INTEGER,status TEXT)")
+            self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atp_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',10,10,0,'none',0,'normal')")
 
             # table for loot items
             self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
@@ -470,5 +723,6 @@ if __name__ == '__main__':
     print("'dig' to create a new room, and 'new' to start the dungeon creation process over again.")
     print("Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,")
     print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
+    print("To join a guild, type 'join' & select a Guild. Some guilds can only be joined via events.")
     print("If you have a Monster Crystal in your inventory you can spawn a monster: type 'spawn.'")
     d.repl()
