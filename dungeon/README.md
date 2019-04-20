@@ -30,7 +30,7 @@ Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆
 
 `Skills:` attack, guard, double-attack,triple-attack,heal
 
-`States:`  knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal 😎, dead 🤯
+`States:`  knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal, dead 🤯
 extremely-intellectual 🧐, unbearably-cool 🤠, sick 🤒, cat 😼, not-ready-for-adult-life 🧖‍♀️, snail 🐌, on-spring-break 🍹
 
 
