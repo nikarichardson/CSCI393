@@ -187,7 +187,7 @@ Has name of item, description, and use value.
 
 ## Monster Database
 Has name of monster, health, description, attack power, defense power, & exp gained from defeating monster. 
-<br>`minotaur:`
+<br>`minotaur:`  <b>Health</b> is. <i>Description here</i>. <b>Attack power</b> 200. <b>Defense power</b> 200. <b>Exp</b> +30. 
 <br>`orc:`
 <br>`plant:`
 <br>`rat:`
@@ -239,9 +239,9 @@ Has name of monster, health, description, attack power, defense power, & exp gai
 <br>`jack-o-lantern 🎃:`
 
 ## Guilds 
-<br>`Guild of Mages`: Welcome pack has revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome. New class is `mage`. New state is `unbearably-cool 🤠`. 
-<br>`Guild of The Dark Arts`: Welcome pack has wand, potion, crystal-ball, and portal. New state is `immortal`. New class is `necromancer`. 
-<br>`Guild of the Chronic Procrastinators`: Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed. New state is `not-ready-for-adult-life`. New class is `warrior`.
-<br>`Guild of the Learned`: Welcome pack has red-book, green-book, orange-book, and tome. New class is `scholar`. New state is `extremely-intellectual🧐`.
+<br>`Guild of Mages`: Welcome pack has `revival-dove`, `mini-chest`, `money-bag`, `plain-chest`, `golden-chest`, `steel-chest`, and `crown-of-awesome`. New class is `mage`. New state is `unbearably-cool 🤠`. 
+<br>`Guild of The Dark Arts`: Welcome pack has `wand`, `potion`, `crystal-ball`, and `portal`. New state is `immortal`. New class is `necromancer`. 
+<br>`Guild of the Chronic Procrastinators`: Welcome pack has `tent`, `beer`, `ramen`, `popcorn`, `wine`, `chinese-takeout`, `salt-and-straw-icecream`, and `bed`. New state is `not-ready-for-adult-life`. New class is `warrior`.
+<br>`Guild of the Learned`: Welcome pack has `red-book`, `green-book`, 	`orange-book`, and `tome`. New class is `scholar`. New state is `extremely-intellectual🧐`.
 <br>`Guild of the Ancients`: Secret guild. 
 <br>`Guild of Champions`: Secret guild. 
