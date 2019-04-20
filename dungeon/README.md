@@ -125,118 +125,118 @@ Coming soon
 
 ## Item Database :
 Has name of item, description, and use value. 
-<br><b>plain-chest:</b>
-<br><b>golden-chest:</b>
-<br><b>steel-chest:</b>
-<br><b>mini-chest:</b>
-<br><b>mana-crystal:</b>
-<br><b>pick-axe:</b>
-<br><b>potion:</b>
-<br><b>blue-book 📘:</b>
-<br><b>green-book 📗:</b>
-<br><b>orange-book 📙:</b>
-<br><b>tome 📖:</b>
-<br><b>ring:</b>
-<br><b>herb:</b>
-<br><b>shield:</b>
-<br><b>crystal:</b>
-<br><b>crown-of-awesome 👑:</b>
-<br><b>apple 🍎:</b>
-<br><b>beer 🥃:</b>
-<br><b>ramen 🍜:</b>
-<br><b>ISS 🛰:</b> (the international space station)
-<br><b>tent ⛺️:</b>
-<br><b>crystal-ball 🔮:</b>
-<br><b>portal 🌀:</b>
-<br><b>flower 🌸:</b>
-<br><b>wheat 🌾:</b>
-<br><b>herb 🌿:</b>
-<br><b>mushroom 🍄:</b>
-<br><b>tulip 🌷:</b>
-<br><b>beer 🥃:</b>
-<br><b>candle 🕯:</b>
-<br><b>bed 🛌:</b>
-<br><b>revival-dove 🕊:</b>
-<br><b>shell 🐚:</b>
-<br><b>grapes 🍇:</b>
-<br><b>banana 🍌:</b> 
-<br><b>lemon 🍋:</b>
-<br><b>watermelon 🍉:</b>
-<br><b>grapes 🍇:</b>
-<br><b>peach 🍑:</b>
-<br><b>cherry 🍒:</b>
-<br><b>strawberry 🍓:</b>
-<br><b>kiwi 🥝:</b>
-<br><b>corn 🌽:</b>
-<br><b>popcorn 🍿:</b>
-<br><b>chinese-takeout 🥡:</b>
-<br><b>salt-and-straw-icecream 🍨:</b>
-<br><b>grandmas-pie 🥧:</b>
-<br><b>honey 🍯:</b>
-<br><b>tea 🍵 :</b>
-<br><b>wine 🍷:</b> 
-<br><b>amphora-of-the-ancients 🏺:</b>
-<br><b>the-world 🌍:</b>
-<br><b>volcanic-mountain 🌋:</b>
-<br><b>paradise-island 🏝:</b>
-<br><b>Athens 🏛:</b>
-<br><b>the-american-dream 🏠:</b>
-<br><b>the-Federal-Reserve 🏦:</b>
-<br><b>hospital 🏥:</b>
-<br><b>statue-of-liberty🗽:</b>
-<br><b>money-bag 💰:</b>
+<br>`plain-chest:`
+<br>`golden-chest:`
+<br>`steel-chest:`
+<br>`mini-chest:`
+<br>`mana-crystal:`
+<br>`pick-axe:`
+<br>`potion:`
+<br>`blue-book 📘:`
+<br>`green-book 📗:`
+<br>`orange-book 📙:`
+<br>`tome 📖:`
+<br>`ring:`
+<br>`herb:`
+<br>`shield:`
+<br>`crystal:`
+<br>`crown-of-awesome 👑:`
+<br>`apple 🍎:`
+<br>`beer 🥃:`
+<br>`ramen 🍜:`
+<br>`ISS 🛰:` (the international space station)
+<br>`tent ⛺️:`
+<br>`crystal-ball 🔮:`
+<br>`portal 🌀:`
+<br>`flower 🌸:`
+<br>`wheat 🌾:`
+<br>`herb 🌿:`
+<br>`mushroom 🍄:`
+<br>`tulip 🌷:`
+<br>`beer 🥃:`
+<br>`candle 🕯:`
+<br>`bed 🛌:`
+<br>`revival-dove 🕊:`
+<br>`shell 🐚:`
+<br>`grapes 🍇:`
+<br>`banana 🍌:`
+<br>`lemon 🍋:`
+<br>`watermelon 🍉:`
+<br>`grapes 🍇:`
+<br>`peach 🍑:`
+<br>`cherry 🍒:`
+<br>`strawberry 🍓:`
+<br>`kiwi 🥝:`
+<br>`corn 🌽:`
+<br>`popcorn 🍿:`
+<br>`chinese-takeout 🥡:`
+<br>`salt-and-straw-icecream 🍨:`
+<br>`grandmas-pie 🥧:`
+<br>`honey 🍯:`
+<br>`tea 🍵 :`
+<br>`wine 🍷:`
+<br>`amphora-of-the-ancients 🏺:`
+<br>`the-world 🌍:`
+<br>`volcanic-mountain 🌋:`
+<br>`paradise-island 🏝:`
+<br>`Athens 🏛:`
+<br>`the-american-dream 🏠:`
+<br>`the-Federal-Reserve 🏦:`
+<br>`hospital 🏥:`
+<br>`statue-of-liberty🗽:`
+<br>`money-bag 💰:`
 
 ## Monster Database
-<br><b>minotaur:</b>
-<br><b>orc:</b>
-<br><b>plant:</b>
-<br><b>rat:</b>
-<br><b>ogre:</b>
-<br><b>scorpion:</b>
-<br><b>skeleton:</b>
-<br><b>giant-ant🐜:</b>
-<br><b>bat🦇:</b>
-<br><b>slime:</b>
-<br><b>snake🐍:</b>
-<br><b>succubus:</b>
-<br><b>werewolf:</b>
-<br><b>zombie:</b>
-<br><b>skeleton:</b>
-<br><b>vampire:</b>
-<br><b>chimera:</b>
-<br><b>cerberus:</b>
-<br><b>spider:</b>
-<br><b>ghost:</b>
-<br><b>taco🌮:</b>
-<br><b>fairy🧚‍:</b>
-<br><b>dragon🐉:</b>
-<br><b>dinosaur-of-yore🦕:</b>
-<br><b>bee-of-disproportionate-size🐝:</b>
-<br><b>mostly-friendly-wolf🐺:</b>
-<br><b>pineapple🍍:</b>
-<br><b>kleptomaniac-squirrel-of-doom🐿:</b>
-<br><b>the-great-mage 🧙‍:</b>
-<br><b>apprentice 🧙‍:</b>
-<br><b>merman🧜:</b>
-<br><b>elf🧝:</b>
-<br><b>unicorn🦄:</b>
-<br><b>owl🦉:</b>
-<br><b>whale 🐳:</b>
-<br><b>dolphin🐬:</b>
-<br><b>magical-fish-out-of-water 🐟:</b>
-<br><b>blowfish🐡:</b>
-<br><b>octopus🐙:</b>
-<br><b>caterpillar-of-phenomenal-power🐛:</b>
-<br><b>zombie🧟:</b>
-<br><b>monarch-butterfly 🦋:</b>
-<br><b>evil-shrimp 🦐:</b>
-<br><b>alien 🛸:</b>
-<br><b>time ⏱:</b>
-<br><b>bad-weather ⛈:</b>
-<br><b>god-of-north-wind 🌬:</b>
-<br><b>umbrella 🌂:</b>
-<br><b>fire 🔥:</b>
-<br><b>jack-o-lantern 🎃:</b>
+<br>`minotaur:`
+<br>`orc:`
+<br>`plant:`
+<br>`rat:`
+<br>`ogre:`
+<br>`scorpion:`
+<br>`skeleton:`
+<br>`giant-ant🐜:`
+<br>`bat🦇:`
+<br>`slime:`
+<br>`snake🐍:`
+<br>`succubus:`
+<br>`werewolf:`
+<br>`zombie:`
+<br>`skeleton:`
+<br>`vampire:`
+<br>`chimera:`
+<br>`cerberus:`
+<br>`spider:`
+<br>`ghost:`
+<br>`taco🌮:`
+<br>`fairy🧚‍:`
+<br>`dragon🐉:`
+<br>`dinosaur-of-yore🦕:`
+<br>`bee-of-disproportionate-size🐝:`
+<br>`mostly-friendly-wolf🐺:`
+<br>`pineapple🍍:`
+<br>`kleptomaniac-squirrel-of-doom🐿:`
+<br>`the-great-mage 🧙‍:`
+<br>`apprentice 🧙‍:`
+<br>`merman🧜:`
+<br>`elf🧝:`
+<br>`unicorn🦄:`
+<br>`owl🦉:`
+<br>`whale 🐳:`
+<br>`dolphin🐬:`
+<br>`magical-fish-out-of-water 🐟:`
+<br>`blowfish🐡:`
+<br>`octopus🐙:`
+<br>`caterpillar-of-phenomenal-power🐛:`
+<br>`zombie🧟:`
+<br>`monarch-butterfly 🦋:`
+<br>`evil-shrimp 🦐:`
+<br>`alien 🛸:`
+<br>`time ⏱:`
+<br>`bad-weather ⛈:`
+<br>`god-of-north-wind 🌬:`
+<br>`umbrella 🌂:`
+<br>`fire 🔥:`
+<br>`jack-o-lantern 🎃:`
 
 ## Guilds 
 <br>`Guild of Mages`: Welcome pack has revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome. New class is `mage`. New state is `unbearably-cool 🤠`. 
