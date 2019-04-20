@@ -34,7 +34,6 @@ Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆 (a *secret* gu
 `States:`  knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal, dead 🤯
 extremely-intellectual 🧐, unbearably-cool 🤠, sick 🤒, cat 😼, not-ready-for-adult-life 🧖‍♀️, snail 🐌, on-spring-break 🍹
 
-
 Items include their possible uses in the description. As an example, you can read a `green-book` 📗,`blue-book`📘, or `orange-book` 📙 to increase your player skills. Eating an `apple` 🍎 increases your health. See full documentation of item and monster databases below. 
 
 Rooms are connected to each other by exits. An exit from a room has a
@@ -188,12 +187,61 @@ Has name of item, description, and use value.
 <br><b>money-bag 💰:</b>
 
 ## Monster Database
-Coming soon 
+<br><b>minotaur:</b>
+<br><b>orc:</b>
+<br><b>plant:</b>
+<br><b>rat:</b>
+<br><b>ogre:</b>
+<br><b>scorpion:</b>
+<br><b>skeleton:</b>
+<br><b>giant-ant🐜:</b>
+<br><b>bat🦇:</b>
+<br><b>slime:</b>
+<br><b>snake🐍:</b>
+<br><b>succubus:</b>
+<br><b>werewolf:</b>
+<br><b>zombie:</b>
+<br><b>skeleton:</b>
+<br><b>vampire:</b>
+<br><b>chimera:</b>
+<br><b>cerberus:</b>
+<br><b>spider:</b>
+<br><b>ghost:</b>
+<br><b>taco🌮:</b>
+<br><b>fairy🧚‍:</b>
+<br><b>dragon🐉:</b>
+<br><b>dinosaur-of-yore🦕:</b>
+<br><b>bee-of-disproportionate-size🐝:</b>
+<br><b>mostly-friendly-wolf🐺:</b>
+<br><b>pineapple🍍:</b>
+<br><b>kleptomaniac-squirrel-of-doom🐿:</b>
+<br><b>the-great-mage 🧙‍:</b>
+<br><b>apprentice 🧙‍:</b>
+<br><b>merman🧜:</b>
+<br><b>elf🧝:</b>
+<br><b>unicorn🦄:</b>
+<br><b>owl🦉:</b>
+<br><b>whale 🐳:</b>
+<br><b>dolphin🐬:</b>
+<br><b>magical-fish-out-of-water 🐟:</b>
+<br><b>blowfish🐡:</b>
+<br><b>octopus🐙:</b>
+<br><b>caterpillar-of-phenomenal-power🐛:</b>
+<br><b>zombie🧟:</b>
+<br><b>monarch-butterfly 🦋:</b>
+<br><b>evil-shrimp 🦐:</b>
+<br><b>alien 🛸:</b>
+<br><b>time ⏱:</b>
+<br><b>bad-weather ⛈:</b>
+<br><b>god-of-north-wind 🌬:</b>
+<br><b>umbrella 🌂:</b>
+<br><b>fire 🔥:</b>
+<br><b>jack-o-lantern 🎃:</b>
 
 ## Guilds 
-`Guild of Mages`: Welcome pack has revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome. New class is `mage`. New state is `unbearably-cool 🤠`. 
-`Guild of The Dark Arts`: Welcome pack has wand, potion, crystal-ball, and portal. New state is `immortal`. New class is `necromancer`. 
-`Guild of the Chronic Procrastinators`: Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed. New state is `not-ready-for-adult-life`. New class is `warrior`.
-`Guild of the Learned`: Welcome pack has red-book, green-book, orange-book, and tome. New class is `scholar`. New state is `extremely-intellectual🧐`.
-`Guild of the Ancients`: Secret guild. 
-`Guild of Champions`: Secret guild. 
+<br>`Guild of Mages`: Welcome pack has revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome. New class is `mage`. New state is `unbearably-cool 🤠`. 
+<br>`Guild of The Dark Arts`: Welcome pack has wand, potion, crystal-ball, and portal. New state is `immortal`. New class is `necromancer`. 
+<br>`Guild of the Chronic Procrastinators`: Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed. New state is `not-ready-for-adult-life`. New class is `warrior`.
+<br>`Guild of the Learned`: Welcome pack has red-book, green-book, orange-book, and tome. New class is `scholar`. New state is `extremely-intellectual🧐`.
+<br>`Guild of the Ancients`: Secret guild. 
+<br>`Guild of Champions`: Secret guild. 
