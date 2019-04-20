@@ -4,9 +4,37 @@ SQLite Dungeon
 Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon</a> code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map. This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms. 
 
-`Monster:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉, dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, pineapple 🍍,kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️ `Loot/Items:` plain-chest, golden-chest, steel-chest, mini-chest, mana-crystal,potion,book,tome,ring,shovel, herb,ramen🍜,shield,apple,crown-of-awesome 👑,crystal-ball🔮, portal 🌀, 🛰 ISS (international space station), beer 🥃, tent ⛺️,blue-book 📘, green-book 📗, orange-book 📙, flower 🌸, wheat 🌾, herb 🌿, mushroom 🍄, tulip 🌷 `Weapons:` sword, pick-axe, bow 🏹,dagger, spear, claw, crossbow, candle 🕯 `Classes:` hero, warrior, mage, priest, scholar `Skills:` attack, guard, double-attack, triple-attack, heal `States:` knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal 😎, dead 🤯, extremely-intellectual 🧐, unbearably-cool 🤠, sick🤒 `Guilds:` Guild-of-Mages, Guild-of-The-Dark-Arts, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, Guild-of-the-Ancients.   
+`Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
+succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
+dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, pineapple 🍍,
+kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜, mermaid 🧜‍♀️, elf 🧝, unicorn 🦄
+owl 🦉, whale 🐳, dolphin 🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
+zombie🧟, monarch-butterfly 🦋, evil-shrimp 🦐, alien 🛸, time ⏱, bad-weather ⛈, god-of-north-wind 🌬, umbrella 🌂, fire 🔥
+jack-o-lantern 🎃
 
-Items include their possible uses in the description. As an example, you can read a `green-book` 📗,`blue-book`📘, or `orange-book` 📙 to increase your player skills. Eating an `apple` 🍎 increases your health. 
+`Loot/Items:` plain-chest, golden-chest, steel-chest, mini-chest
+mana-crystal, pick-axe, potion, blue-book 📘, green-book 📗, orange-book 📙, tome 📖, ring, herb, shield, crystal,
+crown of awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international
+ space station), tent ⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, mushroom 🍄, tulip 🌷, beer 🥃, 
+candle 🕯, bed 🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, grapes 🍇, peach 🍑
+cherry 🍒, strawberry 🍓, kiwi 🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream 🍨, grandma's-pie 🥧
+honey 🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍, volcanic-mountain 🌋, paradise-island 🏝, 
+Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, statue-of-liberty 🗽, money-bag 💰 
+
+`Weapons:` sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨
+
+`Guilds:`  Guild-of-Mages, Guild-of-The-Dark-Arts 👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
+Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆  
+
+`Classes:`  hero, warrior, mage, priest, scholar
+
+`Skills:` attack, guard, double-attack,triple-attack,heal
+
+`States:`  knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal 😎, dead 🤯
+extremely-intellectual 🧐, unbearably-cool 🤠, sick 🤒, cat 😼, not-ready-for-adult-life 🧖‍♀️, snail 🐌, on-spring-break 🍹
+
+
+Items include their possible uses in the description. As an example, you can read a `green-book` 📗,`blue-book`📘, or `orange-book` 📙 to increase your player skills. Eating an `apple` 🍎 increases your health. See full documentation of item and monster databases below. 
 
 Rooms are connected to each other by exits. An exit from a room has a
 direction, which can be any single word, but should be something that
@@ -90,3 +118,8 @@ Get ready to fight chimera (ง •̀_•́)ง
 
 ## Map of Erebor 
 Coming soon 
+
+## Item Database
+Coming soon
+
+## Monster Database
