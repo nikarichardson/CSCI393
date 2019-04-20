@@ -164,8 +164,8 @@ Has name of item, description, and use value.
 <br>`cherry 🍒:` <i>Hello, daddy. Hello, mom. I'm your ch-ch-ch-cherry bomb!</i> Increases health by <b>350</b>. 
 <br>`strawberry 🍓:` <i>If you keep my secret I'll give you this strawberry.</i> Increases health by <b>50</b>. 
 <br>`kiwi 🥝:` <i>Kiwi would be a cute name for a child, don't you think? Anyway, this isn't the child Kiwi. It's the fruit kiwi.</i> Increases health by <b>75</b>. 
-<br>`corn 🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.  
-<br>`popcorn 🍿:` <i>Do you really think it's a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters? Really?</i>
+<br>`corn 🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.
+<br>`popcorn 🍿:` <i>Do you really think it's a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters? Really? </i>
 <br>`chinese-takeout 🥡:` <i>Nothing says i-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
 <br>`salt-and-straw-icecream 🍨:` <i>Good thing you got this somehow. The lines are too long; there's no point in battling for ice cream when you have monsters to battle.</i> Increases health by <b>1000</b>. 
 <br>`grandmas-pie 🥧:` <i>Smells good! Eat an entire pie by yourself, why don't you. You are an adult, after all. </i> Increases health by <b>500</b>.
@@ -174,7 +174,7 @@ Has name of item, description, and use value.
 <br>`wine 🍷:` <i>Drink up, me hearties, yo ho!</i> Increases health by <b>500</b>. 
 <br>`amphora-of-the-ancients 🏺:` <i>There's writing on the outside of this amphora, but you can't read Ancient Greek.</i>
 <br>`the-world 🌍:` <i>It's so tiny, so round, so cute!! </i> Increases defense power by <b>10,000</b>. 
-<br>`volcanic-mountain 🌋:` <i>You would prefer a chocolate lava, but hey.<i> 
+<br>`volcanic-mountain 🌋:` <i>You would prefer a chocolate lava, but hey.</i> 
 <br>`paradise-island 🏝:` <i>What if you need a vacation, but your employer doesn't offer paid vacations? Use this paradise island in your inventory for an immediate escape.</i> Increases health by <b>12,000</b>. 
 <br>`Athens 🏛:` <i>Some people love Greece so much they want to keep a relic of the Acropolis in their bag. Hey, to each to their own, right?</i>
 <br>`the-american-dream 🏠:` <i>Hard to attain, harder to keep.</i> Increases gold by <b>500000</b>.
