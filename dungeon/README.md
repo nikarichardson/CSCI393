@@ -125,16 +125,16 @@ Coming soon
 
 ## Item Database :
 Has name of item, description, and use value. 
-<br>`plain-chest:`
-<br>`golden-chest:`
-<br>`steel-chest:`
-<br>`mini-chest:`
-<br>`mana-crystal:`
-<br>`pick-axe:`
-<br>`potion:`
-<br>`blue-book 📘:`
-<br>`green-book 📗:`
-<br>`orange-book 📙:`
+<br>`plain-chest:` <i>Well, it's better than nothing. Isn't it?!</i> Increases gold by <b>100</b>. 
+<br>`golden-chest:` <i>The best chest there is.</i> Increases gold by <b>500</b>. 
+<br>`steel-chest:` <i>Seems like it might be hard to open</i> Increases gold by <b>200</b>. 
+<br>`mini-chest:` <i>Just because it's tiny doesn't mean it doesn't contain a lot! Oh, well, actually . . .</i> Increases gold by <b>10</b>. 
+<br>`mana-crystal:` <i>Use this to increase your health by +300.</i> Increases health by <b>300</b>. 
+<br>`pick-axe:` <i>A great medieval weapon. Which would be perfect, if you were living in medieval times. You are not.</i> Increases attack power by <b>30</b>. 
+<br>`potion:` <i>No, this potion doesn't come up with an ingredient list, silly. Just drink it or leave it. Time will tell.</i> Increases health by <b>100</b>. 
+<br>`blue-book 📘:` <i>It's not perfect, but you suspect this blue book is better than the red book.</i> Increases exp by <b>50</b>. 
+<br>`green-book 📗:` <i>Seriously, it's better than the red book. I think.</i> Increases exp by <b>100</b>. 
+<br>`orange-book 📙:` <i>The red book does not even exist, ok? But this book exists. It might help you.</i> Increases exp by <b>300</b>.
 <br>`tome 📖:`
 <br>`ring:`
 <br>`shield:`
