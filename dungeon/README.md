@@ -27,7 +27,7 @@ Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, 
 `Guilds:`  Guild-of-Mages, Guild-of-The-Dark-Arts 👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
 Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆 (a *secret* guild)  
 
-`Classes:`  hero, warrior, mage, priest, scholar
+`Classes:`  hero, warrior, mage, priest, scholar, necromancer
 
 `Skills:` attack, guard, double-attack,triple-attack,heal
 
@@ -131,9 +131,9 @@ Coming soon
 Coming soon 
 
 ## Guilds 
-`Guild of Mages`: Welcome pack has revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, crown-of-awesome.
-`Guild of The Dark Arts`: Welcome pack has wand, potion, crystal-ball, and portal. 
-`Guild of the Chronic Procrastinators`: Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed. New state is `not-ready-for-adult-life`. 
-`Guild of the Learned`: Welcome pack has red-book, green-book, orange-book, tome. New class is `scholar`.
+`Guild of Mages`: Welcome pack has revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome. New class is `mage`. New state is `unbearably-cool 🤠`. 
+`Guild of The Dark Arts`: Welcome pack has wand, potion, crystal-ball, and portal. New state is `immortal`. New class is `necromancer`. 
+`Guild of the Chronic Procrastinators`: Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed. New state is `not-ready-for-adult-life`. New class is `warrior`.
+`Guild of the Learned`: Welcome pack has red-book, green-book, orange-book, and tome. New class is `scholar`. New state is `extremely-intellectual🧐`.
 `Guild of the Ancients`: Secret guild. 
 `Guild of Champions`: Secret guild. 
