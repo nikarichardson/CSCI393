@@ -5,7 +5,8 @@ import sqlite3
 import readline
 
 ## Dungeon project built off Dylan's code. 
-shovel = False
+shovel = None
+
 
 class Dungeon:
     """
@@ -23,7 +24,7 @@ class Dungeon:
     ## LOOT / ITEMS : plain-chest, golden-chest, steel-chest, mini-chest
     ## mana-crystal, pick-axe, potion, book, tome, ring, herb, shield, monster crystal,
     ## crown of awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international)
-    ## space station, tent ⛺️
+    ## space station, tent ⛺️, teleportation stone 
 
     ## WEAPONS : sword, pick-axe,bow 🏹 ,dagger,spear,claw,crossbow
 
@@ -465,8 +466,7 @@ if __name__ == '__main__':
     print("                                         _/                                                     ") 
     print("                                       _/_/                                                     ")
     print("")
-
-    print("Welcome to the dungeon. ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
+    print("Welcome to the ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
     print("'dig' to create a new room, and 'new' to start the dungeon creation process over again.")
     print("Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,")
     print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
