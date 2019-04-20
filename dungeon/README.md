@@ -126,66 +126,66 @@ Coming soon
 
 ## Item Database :
 Has name of item, description, and use value. 
-<b>plain-chest:</b>
-<b>golden-chest:</b>
-<b>steel-chest:</b>
-<b>mini-chest:</b>
-<b>mana-crystal:</b>
-<b>pick-axe:</b>
-<b>potion:</b>
-<b>blue-book 📘:</b>
-<b>green-book 📗:</b>
-<b>orange-book 📙:</b>
-<b>tome 📖:</b>
-<b>ring:</b>
-<b>herb:</b>
-<b>shield:</b>
-<b>crystal:</b>
-<b>crown-of-awesome 👑:</b>
-<b>apple 🍎:</b>
-<b>beer 🥃:</b>
-<b>ramen 🍜:</b>
-<b>ISS 🛰:</b> (the international space station)
-<b>tent ⛺️:</b>
-<b>crystal-ball 🔮:</b>
-<b>portal 🌀:</b>
-<b>flower 🌸:</b>
-<b>wheat 🌾:</b>
-<b>herb 🌿:</b>
-<b>mushroom 🍄:</b>
-<b>tulip 🌷:</b>
-<b>beer 🥃:</b>
-<b>candle 🕯:</b>
-<b>bed 🛌:</b>
-<b>revival-dove 🕊:</b>
-<b>shell 🐚:</b>
-<b>grapes 🍇:</b>
-<b>banana 🍌:</b> 
-<b>lemon 🍋:</b>
-<b>watermelon 🍉:</b>
-<b>grapes 🍇:</b>
-<b>peach 🍑:</b>
-<b>cherry 🍒:</b>
-<b>strawberry 🍓:</b>
-<b>kiwi 🥝:</b>
-<b>corn 🌽:</b>
-<b>popcorn 🍿:</b>
-<b>chinese-takeout 🥡:</b>
-<b>salt-and-straw-icecream 🍨:</b>
-<b>grandmas-pie 🥧:</b>
-<b>honey 🍯:</b>
-<b>tea 🍵 :</b>
-<b>wine 🍷:</b> 
-<b>amphora-of-the-ancients 🏺:</b>
-<b>the-world 🌍:</b>
-<b>volcanic-mountain 🌋:</b>
-<b>paradise-island 🏝:</b>
-<b>Athens 🏛:</b>
-<b>the-american-dream 🏠:</b>
-<b>the-Federal-Reserve 🏦:</b>
-<b>hospital 🏥:</b>
-<b>statue-of-liberty🗽:</b>
-<b>money-bag 💰:</b>
+<br><b>plain-chest:</b>
+<br><b>golden-chest:</b>
+<br><b>steel-chest:</b>
+<br><b>mini-chest:</b>
+<br><b>mana-crystal:</b>
+<br><b>pick-axe:</b>
+<br><b>potion:</b>
+<br><b>blue-book 📘:</b>
+<br><b>green-book 📗:</b>
+<br><b>orange-book 📙:</b>
+<br><b>tome 📖:</b>
+<br><b>ring:</b>
+<br><b>herb:</b>
+<br><b>shield:</b>
+<br><b>crystal:</b>
+<br><b>crown-of-awesome 👑:</b>
+<br><b>apple 🍎:</b>
+<br><b>beer 🥃:</b>
+<br><b>ramen 🍜:</b>
+<br><b>ISS 🛰:</b> (the international space station)
+<br><b>tent ⛺️:</b>
+<br><b>crystal-ball 🔮:</b>
+<br><b>portal 🌀:</b>
+<br><b>flower 🌸:</b>
+<br><b>wheat 🌾:</b>
+<br><b>herb 🌿:</b>
+<br><b>mushroom 🍄:</b>
+<br><b>tulip 🌷:</b>
+<br><b>beer 🥃:</b>
+<br><b>candle 🕯:</b>
+<br><b>bed 🛌:</b>
+<br><b>revival-dove 🕊:</b>
+<br><b>shell 🐚:</b>
+<br><b>grapes 🍇:</b>
+<br><b>banana 🍌:</b> 
+<br><b>lemon 🍋:</b>
+<br><b>watermelon 🍉:</b>
+<br><b>grapes 🍇:</b>
+<br><b>peach 🍑:</b>
+<br><b>cherry 🍒:</b>
+<br><b>strawberry 🍓:</b>
+<br><b>kiwi 🥝:</b>
+<br><b>corn 🌽:</b>
+<br><b>popcorn 🍿:</b>
+<br><b>chinese-takeout 🥡:</b>
+<br><b>salt-and-straw-icecream 🍨:</b>
+<br><b>grandmas-pie 🥧:</b>
+<br><b>honey 🍯:</b>
+<br><b>tea 🍵 :</b>
+<br><b>wine 🍷:</b> 
+<br><b>amphora-of-the-ancients 🏺:</b>
+<br><b>the-world 🌍:</b>
+<br><b>volcanic-mountain 🌋:</b>
+<br><b>paradise-island 🏝:</b>
+<br><b>Athens 🏛:</b>
+<br><b>the-american-dream 🏠:</b>
+<br><b>the-Federal-Reserve 🏦:</b>
+<br><b>hospital 🏥:</b>
+<br><b>statue-of-liberty🗽:</b>
+<br><b>money-bag 💰:</b>
 
 ## Monster Database
 Coming soon 
