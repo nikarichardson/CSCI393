@@ -182,6 +182,14 @@ Has name of item, description, and use value.
 <br>`hospital 🏥:` <i>Why go to the hospital if you can keep one at all times in your bag?</i> Increases health by <b>10,000</b>. 
 <br>`statue-of-liberty🗽:` <i>Freedom is excellent, freedom is priceless. So don't be too disappointed that this statue doesn't do anything, k?</i>
 <br>`money-bag 💰:` <i>Not sure where this came from. It's best not to look into such things.</i> Increases gold by <b>10000</b>. 
+<br>`sword:` <i>A starter weapon</i>. Increases attack power by <b>100</b>. 
+<br>`bow 🏹:` <i>You're not Katniss but it'll work.</i> Increases attack power by <b>200</b>. 
+<br>`dagger🗡:` <i>Great for stabbing friends (or political enemies) in the back. Et tu, Brutes?</i> Increases attack power by <b>300</b>. 
+<br>`spear:` Increases attack power by <b>400</b>. 
+<br>`claw:` <i>Nothing like a bear claw</i>. Increases attack power by <b>350</b>. 
+<br>`crossbow:` <i>You'll get the hang of it.</i> Increases attack power by <b>450</b>. 
+<br>`hammer🔨:`<i>Probably better for fixing furniture.</i> Increases attack power by <b>60</b>. 
+<br>`wand:` <i>Magic is, after all, the ultimate power.</i> Increases attack power by <b>1000</b>. 
 
 ## Monster Database
 Has name of monster, health, description, attack power, defense power, & exp gained from defeating monster. 
