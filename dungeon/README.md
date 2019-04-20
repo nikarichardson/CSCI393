@@ -4,7 +4,7 @@ SQLite Dungeon
 Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon</a> code from Spring 2019 Operating systems. 
 Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map. 
 
-This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms. 
+This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms.  There are <b>6</b> Guilds, <b>16</b> states, <b>6</b> classes,<b>5</b>skills, <b>40+</b> monsters and <b>50+</b> items. 
 
 `Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
 succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
@@ -137,7 +137,6 @@ Has name of item, description, and use value.
 <br>`orange-book 📙:`
 <br>`tome 📖:`
 <br>`ring:`
-<br>`herb:`
 <br>`shield:`
 <br>`crystal:`
 <br>`crown-of-awesome 👑:`
@@ -187,6 +186,7 @@ Has name of item, description, and use value.
 <br>`money-bag 💰:`
 
 ## Monster Database
+Has name of monster, health, description, attack power, defense power, and amount of exp gained from defeating monster. 
 <br>`minotaur:`
 <br>`orc:`
 <br>`plant:`
