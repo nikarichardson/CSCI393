@@ -25,6 +25,8 @@ new rooms. <img src="https://66.media.tumblr.com/c3dee66743dcae9b27be04107817327
 Multi-player feature has not been implemented because I have a lifelong hatred of multiplayer games. Probably because I never went to kindergarten
 and never learned how to play well with the other kids (‾▿‾)
 
+To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | python3 dungeon.py`. 
+
 All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>. 
 
 --------
