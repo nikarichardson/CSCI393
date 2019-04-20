@@ -186,7 +186,7 @@ Has name of item, description, and use value.
 <br>`money-bag 💰:`
 
 ## Monster Database
-Has name of monster, health, description, attack power, defense power, and amount of exp gained from defeating monster. 
+Has name of monster, health, description, attack power, defense power, & exp gained from defeating monster. 
 <br>`minotaur:`
 <br>`orc:`
 <br>`plant:`
