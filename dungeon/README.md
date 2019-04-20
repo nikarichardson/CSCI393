@@ -88,3 +88,6 @@ There's a chimera in this room (ง •̀_•́)ง
 > fight
 Get ready to fight chimera (ง •̀_•́)ง 
 ```
+
+## Map of Erebor 
+Coming soon 
