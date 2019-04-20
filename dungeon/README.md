@@ -187,7 +187,7 @@ Has name of item, description, and use value.
 
 ## Monster Database
 Has name of monster, health, description, attack power, defense power, & exp gained from defeating monster. 
-<br>`minotaur:`  <b>Health</b> is. <i>Description here</i>. <b>Attack power</b> 200. <b>Defense power</b> 200. <b>Exp</b> +30. 
+<br>`minotaur:`  <b>Health</b> 160. <i>Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that's definitely a minotaur, and he looks eager to fight.</i>. <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
 <br>`orc:`
 <br>`plant:`
 <br>`rat:`
