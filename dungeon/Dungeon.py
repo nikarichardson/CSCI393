@@ -24,14 +24,14 @@ class Dungeon:
     ## zombie🧟, monarch-butterfly 🦋, evil-shrimp 🦐, alien 🛸, time ⏱, bad-weather ⛈, god-of-north-wind 🌬, umbrella 🌂, fire 🔥
     ## jack-o-lantern 🎃
 
-    ## LOOT / ITEMS : plain-chest, golden-chest, steel-chest, mini-chest
-    ## mana-crystal, pick-axe, potion, blue-book 📘, green-book 📗, orange-book 📙, tome 📖, ring, herb, shield, crystal,
-    ## crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international
-    ## space station), tent ⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, mushroom 🍄, tulip 🌷, beer 🥃, 
-    ## candle 🕯, bed 🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, grapes 🍇, peach 🍑
-    ## cherry 🍒, strawberry 🍓, kiwi 🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream 🍨, grandma's-pie 🥧
-    ## honey 🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍, volcanic-mountain 🌋, paradise-island 🏝, 
-    ## Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, statue-of-liberty 🗽, money-bag 💰 
+    ## LOOT / ITEMS : plain-chest, golden-chest, steel-chest, mini-chest, mana-crystal, pick-axe, potion, blue-book 📘, 
+    ## green-book 📗, orange-book 📙, tome 📖, ring, shield, crystal, crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, 
+    ## ISS 🛰 (the international space station), tent ⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, 
+    ## mushroom 🍄, tulip 🌷, beer 🥃, candle 🕯, bed 🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, 
+    ## watermelon 🍉, grapes 🍇, peach 🍑, cherry 🍒, strawberry 🍓, kiwi 🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡,
+    ## salt-and-straw-icecream 🍨, grandma's-pie 🥧, honey 🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍,
+    ## volcanic-mountain 🌋, paradise-island 🏝, Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, 
+    ## statue-of-liberty 🗽, money-bag 💰 
 
     ## WEAPONS : sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨, wand 
 
@@ -68,6 +68,71 @@ class Dungeon:
             elif words[0] in ('exit', 'quit', 'q'):
                 print("bye!")
                 break
+
+            # purchase stat upgrades
+            elif words[0] == 'purchase':
+                # get current amount of gold  
+                self.c.execute("SELECT gold from stats") 
+                my_gold = self.c.fetchone()[0] 
+                self.c.execute("SELECT health from stats")
+                curr_health = int(self.c.fetchone()[0]) 
+                self.c.execute("SELECT atk_power from stats")
+                curr_atk = int(self.c.fetchone()[0]) 
+                self.c.execute("SELECT def_power from stats")
+                curr_def = int(self.c.fetchone()[0]) 
+
+                print("You currently have {} in gold.".format(my_gold)) 
+                print("What stat would you like to upgrade?")  
+                answer = int(input("Choose (1) health, (2) atk_power, (3) def_power: "))
+                if answer == 1:
+                    print("It costs 1 piece of gold to upgrade your health by 1.")
+                    gold_to_spend = int(input("Type how much gold you would like to spend to increase your health: "))
+                    if gold_to_spend > my_gold:
+                        print("You can't afford that stat increase.")
+                    else: 
+                        query = 'UPDATE stats SET health = ("{}")'.format(curr_health+gold_to_spend)
+                        self.c.execute(query)
+                        print("You've increased your health power by {}".format(gold_to_spend)) 
+
+                        # update your gold stat
+                        calc = my_gold-gold_to_spend
+                        query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+                        self.c.execute(query) 
+
+
+                elif answer == 2:
+                    print("It costs 5 piece of gold to upgrade your attack power by 1.")
+                    gold_to_spend = int(input("Type how much gold you would like to spend to increase your attack power: "))
+                    if gold_to_spend > my_gold:
+                        print("You can't afford that stat increase.")
+                    else: 
+                        stat_add = gold_to_spend/5 
+                        query = 'UPDATE stats SET atk_power = ("{}")'.format(curr_atk+stat_add)
+                        self.c.execute(query) 
+                        print("You've increased your attack power by {}".format(stat_add))
+
+                        # update your gold stat
+                        calc = my_gold-gold_to_spend
+                        query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                elif answer == 3: 
+                    print("It costs 5 piece of gold to upgrade your defense power by 1.")
+                    gold_to_spend = int(input("Type how much gold you would like to spend to increase your defense power: "))
+                    if gold_to_spend > my_gold:
+                        print("You can't afford that stat increase.")
+                    else: 
+                        stat_add = gold_to_spend/5 
+                        calc = curr_def + stat_add
+                        query = 'UPDATE stats SET def_power = ("{}")'.format(calc)
+                        self.c.execute(query) 
+                        print("You've increased your defense power by {}".format(stat_add))
+
+                        # update your gold stat
+                        calc = my_gold-gold_to_spend
+                        query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+                        self.c.execute(query) 
+
 
             # destroy the dungeon and start over
             elif words[0] == 'new':
@@ -187,7 +252,7 @@ class Dungeon:
                     ## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
 
                     ## now we need to update the table of monster objects and 'place' the monster in the room 
-                    query = 'INSERT INTO mobs (name,health,atp_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
+                    query = 'INSERT INTO mobs (name,health,atk_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
                     self.c.execute(query)
             
                     # Debugging stuff here ...
@@ -254,8 +319,8 @@ class Dungeon:
                 print("     Class : ",end='')
                 print("{}".format(self.c.fetchone()[0]))
 
-                ## ATP_POWER
-                self.c.execute("SELECT atp_power from stats")
+                ## ATK_POWER
+                self.c.execute("SELECT atk_power from stats")
                 print("     Attack_power : ",end='')
                 print("{}".format(self.c.fetchone()[0]))
 
@@ -280,6 +345,49 @@ class Dungeon:
                 print("{}".format(self.c.fetchone()[0]))
 
                 continue
+
+            elif words[0] == 'equip':
+                answer = int(input("Would you to like to equip yourself with (1) armor or (2) weapon? "))
+                if answer == 1:
+                    # EQUIP ARMOR 
+                    armor = str(input("Choose armor to equip from your inventory: "))
+                    self.c.execute("SELECT name FROM inventory") 
+                    has_armor = False 
+
+                    for x in self.c.fetchall():
+                        if str(x[0]) == armor: 
+                            has_armor = True 
+
+                    if has_armor == False:
+                        print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(armor))
+                        continue 
+                    else: 
+                        query = 'UPDATE stats SET armor = ("{}")'.format(armor)
+                        self.c.execute(query) 
+                        print("You've equipped yourself with {}!".format(armor))
+                        query = 'DELETE FROM inventory WHERE name=("{}")'.format(armor)
+                        self.c.execute(query)
+
+                elif answer == 2: 
+                    # EQUIP WEAPON 
+                    weapon = str(input("Choose a weapon to equip from your inventory: "))
+                    self.c.execute("SELECT name FROM inventory") 
+                    has_weapon = False 
+
+                    for x in self.c.fetchall():
+                        if str(x[0]) == weapon: 
+                            has_weapon = True 
+
+                    if has_weapon == False:
+                        print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(weapon))
+                        continue 
+                    else: 
+                        query = 'UPDATE stats SET weapon = ("{}")'.format(weapon)
+                        self.c.execute(query) 
+                        print("You've equipped yourself with {}!".format(weapon))
+                        query = 'DELETE FROM inventory WHERE name=("{}")'.format(weapon)
+                        self.c.execute(query)
+        
 
 
             elif words[0] == 'set_status:super':
@@ -317,7 +425,6 @@ class Dungeon:
                         query = 'UPDATE stats SET state = ("{}")'.format("unbearably-cool🤠")
                         self.c.execute(query) 
                         print("Your new state is unbearably-cool🤠.")
-
 
 
                     elif (answer == 1):
@@ -360,8 +467,6 @@ class Dungeon:
                         query = 'UPDATE stats SET class = ("{}")'.format("warrior")
                         self.c.execute(query) 
                         print("Your new class is warrior.")
-
-
 
 
                     elif (answer == 3):
@@ -426,13 +531,10 @@ class Dungeon:
                     print("You've placed {} in the room.".format(item))
                 
                     ## remove this item from our inventory now 
-                    ## right now we are assuming that user will only ask to place an item
-                    ## that is actually in their inventory 
                     query = 'DELETE FROM inventory WHERE name=("{}")'.format(item)
                     self.c.execute(query)
 
-            # todo: if player ends turn in a room with a hostile mob
-            # figure out how to handle combat.
+            # fight monster in the room 
             elif words[0] == 'fight': 
                 self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
                 if str(self.c.fetchone()) == 'None':
@@ -442,108 +544,227 @@ class Dungeon:
                     monster = self.c.fetchone()[0] 
                     print("Get ready to fight {} (ง •̀_•́)ง ".format(monster))
 
-                ## STATE 
-                self.c.execute("SELECT state from stats")
-                state = self.c.fetchone()[0]
+                    ## state 
+                    self.c.execute("SELECT state from stats")
+                    state = self.c.fetchone()[0]
 
-                ## STATS: health,state,weapon,armor,class,atp_power,def_power,exp,guild,gold
-                self.c.execute("SELECT health from stats")
-                curr_health = int(self.c.fetchone()[0]) 
-                self.c.execute("SELECT atp_power from stats")
-                curr_atk = int(self.c.fetchone()[0]) 
-                self.c.execute("SELECT def_power from stats")
-                curr_def = int(self.c.fetchone()[0]) 
-
-                if state == 'dead🤯':
-                    print("You are dead! Game over.")
-                    break
-
-                elif state == 'knockout😖':
-                    ## Knockout decreases attack power by 200  
-                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk-100)
-                    self.c.execute(query) 
-
-                elif state == 'rage😡': 
-                    ## Rage gives attack power boost of 100 
-                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk+100)
-                    self.c.execute(query)  
-
-                elif state == 'confusion😖': 
-                    ## Confusion decreases attack power by 25 
-                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk-25)
-                    self.c.execute(query)  
-
-                elif state == 'fear😱': 
-                    ## Fear increases defense power by 100 
-                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def+100)
-                    self.c.execute(query)  
-
-                elif state == 'asleep😴':  
-                    ## Asleep decreases defense power by 200  
-                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-200)
-                    self.c.execute(query) 
-
-
-                elif state == 'immortal😎':  
-                    ## Immortality increases defense power by 10,000 
-                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def+10000)
-                    self.c.execute(query) 
-
-                elif state == 'blind😵':  
-                    ## Blind decreases defense power by 400 
-                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-400)
-                    self.c.execute(query) 
-
-                elif state == 'extremely-intellectual🧐': 
-                    ## Being extremely intellectual decreases health by 500 
-                    query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(health-500)
-                    self.c.execute(query) 
-
-                elif state == 'unbearably-cool🤠': 
-                    ## Being unbearably cool increases attack power by 10,000 
-                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk+10000)
-                    self.c.execute(query) 
-
-                elif state == 'sick🤒':
-                    ## Sickness decreases attack power by 60 
-                    self.c.execute("SELECT atp_power from stats")
+                    ## my_stats: health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold
+                    self.c.execute("SELECT health from stats")
+                    curr_health = int(self.c.fetchone()[0]) 
+                    self.c.execute("SELECT atk_power from stats")
                     curr_atk = int(self.c.fetchone()[0]) 
-                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk-60)
+                    self.c.execute("SELECT def_power from stats")
+                    curr_def = int(self.c.fetchone()[0]) 
+                    self.c.execute("SELECT exp from stats")
+                    curr_exp = int(self.c.fetchone()[0]) 
+
+                    # monster_stats : health,atk_power,def_power,exp (amount of experience player gains by defeating)
+                    self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster_name = str(self.c.fetchone())
+                    self.c.execute("SELECT id FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster_id = int(self.c.fetchone()[0]) 
+                    self.c.execute("SELECT atk_power FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster_atk = int(self.c.fetchone()[0]) 
+                    self.c.execute("SELECT def_power FROM mobs WHERE room_id={}".format(self.current_room)) 
+                    monster_def = int(self.c.fetchone()[0]) 
+                    self.c.execute("SELECT health FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster_health = int(self.c.fetchone()[0])
+                    self.c.execute("SELECT exp FROM mobs WHERE room_id={}".format(self.current_room))
+                    monster_exp = int(self.c.fetchone()[0])
+
+                    if state == 'dead🤯':
+                        print("You are dead! Game over.")
+                        break
+
+                    elif state == 'knockout😖':
+                        ## Knockout decreases attack power by 200  
+                        calc = curr_atk-200
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'rage😡': 
+                        ## Rage gives attack power boost of 100 
+                        calc = curr_atk+100
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query)  
+
+                    elif state == 'confusion😖': 
+                        ## Confusion decreases attack power by 25 
+                        calc = curr_atk-25
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query)  
+
+                    elif state == 'fear😱': 
+                        ## Fear increases defense power by 100 
+                        calc = curr_def+100
+                        query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query)  
+
+                    elif state == 'asleep😴':  
+                        ## Asleep decreases defense power by 200 
+                        calc = curr_def-200
+                        query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+
+                    elif state == 'immortal😎':  
+                        ## Immortality increases defense power by 10,000 
+                        calc = curr_def+10000
+                        query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'blind😵':  
+                        ## Blind decreases defense power by 400 
+                        calc = curr_def-400
+                        query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'extremely-intellectual🧐': 
+                        ## Being extremely intellectual decreases health by 500 
+                        calc = curr_health-500
+                        query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'unbearably-cool🤠': 
+                        ## Being unbearably cool increases attack power by 10,000 
+                        calc = curr_atk+10000
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'sick🤒':
+                        ## Sickness decreases attack power by 60 
+                        calc = curr_atk-60 
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'cat😼': 
+                        ## Being a cat increases attack power by 500 
+                        calc = curr_atk+500 
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'not-ready-for-adult-life🧖‍♀️': 
+                        ## Not ready for adult life decreases defense power by 500
+                        calc = curr_def-500 
+                        query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'snail🐌': 
+                        ## Snail decreases defense power by 10,000,0000
+                        calc = curr_def-100000000
+                        query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif state == 'on-spring-break🍹': 
+                        ## On spring break increases health by 500 
+                        query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    ## increase stats based on weaponry and armors 
+                    # ARMOR 
+                    self.c.execute("SELECT armor FROM stats") 
+                    my_armor = self.c.fetchone()[0]
+                    if my_armor == 'shield':
+                        calc = curr_def+500
+                        query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    # WEAPON
+                    self.c.execute("SELECT weapon FROM stats") 
+                    my_weapon = self.c.fetchone()[0]
+
+                    if my_weapon == 'pick-axe':
+                        calc = curr_atk+30
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif my_weapon == 'hammer🔨':
+                        calc = curr_atk+60
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif my_weapon == 'sword': 
+                        calc = curr_atk+100
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif my_weapon == 'bow🏹':
+                        calc = curr_atk+200
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif my_weapon == 'dagger':
+                        calc = curr_atk+300
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif my_weapon == 'claw':
+                        calc = curr_atk+350
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif my_weapon == 'spear': 
+                        calc = curr_atk+400
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+
+                    elif my_weapon == 'crossbow':
+                        calc = curr_atk+450
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                    elif my_weapon == 'wand': 
+                        calc = curr_atk+1000
+                        query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+                        self.c.execute(query) 
+                    
+                    print("Type 'flee' at any point during the battle to stop fighting.")
+
+
+
+                    # begin battle code
+                    print("╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔╗ ╔═╗╔═╗╦╔╗╔") 
+                    print("╠╩╗╠═╣ ║  ║ ║  ║╣   ╠╩╗║╣ ║ ╦║║║║")
+                    print("╚═╝╩ ╩ ╩  ╩ ╩═╝╚═╝  ╚═╝╚═╝╚═╝╩╝╚╝") 
+         
+                    ## monster: monster_health, monster_def, monster_atk, monster_id, monster_name
+                    ## me: curr_health, curr_def, curr_atk, curr_exp
+
+                    while True:
+                        #  get all the information from the monster 
+                        break
+                        ## attack: choose skill to use
+
+                        ## attack: increase power of skill by attack_power and experience 
+
+
+                        ## defend: protect yourself against monster attack with defense  
+                        
+
+                        ## update: 
+
+
+                        # if monster dies then delete it from the room  
+                        #query = 'DELETE FROM mobs WHERE id=("{}")'.format(armor)
+                        #room_id={}
+                        #self.c.execute(query)
+                   
+                    print("╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔═╗╔╗╔╔╦╗")
+                    print("╠╩╗╠═╣ ║  ║ ║  ║╣   ║╣ ║║║ ║║")
+                    print("╚═╝╩ ╩ ╩  ╩ ╩═╝╚═╝  ╚═╝╝╚╝═╩╝")
+                    # end battle code 
+
+
+                    # collect loot 
+
+                    # increase experience 
+                    calc = curr_exp + monster_exp
+                    query = 'UPDATE stats SET exp = ("{}")'.format(calc)
                     self.c.execute(query) 
+                    print("You've gained {} experience".format(monster_exp)) 
 
-                elif state == 'cat😼': 
-                    ## Being a cat increases attack power by 500 
-                    self.c.execute("SELECT atp_power from stats")
-                    curr_atk = int(self.c.fetchone()[0]) 
-                    query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk+500)
-                    self.c.execute(query) 
-
-                elif state == 'not-ready-for-adult-life🧖‍♀️': 
-                    ## Not ready for adult life decreases defense power by 500
-                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-500)
-                    self.c.execute(query) 
-
-                elif state == 'snail🐌': 
-                    ## Snail decreases defense power by 10,000,0000
-                    query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def-100000000)
-                    self.c.execute(query) 
-
-                elif state == 'on-spring-break🍹': 
-                    ## On spring break increases health by 500 
-                    query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(curr_health+500)
-                    self.c.execute(query) 
-
-                else:
-                    continue 
-
-
-                ## After battle, return player stats to original before boost/decrease from state 
-                ##query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(curr_health)
-                ##self.c.execute(query)
-                ##query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(curr_def)
-                ##self.c.execute(query)  
-                ##query = 'UPDATE stats SET atp_power = ("{}") WHERE id=("{}")'.format(curr_atk)
-                ##self.c.execute(query) 
+                    # set stats back to normal from boost (weapon;armor;state)
 
             else:
                 print("unknown command {}".format(words[0]))
@@ -644,17 +865,17 @@ class Dungeon:
             self.c.execute("DROP TABLE if exists inventory")
             self.c.execute("DROP TABLE if exists loot")
             self.c.execute("DROP TABLE if exists exits")
-            self.c.execute("DROP TABLE if exists stats")  
+            self.c.execute("DROP TABLE if exists stats")    
             shovel = False
             ## API: rooms will keep track of the name of the loot item that they contain, if any 
             self.c.execute("CREATE TABLE rooms (id INTEGER PRIMARY KEY AUTOINCREMENT, short_desc TEXT, florid_desc TEXT, visit INTEGER, loot TEXT)")
-            self.c.execute("CREATE TABLE mobs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, health INTEGER,atp_power INTEGER,def_power INTEGER,exp INTEGER,room_id INTEGER)")
+            self.c.execute("CREATE TABLE mobs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, health INTEGER,atk_power INTEGER,def_power INTEGER,exp INTEGER,room_id INTEGER)")
             self.c.execute("CREATE TABLE exits (from_room INTEGER, to_room INTEGER, dir TEXT)")
             # table for stats 
-            self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atp_power INTEGER,def_power INTEGER,exp INTEGER,guild TEXT, gold INTEGER,status TEXT)")
-            self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atp_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',10,10,0,'none',0,'normal')")
+            self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atk_power INTEGER,def_power INTEGER,exp INTEGER,guild TEXT, gold INTEGER,status TEXT)")
+            self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',10,10,0,'none',1000,'normal')")
 
-            # table for loot items
+            # table for loot items 
             self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
             # table for inventory 
             self.c.execute("CREATE TABLE inventory (name TEXT)")
@@ -694,7 +915,6 @@ class Dungeon:
             query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, entrance_p[0],"w")
             self.c.execute(query)
             shovel = True 
-            ##self.db.commit()
 
         return entrance_p[0]
     
@@ -725,4 +945,6 @@ if __name__ == '__main__':
     print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
     print("To join a guild, type 'join' & select a Guild. Some guilds can only be joined via events.")
     print("If you have a crystal in your inventory you can spawn a monster: type 'spawn.'")
+    print("Type 'purchase' to use your gold to upgrade stats like health, atk_power, and def_power.")
+    print("Type 'equip' to equip yourself with weapons and armor from your inventory.")
     d.repl()
