@@ -177,7 +177,7 @@ Has name of item, description, and use value.
 <br>`volcanic-mountain 🌋:` <i>You would prefer a chocolate lava, but hey.</i> 
 <br>`paradise-island 🏝:` <i>What if you need a vacation, but your employer doesn't offer paid vacations? Use this paradise island in your inventory for an immediate escape.</i> Increases health by <b>12,000</b>. 
 <br>`Athens 🏛:` <i>Some people love Greece so much they want to keep a relic of the Acropolis in their bag. Hey, to each to their own, right?</i>
-<br>`the-american-dream 🏠:` <i>Hard to attain, harder to keep.</i> Increases gold by <b>500000</b>.
+<br>`the-american-dream 🏠:` <i>Hard to attain, harder to keep.</i> Increases gold by <b>50,000</b>.
 <br>`the-Federal-Reserve 🏦:`  <i>Wait a second: if the Federal Reserve is in your inventory, who's running the monetary system right now?!</i> Increases gold by <b>500,000</b>. 
 <br>`hospital 🏥:` <i>Why go to the hospital if you can keep one at all times in your bag?</i> Increases health by <b>10,000</b>. 
 <br>`statue-of-liberty🗽:` <i>Freedom is excellent, freedom is priceless. So don't be too disappointed that this statue doesn't do anything, k?</i>
