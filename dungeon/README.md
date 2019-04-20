@@ -15,17 +15,17 @@ zombie🧟, monarch-butterfly 🦋, evil-shrimp 🦐, alien 🛸, time ⏱, bad-
 
 `Loot/Items:` plain-chest, golden-chest, steel-chest, mini-chest
 mana-crystal, pick-axe, potion, blue-book 📘, green-book 📗, orange-book 📙, tome 📖, ring, herb, shield, crystal,
-crown of awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international
+crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international
  space station), tent ⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, mushroom 🍄, tulip 🌷, beer 🥃, 
 candle 🕯, bed 🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, grapes 🍇, peach 🍑
 cherry 🍒, strawberry 🍓, kiwi 🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream 🍨, grandma's-pie 🥧
 honey 🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍, volcanic-mountain 🌋, paradise-island 🏝, 
 Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, statue-of-liberty 🗽, money-bag 💰 
 
-`Weapons:` sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨
+`Weapons:` sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨, wand
 
 `Guilds:`  Guild-of-Mages, Guild-of-The-Dark-Arts 👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
-Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆  
+Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆 (a *secret* guild)  
 
 `Classes:`  hero, warrior, mage, priest, scholar
 
@@ -129,3 +129,11 @@ Coming soon
 
 ## Monster Database
 Coming soon 
+
+## Guilds 
+`Guild of Mages`: Welcome pack has revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, crown-of-awesome.
+`Guild of The Dark Arts`: Welcome pack has wand, potion, crystal-ball, and portal. 
+`Guild of the Chronic Procrastinators`: Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed. New state is `not-ready-for-adult-life`. 
+`Guild of the Learned`: Welcome pack has red-book, green-book, orange-book, tome. New class is `scholar`.
+`Guild of the Ancients`: Secret guild. 
+`Guild of Champions`: Secret guild. 
