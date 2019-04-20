@@ -137,7 +137,7 @@ Has name of item, description, and use value.
 <br>`orange-book 📙:` <i>The red book does not even exist, ok? But this book exists. It might help you.</i> Increases exp by <b>300</b>.
 <br>`tome 📖:` <i>Um, are you sure you want to read this? It looks long.</i> Increases exp by <b>1000</b>. 
 <br>`ring:` <i>This doesn't do anything, but it's shiny. Maybe bring it just in case a lovely lady comes along?</i>
-<br>`shield:` <i>The only shield available in this game, because the creator wants to abandon you in a dungeon of monsters with only one piece of armor available. What could go wrong?</i> Increases defense by <b>500<b>. 
+<br>`shield:` <i>The only shield available in this game, because the creator wants to abandon you in a dungeon of monsters with only one piece of armor available. What could go wrong?</i> Increases defense by <b>500</b>. 
 <br>`crystal:` <i>Use this to spawn any type of monster you want. Maybe it doesn't make sense to you why a crystal would spawn a monster. Stop trying to figure everything out, kid.</i> Spawns monster. 
 <br>`crown-of-awesome 👑:` <i>Has absolutely no useful value, but, let's face it: it's awesome. Isn't the awe-inspiring, effusive, magnificent power of awesome enough for you?</i>
 <br>`apple 🍎:` <i>An apple a day, they say. .  .</i> Increases health by <b>100</b>. 
