@@ -119,7 +119,7 @@ Get ready to fight chimera (ง •̀_•́)ง
 
 ## About Erebor
 <br><i>Welcome to the Kingdom of Erebor. All who choose to play this game: tread cautiously, brave adventurers of the deep. Beyond these gates is the unknown.</i>
-<img src="https://66.media.tumblr.com/86a83a69e2114c4419b2008017c50f74/tumblr_pq8s3rDGQa1tk06jno1_1280.png" width="350" height="80"> 
+<center><img src="https://66.media.tumblr.com/86a83a69e2114c4419b2008017c50f74/tumblr_pq8s3rDGQa1tk06jno1_1280.png" width="350" height="80"></center>
 
 ## Map of Erebor 
 Coming soon 
