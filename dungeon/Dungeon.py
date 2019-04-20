@@ -69,6 +69,72 @@ class Dungeon:
                 print("bye!")
                 break
 
+            # purchase stat upgrades
+            elif words[0] == 'purchase':
+                # get current amount of gold  
+                self.c.execute("SELECT gold from stats") 
+                my_gold = self.c.fetchone()[0] 
+                self.c.execute("SELECT health from stats")
+                curr_health = int(self.c.fetchone()[0]) 
+                self.c.execute("SELECT atp_power from stats")
+                curr_atk = int(self.c.fetchone()[0]) 
+                self.c.execute("SELECT def_power from stats")
+                curr_def = int(self.c.fetchone()[0]) 
+
+                print("You currently have {} in gold.".format(my_gold)) 
+                print("What stat would you like to upgrade?")  
+                answer = int(input("Choose (1) health, (2) atp_power, (3) def_power: "))
+                if answer == 1:
+                    print("It costs 1 piece of gold to upgrade your health by 1.")
+                    gold_to_spend = int(input("Type how much gold you would like to spend to increase your health: "))
+                    if gold_to_spend > my_gold:
+                        print("You can't afford that stat increase.")
+                    else: 
+                        query = 'UPDATE stats SET health = ("{}")'.format(curr_health+gold_to_spend)
+                        self.c.execute(query)
+                        print("You've increased your health power by {}".format(gold_to_spend)) 
+
+                        # update your gold stat
+                        calc = my_gold-gold_to_spend
+                        query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+                        self.c.execute(query) 
+
+
+                elif answer == 2:
+                    print("It costs 5 piece of gold to upgrade your attack power by 1.")
+                    gold_to_spend = int(input("Type how much gold you would like to spend to increase your attack power: "))
+                    if gold_to_spend > my_gold:
+                        print("You can't afford that stat increase.")
+                    else: 
+                        stat_add = gold_to_spend/5 
+                        query = 'UPDATE stats SET atk_power = ("{}")'.format(curr_atk+stat_add)
+                        self.c.execute(query) 
+                        print("You've increased your attack power by {}".format(stat_add))
+
+                        # update your gold stat
+                        calc = my_gold-gold_to_spend
+                        query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+                        self.c.execute(query) 
+
+                elif answer == 3: 
+                    print("It costs 5 piece of gold to upgrade your defense power by 1.")
+                    gold_to_spend = int(input("Type how much gold you would like to spend to increase your defense power: "))
+                    if gold_to_spend > my_gold:
+                        print("You can't afford that stat increase.")
+                    else: 
+                        stat_add = gold_to_spend/5 
+                        calc = curr_def + stat_add
+                        query = 'UPDATE stats SET def_power = ("{}")'.format(calc)
+                        self.c.execute(query) 
+                        print("You've increased your defense power by {}".format(stat_add))
+
+                        # update your gold stat
+                        calc = my_gold-gold_to_spend
+                        query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+                        self.c.execute(query) 
+
+
+
             # destroy the dungeon and start over
             elif words[0] == 'new':
                 print("Type 1 to go forward with this operation, unless you've recognized the importance of preserving cultural artifacts like dungeons!") 
@@ -652,9 +718,9 @@ class Dungeon:
             self.c.execute("CREATE TABLE exits (from_room INTEGER, to_room INTEGER, dir TEXT)")
             # table for stats 
             self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atp_power INTEGER,def_power INTEGER,exp INTEGER,guild TEXT, gold INTEGER,status TEXT)")
-            self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atp_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',10,10,0,'none',0,'normal')")
+            self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atp_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',10,10,0,'none',1000,'normal')")
 
-            # table for loot items
+            # table for loot items 
             self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
             # table for inventory 
             self.c.execute("CREATE TABLE inventory (name TEXT)")
@@ -725,4 +791,5 @@ if __name__ == '__main__':
     print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
     print("To join a guild, type 'join' & select a Guild. Some guilds can only be joined via events.")
     print("If you have a crystal in your inventory you can spawn a monster: type 'spawn.'")
+    print("Type 'purchase' to use your gold to upgrade stats like health, atp_power, and def_power.")
     d.repl()
