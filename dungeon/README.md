@@ -23,9 +23,9 @@ Only users with a <b>Monster Crystal</b> in their inventory can spawn monsters. 
 new rooms. <img src="https://66.media.tumblr.com/c3dee66743dcae9b27be041078173276/tumblr_pq8129ihmp1tk06jno1_250.png" height="100" width="70" align="right">
 
 Multi-player feature has not been implemented because I have a lifelong hatred of multiplayer games. Probably because I never went to kindergarten
-and never learned how to play well with the other kids (~‾▿‾)~
+and never learned how to play well with the other kids (‾▿‾)
 
-All graphics are credit to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>. 
+All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>. 
 
 --------
 
