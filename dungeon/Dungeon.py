@@ -19,7 +19,7 @@ class Dungeon:
     ## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
     ## succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
     ## dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, pineapple 🍍,
-    ## kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜, mermaid 🧜‍♀️, elf 🧝, unicorn 🦄
+    ## kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜 elf 🧝, unicorn 🦄
     ## owl 🦉, whale 🐳, dolphin 🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
     ## zombie🧟, monarch-butterfly 🦋, evil-shrimp 🦐, alien 🛸, time ⏱, bad-weather ⛈, god-of-north-wind 🌬, umbrella 🌂, fire 🔥
     ## jack-o-lantern 🎃
@@ -693,7 +693,7 @@ class Dungeon:
                         query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
                         self.c.execute(query) 
 
-                    elif my_weapon == 'dagger':
+                    elif my_weapon == 'dagger🗡':
                         calc = curr_atk+300
                         query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
                         self.c.execute(query) 
@@ -851,6 +851,391 @@ class Dungeon:
             print("none found", end='')
         print("")
 
+    # locate item in item table
+    def findItem(self,name):
+ 		## my_stats: health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold
+        self.c.execute("SELECT health from stats")
+        curr_health = int(self.c.fetchone()[0]) 
+        self.c.execute("SELECT atk_power from stats")
+        curr_atk = int(self.c.fetchone()[0]) 
+        self.c.execute("SELECT def_power from stats")
+        curr_def = int(self.c.fetchone()[0]) 
+        self.c.execute("SELECT exp from stats")
+        curr_exp = int(self.c.fetchone()[0]) 
+        self.c.execute("SELECT gold from stats")
+        curr_gold = int(self.c.fetchone()[0]) 
+                    
+
+        ## we must check that item is in user's inventory before calling this function 
+        if name == 'plain-chest':
+        	calc = curr_gold+100
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'golden-chest':
+        	calc = curr_gold+500
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'mini-chest': 
+        	calc = curr_gold+10
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'golden-chest':
+        	calc = curr_gold+500
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'steel-chest':
+        	calc = curr_gold+200
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+
+        elif name == 'mana-crystal':
+        	calc = curr_health+300
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'potion':
+        	calc = curr_health+100
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'blue-book📘':
+        	calc = curr_exp+50 
+            query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'green-book📗':
+        	calc = curr_exp+100
+            query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'orange-book📙':
+        	calc = curr_exp+300
+            query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'tome📖':
+        	calc = curr_exp+1000
+            query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query)
+
+        elif name == 'apple🍎':
+        	calc = curr_health+100
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'beer🥃':
+        	calc = curr_health+250
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'ramen🍜':
+        	calc = curr_health+70
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'ISS🛰':
+        	calc = curr_atk+10000000
+            query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'wheat🌾':
+        	calc = curr_health+50
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'herb🌿':
+        	calc = curr_health+80
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'mushroom🍄':
+        	calc = curr_health-10000
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'bed🛌':
+        	calc = curr_health+500
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'revival-dove 🕊': 
+         	## to be implemented
+         	## should change state from dead to normal 
+
+        elif name == 'grapes🍇':
+        	calc = curr_health+860
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'banana🍌':
+        	calc = curr_health-250
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'watermelon🍉':
+        	calc = curr_health+450
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'peach🍑 ':
+        	calc = curr_health+60
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'cherry🍒':
+        	calc = curr_health+350
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'strawberry🍓':
+        	calc = curr_health+50
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'kiwi🥝':
+        	calc = curr_health+75
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'corn🌽':
+        	calc = curr_health+30
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+
+        elif name == 'chinese-takeout🥡':
+        	calc = curr_health-250
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+            calc = curr_atk+300
+            query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'salt-and-straw-icecream🍨':
+        	calc = curr_health+1000
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'grandmas-pie🥧':
+        	calc = curr_health+500
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'honey🍯':
+        	calc = curr_health+150
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'tea🍵 ':
+        	calc = curr_health+40 
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'wine🍷 ':
+        	calc = curr_health+500
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'amphora-of-the-ancients🏺':
+        	## join the guild of the Ancients 
+
+        elif name == 'the-world🌍':
+        	calc = curr_def+10000
+            query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'paradise-island🏝':
+        	calc = curr_health+12000
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'Athens🏛 ':
+        	## none yet 
+
+        elif name == 'the-american-dream🏠':
+        	calc = curr_gold+50000
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'the-Federal-Reserve🏦':
+        	calc = curr_gold+500000
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'hospital🏥':
+        	calc = curr_health+10000
+            query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+        elif name == 'money-bag💰':
+        	calc = curr_gold+10000
+            query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
+            self.c.execute(query) 
+
+
+        ## remove this item from our inventory now 
+        query = 'DELETE FROM inventory WHERE name=("{}")'.format(name)
+        self.c.execute(query)
+
+    # build the monster description table 
+    def buildMonsterTable(self):
+        ## populate the monster table with our monster descriptions and stats 
+        # orc
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+        
+        # plant
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # rat
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # ogre
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # scorpion
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # skeleton
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # giant-ant🐜
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # bat🦇
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # slime
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # snake🐍
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # succubus
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # werewolf
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # zombie
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # skeleton
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # vampire
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # chimera
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # cerberus
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # spider
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # ghost
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # taco🌮
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # fairy🧚‍
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # dragon🐉
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # dinosaur-of-yore 🦕
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # bee-of-disproportionate-size🐝
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # mostly-friendly-wolf🐺
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # pineapple🍍
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # kleptomaniac-squirrel-of-doom🐿
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # the-great-mage🧙‍ 
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # apprentice 🧙‍
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # merman 🧜
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # elf 🧝
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # unicorn🦄
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # owl🦉
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # whale🐳
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # dolphin🐬
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # magical-fish-out-of-water🐟
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # blowfish🐡
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # octopus🐙
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # caterpillar-of-phenomenal-power🐛
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # zombie🧟
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # monarch-butterfly🦋
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # evil-shrimp🦐
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # alien🛸
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # time⏱
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # bad-weather⛈
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # god-of-north-wind🌬
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # umbrella🌂
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # fire🔥
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+        # jack-o-lantern🎃
+        self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+
+    def buildItemTable(self): 
+        continue 
+
+    
     # handle startup
     def getEntranceOrCreateDatabase(self):
         # check if we've initialized the database before
@@ -883,15 +1268,17 @@ class Dungeon:
             self.c.execute("INSERT INTO rooms (florid_desc, short_desc,visit,loot) VALUES ('You are standing at the entrance of what appears to be a vast, complex cave.', 'entrance',0,'none')")
 
             # item description table
-            self.c.execute("CREATE TABLE item_desc (name TEXT)")
+            self.c.execute("CREATE TABLE item_desc (name TEXT,use INTEGER, description TEXT")
 
             # monster description table
-            self.c.execute("CREATE TABLE monster_desc (name TEXT)")
+            self.c.execute("CREATE TABLE monster_desc (name TEXT, health INTEGER, description TEXT,atk_power INTEGER,def_power INTEGER,exp INTEGER)")
 
             ## populate the item table
 
 
             ## populate the monster description table 
+            ## build MonsterTable  
+            self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'',200,200,10)") 
 
 
             self.db.commit()
