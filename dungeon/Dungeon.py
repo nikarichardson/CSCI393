@@ -5,22 +5,27 @@ import sqlite3
 import readline
 
 ## Dungeon project built off Dylan's code. 
+shovel = False
 
 class Dungeon:
     """
     """
+ 
 
     dungeon_map = "dungeon.map"
     prompt = '> '
    
-    ## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake
-    ## succubus, werewolf, zombie, skeleton, vampire,
-    ## chimera, cerberus, spider, ghost, fairy, dragon,
+    ## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake 🐍 
+    ## succubus, werewolf, zombie, skeleton, vampire, giant-ant 🐜, bat 🦇, dinosaur-of-yore 🦕
+    ## chimera, cerberus, spider, ghost, fairy, 🐉 dragon, bee-of-disproportionate-size 🐝, 
+    ## mostly-friendly-wolf 🐺, kleptomaniac-squirrel-of-doom🐿,taco 🌮, pineapple 🍍, the-great-mage 🧙‍♂️
 
-    ## LOOT : plain-chest, golden-chest, steel-chest, mini-chest
-    ## mana-crystal, pick-axe, potion, book, tome, ring, herb, shield
+    ## LOOT / ITEMS : plain-chest, golden-chest, steel-chest, mini-chest
+    ## mana-crystal, pick-axe, potion, book, tome, ring, herb, shield, monster crystal,
+    ## crown of awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international)
+    ## space station, tent ⛺️
 
-    ## WEAPONS : sword, pick-axe,bow,dagger,spear,claw,crossbow
+    ## WEAPONS : sword, pick-axe,bow 🏹 ,dagger,spear,claw,crossbow
 
     ## CLASSES : hero, warrior, mage, priest
 
@@ -31,11 +36,11 @@ class Dungeon:
 
     def repl(self):
         cmd = ''
+        global shovel
 
         self.db = sqlite3.connect(self.dungeon_map)
         self.c = self.db.cursor()
         self.current_room = self.getEntranceOrCreateDatabase()
-
 
         self.doLook(0)
         
@@ -61,6 +66,8 @@ class Dungeon:
                     self.c.execute("DROP TABLE mobs")
                     self.c.execute("DROP TABLE Inventory")
                     self.c.execute("DROP TABLE loot")
+                    self.c.execute("DROP TABLE monster_desc")
+                    self.c.execute("DROP TABLE item_desc")
                     self.c.execute("DROP TABLE exits")
                     self.c.execute("DROP TABLE stats")  
                     self.current_room = self.getEntranceOrCreateDatabase()
@@ -141,6 +148,7 @@ class Dungeon:
 
 
             elif words[0] == 'spawn':
+                # to-do: only players with Monster Crystal can spawn a monster 
                 # spawn a monster object
                 print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
                 my_monster = str(input("Type the name of a monster object: "))
@@ -374,6 +382,8 @@ class Dungeon:
         # does it have a "rooms" table
         self.c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='rooms'")
         db_exists = self.c.fetchone()
+        global shovel 
+
         if (db_exists == None):
             self.c.execute("DROP TABLE if exists rooms")
             self.c.execute("DROP TABLE if exists mobs")
@@ -381,6 +391,7 @@ class Dungeon:
             self.c.execute("DROP TABLE if exists loot")
             self.c.execute("DROP TABLE if exists exits")
             self.c.execute("DROP TABLE if exists stats")  
+            shovel = False
             ## API: rooms will keep track of the name of the loot item that they contain, if any 
             self.c.execute("CREATE TABLE rooms (id INTEGER PRIMARY KEY AUTOINCREMENT, short_desc TEXT, florid_desc TEXT, visit INTEGER, loot TEXT)")
             self.c.execute("CREATE TABLE mobs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, health INTEGER,atp_power INTEGER,def_power INTEGER,exp INTEGER,room_id INTEGER)")
@@ -396,24 +407,40 @@ class Dungeon:
             ## create entrance
             self.c.execute("INSERT INTO rooms (florid_desc, short_desc,visit,loot) VALUES ('You are standing at the entrance of what appears to be a vast, complex cave.', 'entrance',0,'none')")
 
+            # item description table
+            self.c.execute("CREATE TABLE item_desc (name TEXT)")
+
+            # monster description table
+            self.c.execute("CREATE TABLE monster_desc (name TEXT)")
+
+            ## populate the item table
+
+
+            ## populate the monster description table 
+
+
             self.db.commit()
 
         # now we know the db exists - fetch the first room, which is
         # the entrance
         self.c.execute("SELECT MIN(id) FROM rooms")
         entrance_p = self.c.fetchone()
-        
-        brief = "shovel room"
-        florid = "You are in a small, darkly-lit room."
-        loot = "shovel"
-        query = 'INSERT INTO rooms (short_desc, florid_desc,visit,loot) VALUES ("{}", "{}","{}","{}")'.format(brief,florid,0,loot)
-        self.c.execute(query)
-        new_room_id = self.c.lastrowid
-        # now add tunnels in both directions
-        query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(entrance_p[0], new_room_id,"n")
-        self.c.execute(query) 
-        query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, entrance_p[0],"s")
-        self.c.execute(query)
+
+        if (shovel == False):
+            self.c.execute("SELECT MIN(id) FROM rooms")
+            brief = "shovel room"
+            florid = "You are in a tiny, darkly-lit room."
+            loot = "shovel"
+            query = 'INSERT INTO rooms (short_desc, florid_desc,visit,loot) VALUES ("{}", "{}","{}","{}")'.format(brief,florid,0,loot)
+            self.c.execute(query)
+            new_room_id = self.c.lastrowid
+            # now add tunnels in both directions
+            query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(entrance_p[0], new_room_id,"e")
+            self.c.execute(query) 
+            query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, entrance_p[0],"w")
+            self.c.execute(query)
+            shovel = True 
+            ##self.db.commit()
 
         return entrance_p[0]
     
@@ -421,6 +448,7 @@ class Dungeon:
 assert sys.version_info >= (3,0), "This program requires Python 3"
 
 histfile = ".shell-history"
+
 
 if __name__ == '__main__':
     try:
@@ -438,8 +466,9 @@ if __name__ == '__main__':
     print("                                       _/_/                                                     ")
     print("")
 
-    print("Welcome to the dungeon ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
+    print("Welcome to the dungeon. ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
     print("'dig' to create a new room, and 'new' to start the dungeon creation process over again.")
     print("Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,")
-    print("'view' to check your stats, 'spawn' to create monsters, and 'fight' to engage in combat.")
+    print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
+    print("If you have a Monster Crystal in your inventory you can spawn a monster: type 'spawn.'")
     d.repl()
