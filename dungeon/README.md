@@ -165,7 +165,7 @@ Has name of item, description, and use value.
 <br>`strawberry 🍓:` <i>If you keep my secret I'll give you this strawberry.</i> Increases health by <b>50</b>. 
 <br>`kiwi 🥝:` <i>Kiwi would be a cute name for a child, don't you think? Anyway, this isn't the child Kiwi. It's the fruit kiwi.</i> Increases health by <b>75</b>. 
 <br>`corn 🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.
-<br>`popcorn 🍿:` <i>Do you really think it's a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters? Really? </i>
+<br>`popcorn 🍿:` <i>Do you think it's a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters?</i>
 <br>`chinese-takeout 🥡:` <i>Nothing says i-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
 <br>`salt-and-straw-icecream 🍨:` <i>Good thing you got this somehow. The lines are too long; there's no point in battling for ice cream when you have monsters to battle.</i> Increases health by <b>1000</b>. 
 <br>`grandmas-pie 🥧:` <i>Smells good! Eat an entire pie by yourself, why don't you. You are an adult, after all. </i> Increases health by <b>500</b>.
