@@ -135,55 +135,53 @@ Has name of item, description, and use value.
 <br>`blue-book 📘:` <i>It's not perfect, but you suspect this blue book is better than the red book.</i> Increases exp by <b>50</b>. 
 <br>`green-book 📗:` <i>Seriously, it's better than the red book. I think.</i> Increases exp by <b>100</b>. 
 <br>`orange-book 📙:` <i>The red book does not even exist, ok? But this book exists. It might help you.</i> Increases exp by <b>300</b>.
-<br>`tome 📖:`
-<br>`ring:`
-<br>`shield:`
-<br>`crystal:`
-<br>`crown-of-awesome 👑:`
-<br>`apple 🍎:`
-<br>`beer 🥃:`
-<br>`ramen 🍜:`
-<br>`ISS 🛰:` (the international space station)
-<br>`tent ⛺️:`
-<br>`crystal-ball 🔮:`
-<br>`portal 🌀:`
-<br>`flower 🌸:`
-<br>`wheat 🌾:`
-<br>`herb 🌿:`
-<br>`mushroom 🍄:`
-<br>`tulip 🌷:`
-<br>`beer 🥃:`
-<br>`candle 🕯:`
-<br>`bed 🛌:`
-<br>`revival-dove 🕊:`
-<br>`shell 🐚:`
-<br>`grapes 🍇:`
-<br>`banana 🍌:`
-<br>`lemon 🍋:`
-<br>`watermelon 🍉:`
-<br>`grapes 🍇:`
-<br>`peach 🍑:`
-<br>`cherry 🍒:`
-<br>`strawberry 🍓:`
-<br>`kiwi 🥝:`
-<br>`corn 🌽:`
-<br>`popcorn 🍿:`
-<br>`chinese-takeout 🥡:`
-<br>`salt-and-straw-icecream 🍨:`
-<br>`grandmas-pie 🥧:`
-<br>`honey 🍯:`
-<br>`tea 🍵 :`
-<br>`wine 🍷:`
-<br>`amphora-of-the-ancients 🏺:`
-<br>`the-world 🌍:`
-<br>`volcanic-mountain 🌋:`
-<br>`paradise-island 🏝:`
-<br>`Athens 🏛:`
-<br>`the-american-dream 🏠:`
-<br>`the-Federal-Reserve 🏦:`
-<br>`hospital 🏥:`
-<br>`statue-of-liberty🗽:`
-<br>`money-bag 💰:`
+<br>`tome 📖:` <i>Um, are you sure you want to read this? It looks long.</i> Increases exp by <b>1000</b>. 
+<br>`ring:` <i>This doesn't do anything, but it's shiny. Maybe bring it just in case a lovely lady comes along?</i>
+<br>`shield:` <i>The only shield available in this game, because the creator wants to abandon you in a dungeon of monsters with only one piece of armor available. What could go wrong?</i> Increases defense by <b>500<b>. 
+<br>`crystal:` <i>Use this to spawn any type of monster you want. Maybe it doesn't make sense to you why a crystal would spawn a monster. Stop trying to figure everything out, kid.</i> Spawns monster. 
+<br>`crown-of-awesome 👑:` <i>Has absolutely no useful value, but, let's face it: it's awesome. Isn't the awe-inspiring, effusive, magnificent power of awesome enough for you?</i>
+<br>`apple 🍎:` <i>An apple a day, they say. .  .</i> Increases health by <b>100</b>. 
+<br>`beer 🥃:` <i>End the day with some cold beer and your problems will disappear. Just kidding. But. It tastes good.</i> Increases health by <b>250</b>. 
+<br>`ramen 🍜:` <i>A primary food group.</i> Increases health by <b>70</b>. 
+<br>`ISS 🛰:` <i>We don't know what this is doing here. Shouldn't the International Space Station be...in space?</i> Increases power by <b>10000000</b>.
+<br>`tent ⛺️:` <i>If everything is going wrong, you can always hide in this tent.</i>
+<br>`crystal-ball 🔮:` <i>This ball shows you the future. Not just of your life, but of the entire cosmos. So yes, you can ask the crystal ball questions about the nature of time, but there are also pressing questions you can ask, like: what's for dinner?</i>
+<br>`portal 🌀:` <i>Use this to teleport at will to any room. As long as you have the room id, that is.</i> Use for teleportation. 
+<br>`flower 🌸:` <i>There's definitely something sinister about this flower. Might want to just put it down—that's it. Now back away.</i>
+<br>`wheat 🌾:` <i>An agricultural relic.</i> Increases health by <b>50</b>. 
+<br>`herb 🌿:` <i>Well, it's not exactly a salad, but it's better than nothing.</i> Increases health by <b>80</b>. 
+<br>`mushroom 🍄:` <i>I wonder if you eating this mysterious, possibly toxic mushroom that you found in the middle of a dungeon would be a fun thing to do.</i> Decreases health by <b>10000</b>.
+<br>`tulip 🌷:` <i>Flowers are pretty, but they don't do much.</i>
+<br>`candle 🕯:` <i>Very mysterious, don't you think?</i>
+<br>`bed 🛌:` <i>Yawnnnn.</i> Increases health by <b>500</b>. 
+<br>`revival-dove 🕊:` <i>Revives a dead-person.</i> Changes state from <b>dead</b> to <b>normal</b>. 
+<br>`shell 🐚:` <i>I wonder how a shell came to be in a dungeon. The other items make sense, but: a shell? That doesn't make sense. The Federal Reserve, maybe.</i>
+<br>`banana 🍌:` <i>Yuck.</i> Decreases health by <b>250</b>. 
+<br>`lemon 🍋:` <i>Too sour to eat. Maybe if you had some water?</i>
+<br>`watermelon 🍉:` <i>Watermelons are simply the best.</i> Increases health by <b>450</b>. 
+<br>`grapes 🍇:` <i>One taste of these leads to instant Dionysian reverie.</i> Increases health by <b>860</b>. 
+<br>`peach 🍑:` <i>You are beautiful. Love, Peach.</i> Increases health by <b>60</b>. 
+<br>`cherry 🍒:` <i>Hello, daddy. Hello, mom. I'm your ch-ch-ch-cherry bomb!</i> Increases health by <b>350</b>. 
+<br>`strawberry 🍓:` <i>If you keep my secret I'll give you this strawberry.</i> Increases health by <b>50</b>. 
+<br>`kiwi 🥝:` <i>Kiwi would be a cute name for a child, don't you think? Anyway, this isn't the child Kiwi. It's the fruit kiwi.</i> Increases health by <b>75</b>. 
+<br>`corn 🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.  
+<br>`popcorn 🍿:` <i>Do you really think it's a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters? Really?</i>
+<br>`chinese-takeout 🥡:` <i>Nothing says i-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
+<br>`salt-and-straw-icecream 🍨:` <i>Good thing you got this somehow. The lines are too long; there's no point in battling for ice cream when you have monsters to battle.</i> Increases health by <b>1000</b>. 
+<br>`grandmas-pie 🥧:` <i>Smells good! Eat an entire pie by yourself, why don't you. You are an adult, after all. </i> Increases health by <b>500</b>.
+<br>`honey 🍯:` <i>Belongs to Pooh Bear. On temporary loan to Erebor dungeon.</i> Increases health by <b>150</b>. 
+<br>`tea 🍵 :` <i>You just know that the pretentious tea drinkers among us are going to kill us for not specifying the type of tea here. Oh well. Tea people aren't exactly the most ferocious. I'll take my chances.</i> Increases health by <b>40</b>. 
+<br>`wine 🍷:` <i>Drink up, me hearties, yo ho!</i> Increases health by <b>500</b>. 
+<br>`amphora-of-the-ancients 🏺:` <i>There's writing on the outside of this amphora, but you can't read Ancient Greek.</i>
+<br>`the-world 🌍:` <i>It's so tiny, so round, so cute!! </i> Increases defense power by <b>10,000</b>. 
+<br>`volcanic-mountain 🌋:` <i>You would prefer a chocolate lava, but hey.<i> 
+<br>`paradise-island 🏝:` <i>What if you need a vacation, but your employer doesn't offer paid vacations? Use this paradise island in your inventory for an immediate escape.</i> Increases health by <b>12,000</b>. 
+<br>`Athens 🏛:` <i>Some people love Greece so much they want to keep a relic of the Acropolis in their bag. Hey, to each to their own, right?</i>
+<br>`the-american-dream 🏠:` <i>Hard to attain, harder to keep.</i> Increases gold by <b>500000</b>.
+<br>`the-Federal-Reserve 🏦:`  <i>Wait a second: if the Federal Reserve is in your inventory, who's running the monetary system right now?!</i> Increases gold by <b>500,000</b>. 
+<br>`hospital 🏥:` <i>Why go to the hospital if you can keep one at all times in your bag?</i> Increases health by <b>10,000</b>. 
+<br>`statue-of-liberty🗽:` <i>Freedom is excellent, freedom is priceless. So don't be too disappointed that this statue doesn't do anything, k?</i>
+<br>`money-bag 💰:` <i>Not sure where this came from. It's best not to look into such things.</i> Increases gold by <b>10000</b>. 
 
 ## Monster Database
 Has name of monster, health, description, attack power, defense power, & exp gained from defeating monster. 
