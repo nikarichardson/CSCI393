@@ -187,56 +187,105 @@ Has name of item, description, and use value.
 
 ## Monster Database
 Has name of monster, health, description, attack power, defense power, & exp gained from defeating monster. 
-<br>`minotaur:`  <b>Health</b> 160. <i>Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that's definitely a minotaur, and he looks eager to fight.</i>. <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
-<br>`orc:`
-<br>`plant:`
-<br>`rat:`
-<br>`ogre:`
-<br>`scorpion:`
-<br>`skeleton:`
-<br>`giant-ant🐜:`
-<br>`bat🦇:`
-<br>`slime:`
-<br>`snake🐍:`
-<br>`succubus:`
-<br>`werewolf:`
-<br>`zombie:`
-<br>`skeleton:`
-<br>`vampire:`
-<br>`chimera:`
-<br>`cerberus:`
-<br>`spider:`
-<br>`ghost:`
-<br>`taco🌮:`
-<br>`fairy🧚‍:`
-<br>`dragon🐉:`
-<br>`dinosaur-of-yore🦕:`
-<br>`bee-of-disproportionate-size🐝:`
-<br>`mostly-friendly-wolf🐺:`
-<br>`pineapple🍍:`
-<br>`kleptomaniac-squirrel-of-doom🐿:`
-<br>`the-great-mage 🧙‍:`
-<br>`apprentice 🧙‍:`
-<br>`merman🧜:`
-<br>`elf🧝:`
-<br>`unicorn🦄:`
-<br>`owl🦉:`
-<br>`whale 🐳:`
-<br>`dolphin🐬:`
-<br>`magical-fish-out-of-water 🐟:`
-<br>`blowfish🐡:`
-<br>`octopus🐙:`
-<br>`caterpillar-of-phenomenal-power🐛:`
-<br>`zombie🧟:`
-<br>`monarch-butterfly 🦋:`
-<br>`evil-shrimp 🦐:`
-<br>`alien 🛸:`
-<br>`time ⏱:`
-<br>`bad-weather ⛈:`
-<br>`god-of-north-wind 🌬:`
-<br>`umbrella 🌂:`
-<br>`fire 🔥:`
-<br>`jack-o-lantern 🎃:`
+<br>`minotaur:`  <b>Health</b> 160. <i>Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that's definitely a minotaur, and he looks eager to fight.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+
+<br>`orc:`  <b>Health</b> 500. <i>This creature wandered all the way from Middle-Earth just to try and kill you. How nice!</i> <b>Attack power</b> 1000. <b>Defense power</b> 300. <b>Exp</b> +300. 
+
+<br>`plant:`  <b>Health</b> 40. <i>Show this plant the meaning of Darwinian selection. Survival of the fittest!!</i> <b>Attack power</b> 50. <b>Defense power</b> 0. <b>Exp</b> +30. 
+
+<br>`rat:`  <b>Health</b> 160. <i>Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that's definitely a minotaur, and he looks eager to fight.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+
+<br>`ogre:`  <b>Health</b>1000. <i>Looks like the Ogre from the Three Broomsticks has appeared, and he's here to spoil the ending of the next Harry Potter book. Better kill him before he does that. </i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+
+<br>`scorpion:`  <b>Health</b> 100. <i>Scorpionssssssss are sssssuppppppeeeerrrr scary.</i> <b>Attack power</b> 500. <b>Defense power</b> 10. <b>Exp</b> +40. 
+
+<br>`skeleton:`  <b>Health</b> 300. <i>Send this guy back to the grave!</i> <b>Attack power</b> 850. <b>Defense power</b> 40. <b>Exp</b> +200. 
+
+<br>`giant-ant🐜:`  <b>Health</b> 20. <i>This forager is out for blood.</i> <b>Attack power</b> 10000. <b>Defense power</b> 0. <b>Exp</b> +400. 
+
+<br>`bat🦇:`  <b>Health</b> 50. <i>Oooo, bats are spooky. Don't you think battling a bat is a perfect way to spend the fall semester?</i> <b>Attack power</b> 200. <b>Defense power</b> 30. <b>Exp</b> +50. 
+
+<br>`slime:`  <b>Health</b> 100. <i>This monster looks a bit like jello. Or play-doh. Or transparent clay. You get it. It's slime.</i> <b>Attack power</b> 0. <b>Defense power</b> 400. <b>Exp</b> +134. 
+
+<br>`snake🐍:`  <b>Health</b> 160. <i>C'mon, get ready to fight and send this snake back to the garden he came from!</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+
+<br>`succubus:`  <b>Health</b> 600. <i>She's beautiful but pure evil: be cautious.</i> <b>Attack power</b> 400. <b>Defense power</b> 250. <b>Exp</b> +200. 
+
+<br>`werewolf:`  <b>Health</b> 800. <i>Not sure why this werewolf is out on a night like this. No full moon in sight. Anyway, he's here, and it's probably a good idea to get your weapon out.</i> <b>Attack power</b> 400. <b>Defense power</b> 450. <b>Exp</b> +200. 
+
+<br>`zombie:`  <b>Health</b> 1000. <i>Yeah, zombiess are creepy, but he just wants a hug. Scary, but harmless.</i> <b>Attack power</b> 0. <b>Defense power</b> 100. <b>Exp</b> +60. 
+
+<br>`vampire:`  <b>Health</b> 1000. <i>By day, he's a vampire. By night, he works the night shift in the blood donation center. No one has ever determined how he has managed to come by so much blood . . .</i> <b>Attack power</b> 800. <b>Defense power</b> 340. <b>Exp</b> +200. 
+
+<br>`chimera:`  <b>Health</b> 450. <i>Is it too cheesy to suggest this monster might just chimerical? Even the stats are suspect.</i> <b>Attack power</b> 450. <b>Defense power</b> 450. <b>Exp</b> +450. 
+
+<br>`cerberus:`  <b>Health</b> 430. <i>I don't think you can deal with a three-headed monster. You can't even deal with a one-headed monster.</i> <b>Attack power</b> 10,000. <b>Defense power</b> 330. <b>Exp</b> +240. 
+
+<br>`spider:`  <b>Health</b> 50. <i>It's a creepy spider, and you don't like it.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +10. 
+
+<br>`ghost:`  <b>Health</b> 100. <i>One moment, he's there. The next, he's...where did he go?!</i> <b>Attack power</b> 300. <b>Defense power</b> 100000. <b>Exp</b> +500. 
+
+<br>`taco🌮:` <b>Health</b> 1000. <i>You want to fight the taco, but you also kinda wanna eat it. Friend or foe? Combat opponent or...lunch?
+</i> <b>Attack power</b> 400. <b>Defense power</b> 0. <b>Exp</b> +340. 
+
+<br>`fairy🧚‍:`  <b>Health</b> 500. <i>Don't underestimate her tiny size.</i> <b>Attack power</b> 700. <b>Defense power</b> 40. <b>Exp</b> +600. 
+
+<br>`dragon🐉:` <b>Health</b> 10000. <i>There be dragons.</i> <b>Attack power</b> 1000. <b>Defense power</b> 800. <b>Exp</b> +480. 
+
+<br>`dinosaur-of-yore🦕:`  <b>Health</b> 160. <i>Show this dinosaur there's a reason his species went extinct! Send him back to yore, o noble adventurer.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +230. 
+
+<br>`bee-of-disproportionate-size🐝:`  <b>Health</b> 700 <i>It's what it sounds like.</i> <b>Attack power</b> 12. <b>Defense power</b> 32. <b>Exp</b> +100. 
+
+<br>`mostly-friendly-wolf🐺:`  <b>Health</b> 100 <i>I don't want to encounter this guy when he's mostly unfriendly.</i> <b>Attack power</b> 300. <b>Defense power</b> 100. <b>Exp</b> +200. 
+
+<br>`pineapple🍍:`  <b>Health</b> 800. <i>You've encountered a pineapple. Yellow, large, and let's be honest: it's super spikey. A fearsome opponent. </i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +260. 
+
+<br>`kleptomaniac-squirrel-of-doom🐿:`  <b>Health</b> 1000. <i>You've encountered the squirrel of doom. I hate to be the bearer of bad news, but this is the end for you, truly. Unless you happen to have an acorn in your inventory, the inevitable is coming. Let's just say there's 
+a *reason* this little guy is called the kleptomaniac squirrel of doom. </i> <b>Attack power</b> 100. <b>Defense power</b> 10000000000. <b>Exp</b> +90. 
+
+<br>`the-great-mage 🧙‍:`  <b>Health</b> 10000. <i>Best to flee. A learned mage is a fearsome contender.</i> <b>Attack power</b> 1000. <b>Defense power</b> 1000. <b>Exp</b> +400. 
+
+<br>`apprentice 🧙‍:`  <b>Health</b> 5000. <i>He wants to be more like the great mage and less like himself.</i> <b>Attack power</b> 400. <b>Defense power</b> 300. <b>Exp</b> +150. 
+
+<br>`merman🧜:` <b>Health</b> 300. <i>Maybe we can distract him with a mermaid?</i> <b>Attack power</b> 800. <b>Defense power</b> 140. <b>Exp</b> +270. 
+
+<br>`elf🧝:`  <b>Health</b> 400. <i>Looks like Orlando Bloom.</i> <b>Attack power</b> 400. <b>Defense power</b> 200. <b>Exp</b> +300. 
+
+<br>`unicorn🦄:`  <b>Health</b> 500. <i>She's shiny, she's pink, and she's going to knock you down with that horn unless you pull yourself out of your stupor and fight.</i> <b>Attack power</b> 800. <b>Defense power</b> 200. <b>Exp</b> +100. 
+
+<br>`owl🦉:`  <b>Health</b> 160. <i></i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+
+<br>`whale 🐳:`  <b>Health</b> 300. <i>He's blowing bubbles to tease you. It's all fun and games until it's not fun and games.</i> <b>Attack power</b> 400. <b>Defense power</b> 100. <b>Exp</b> +240. 
+
+<br>`dolphin🐬:`  <b>Health</b> 400. <i>Awwww, it's a dolphin.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+
+<br>`magical-fish-out-of-water 🐟:`  <b>Health</b> 30. <i>What disturbs you more than seeing a fish out of water is seeing an alive fish out of water.</i> <b>Attack power</b> 0. <b>Defense power</b> 100. <b>Exp</b> +34. 
+
+<br>`blowfish🐡:`  <b>Health</b> 150. <i>Let's call him squishy.</i> <b>Attack power</b> 400. <b>Defense power</b> 200. <b>Exp</b> +180. 
+
+<br>`octopus🐙:`  <b>Health</b> 300. <i>It seems like an octopus could find a better occupation than monster. He could be a party planner or master organizer, for example.</i> <b>Attack power</b> 80. <b>Defense power</b> 120. <b>Exp</b> +50. 
+
+<br>`caterpillar-of-phenomenal-power🐛:`  <b>Health</b> 100. <i>This caterpillar is phenomenally powerful; you can feel it from afar.</i> <b>Attack power</b> 20000. <b>Defense power</b> 30. <b>Exp</b> +400. 
+
+<br>`zombie🧟:`  <b>Health</b> 300. <i>Enjoy your undead status while you still can.</i> <b>Attack power</b> 240. <b>Defense power</b> 230. <b>Exp</b> +220. 
+
+<br>`monarch-butterfly 🦋:`  <b>Health</b> 50. <i>Yes, butterflies have numbered days and do not live for long. Don't feel too bad; your days are numbered too.</i> <b>Attack power</b> 30. <b>Defense power</b> 10. <b>Exp</b> +30. 
+
+<br>`evil-shrimp 🦐:`  <b>Health</b> 200. <i>He has malicious intentions. Shrimp always do.</i> <b>Attack power</b> 200. <b>Defense power</b> 70. <b>Exp</b> +90. 
+
+<br>`alien 🛸:`  <b>Health</b> 160. <i>Please be a conspiracy theory. Please be a conspiracy theory! You are not supposed to be real!</i> <b>Attack power</b> 700. <b>Defense power</b> 300. <b>Exp</b> +550. 
+
+<br>`time ⏱:`  <b>Health</b> 100. <i>Our greatest enemy. We will see how true it is that you cannot be conquered.</i> <b>Attack power</b> 1000. <b>Defense power</b> 0. <b>Exp</b> +1000. 
+
+<br>`bad-weather ⛈:`  <b>Health</b> 160. <i>Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that's definitely a minotaur, and he looks eager to fight.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+
+<br>`god-of-north-wind 🌬:`  <b>Health</b> 100. <i>He's kinda beautiful, but he keeps blowing a chilly breeze your way. You forgot to bring a sweater, so you are not going to tolerate that kind of behavior.</i> <b>Attack power</b> 800. <b>Defense power</b> 100. <b>Exp</b> +300. 
+
+<br>`umbrella 🌂:`  <b>Health</b> 600. <i>An umbrella; it's notoriously hard to open. </i> <b>Attack power</b> 1000. <b>Defense power</b> 0. <b>Exp</b> +500. 
+
+<br>`fire 🔥:`  <b>Health</b> 200 <i>Stop, drop and roll.</i> <b>Attack power</b>460. <b>Defense power</b> 0. <b>Exp</b> +200. 
+
+<br>`jack-o-lantern 🎃:`  <b>Health</b> 200. <i>He's smirking at you. Go get 'im.</i> <b>Attack power</b> 30. <b>Defense power</b> 20. <b>Exp</b> +45. 
 
 ## Guilds 
 <br>`Guild of Mages`: Welcome pack has `revival-dove`, `mini-chest`, `money-bag`, `plain-chest`, `golden-chest`, `steel-chest`, and `crown-of-awesome`. New class is `mage`. New state is `unbearably-cool 🤠`. 
