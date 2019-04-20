@@ -724,5 +724,5 @@ if __name__ == '__main__':
     print("Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,")
     print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
     print("To join a guild, type 'join' & select a Guild. Some guilds can only be joined via events.")
-    print("If you have a Monster Crystal in your inventory you can spawn a monster: type 'spawn.'")
+    print("If you have a crystal in your inventory you can spawn a monster: type 'spawn.'")
     d.repl()
