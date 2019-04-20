@@ -124,8 +124,68 @@ Get ready to fight chimera (ง •̀_•́)ง
 ## Map of Erebor 
 Coming soon 
 
-## Item Database
-Coming soon
+## Item Database :
+Has name of item, description, and use value. 
+<b>plain-chest:</b>
+<b>golden-chest:</b>
+<b>steel-chest:</b>
+<b>mini-chest:</b>
+<b>mana-crystal:</b>
+<b>pick-axe:</b>
+<b>potion:</b>
+<b>blue-book 📘:</b>
+<b>green-book 📗:</b>
+<b>orange-book 📙:</b>
+<b>tome 📖:</b>
+<b>ring:</b>
+<b>herb:</b>
+<b>shield:</b>
+<b>crystal:</b>
+<b>crown-of-awesome 👑:</b>
+<b>apple 🍎:</b>
+<b>beer 🥃:</b>
+<b>ramen 🍜:</b>
+<b>ISS 🛰:</b> (the international space station)
+<b>tent ⛺️:</b>
+<b>crystal-ball 🔮:</b>
+<b>portal 🌀:</b>
+<b>flower 🌸:</b>
+<b>wheat 🌾:</b>
+<b>herb 🌿:</b>
+<b>mushroom 🍄:</b>
+<b>tulip 🌷:</b>
+<b>beer 🥃:</b>
+<b>candle 🕯:</b>
+<b>bed 🛌:</b>
+<b>revival-dove 🕊:</b>
+<b>shell 🐚:</b>
+<b>grapes 🍇:</b>
+<b>banana 🍌:</b> 
+<b>lemon 🍋:</b>
+<b>watermelon 🍉:</b>
+<b>grapes 🍇:</b>
+<b>peach 🍑:</b>
+<b>cherry 🍒:</b>
+<b>strawberry 🍓:</b>
+<b>kiwi 🥝:</b>
+<b>corn 🌽:</b>
+<b>popcorn 🍿:</b>
+<b>chinese-takeout 🥡:</b>
+<b>salt-and-straw-icecream 🍨:</b>
+<b>grandmas-pie 🥧:</b>
+<b>honey 🍯:</b>
+<b>tea 🍵 :</b>
+<b>wine 🍷:</b> 
+<b>amphora-of-the-ancients 🏺:</b>
+<b>the-world 🌍:</b>
+<b>volcanic-mountain 🌋:</b>
+<b>paradise-island 🏝:</b>
+<b>Athens 🏛:</b>
+<b>the-american-dream 🏠:</b>
+<b>the-Federal-Reserve 🏦:</b>
+<b>hospital 🏥:</b>
+<b>statue-of-liberty🗽:</b>
+<b>money-bag 💰:</b>
 
 ## Monster Database
 Coming soon 
