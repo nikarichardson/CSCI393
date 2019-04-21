@@ -185,7 +185,7 @@ Has name of item, description, and use value.
 <br>`money-bag 💰:` <i>Not sure where this came from. It is best not to look into such things.</i> Increases gold by <b>100,000</b>. 
 <br>`sword:` <i>A starter weapon</i>. Increases attack power by <b>100</b>. 
 <br>`bow 🏹:` <i>You are obviously not Katniss, but it will still work.</i> Increases attack power by <b>200</b>. 
-<br>`dagger🗡:` <i>Great for stabbing friends (or political enemies) in the back. Et tu, Brutes?</i> Increases attack power by <b>300</b>. 
+<br>`dagger🗡:` <i>Great for stabbing friends (or political enemies) in the back. Et tu, Brute?</i> Increases attack power by <b>300</b>. 
 <br>`spear:` <i>It is not a wand.</i> Increases attack power by <b>400</b>. 
 <br>`claw:` <i>Nothing like a bear claw</i>. Increases attack power by <b>350</b>. 
 <br>`crossbow:` <i>You will get the hang of it.</i> Increases attack power by <b>450</b>. 
