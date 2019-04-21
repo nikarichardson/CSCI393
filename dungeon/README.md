@@ -196,7 +196,7 @@ Has name of monster, health, description, attack power, defense power, & exp gai
 <br>`minotaur:`  <b>Health</b> 160. <i>Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that's definitely a minotaur, and he looks eager to fight.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
 <br>`orc:`  <b>Health</b> 500. <i>This creature wandered all the way from Middle-Earth just to try and kill you. How nice!</i> <b>Attack power</b> 1000. <b>Defense power</b> 300. <b>Exp</b> +300. 
 <br>`plant:`  <b>Health</b> 40. <i>Show this plant the meaning of Darwinian selection. Survival of the fittest!!</i> <b>Attack power</b> 50. <b>Defense power</b> 0. <b>Exp</b> +30. 
-<br>`rat:`  <b>Health</b> 160. <i>Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that's definitely a minotaur, and he looks eager to fight.</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
+<br>`rat:`  <b>Health</b> 100. <i>Hmmm. It's a rat.</i> <b>Attack power</b> 30. <b>Defense power</b> 100. <b>Exp</b> +50. 
 <br>`ogre:`  <b>Health</b>1000. <i>Looks like the Ogre from the Three Broomsticks has appeared, and he's here to spoil the ending of the next Harry Potter book. Better kill him before he does that. </i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
 <br>`scorpion:`  <b>Health</b> 100. <i>Scorpionssssssss are sssssuppppppeeeerrrr scary.</i> <b>Attack power</b> 500. <b>Defense power</b> 10. <b>Exp</b> +40. 
 <br>`skeleton:`  <b>Health</b> 300. <i>Send this guy back to the grave!</i> <b>Attack power</b> 850. <b>Defense power</b> 40. <b>Exp</b> +200. 
