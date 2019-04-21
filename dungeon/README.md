@@ -7,35 +7,35 @@ Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX wit
 This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms.  There are <b>6</b> Guilds, <b>16</b> states, <b>6</b> classes,<b>5</b> skills, <b>40+</b> monsters and <b>50+</b> items. 
 Choosing a skill provides a temporary boost to your stats during the battle, and this boost is increased by 5% for every experience (exp) point you have. Similarly, the weapons you choose to equip provide a boost to your character. 
 
-`Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
+`Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,
 succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
-dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, pineapple 🍍,
-kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜, mermaid 🧜‍♀️, elf 🧝, unicorn 🦄
-owl 🦉, whale 🐳, dolphin 🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
-zombie🧟, monarch-butterfly 🦋, evil-shrimp 🦐, alien 🛸, time ⏱, bad-weather ⛈, god-of-north-wind 🌬, umbrella 🌂, fire 🔥, jack-o-lantern 🎃
+dinosaur-of-yore🦕, bee-of-disproportionate-size🐝, mostly-friendly-wolf🐺, pineapple🍍,
+kleptomaniac-squirrel-of-doom🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜, elf🧝, unicorn🦄
+owl 🦉, whale🐳, dolphin🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power🐛
+zombie🧟, monarch-butterfly🦋, evil-shrimp🦐, alien🛸, time⏱, bad-weather⛈, god-of-north-wind 🌬, umbrella🌂, fire🔥, jack-o-lantern🎃
 
 `Loot/Items:` plain-chest, golden-chest, steel-chest, mini-chest
-mana-crystal, pick-axe, potion, blue-book 📘, green-book 📗, orange-book 📙, tome 📖, ring, herb, shield, crystal,
-crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, ISS 🛰 (the international
- space station), tent ⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, mushroom 🍄, tulip 🌷, beer 🥃, 
-candle 🕯, bed 🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, peach 🍑
-cherry 🍒, strawberry 🍓, kiwi 🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream 🍨, grandma's-pie 🥧
-honey 🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍, volcanic-mountain 🌋, paradise-island 🏝, 
-Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, statue-of-liberty 🗽, money-bag 💰 
+mana-crystal, pick-axe, potion, blue-book📘, green-book📗, orange-book📙, tome 📖, ring, herb, shield, crystal,
+crown-of-awesome👑, apple🍎, beer🥃, ramen🍜, ISS🛰 (the international
+ space station), tent⛺️, crystal-ball🔮,portal🌀, flower🌸, wheat🌾, herb🌿, mushroom🍄, tulip🌷, beer🥃, 
+candle🕯, bed🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, peach🍑
+cherry🍒, strawberry 🍓, kiwi🥝, corn🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream🍨, grandma's-pie 🥧
+honey🍯, tea🍵, wine🍷, amphora-of-the-ancients🏺, the-world🌍, volcanic-mountain🌋, paradise-island🏝, 
+Athens🏛 , the-american-dream🏠, the-Federal-Reserve🏦, hospital🏥, statue-of-liberty🗽, money-bag💰 
 
 `Weapons:` sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨, wand
 
-`Guilds:`  Guild-of-Mages, Guild-of-The-Dark-Arts 👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
-Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆 (a *secret* guild)  
+`Guilds:`  Guild-of-Mages, Guild-of-The-Dark-Arts👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
+Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions🏆 (a *secret* guild)  
 
 `Classes:`  hero, warrior, mage, priest, scholar, necromancer
 
 `Skills:` attack, guard, double-attack,triple-attack,heal
 
-`States:`  knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal, dead 🤯
-extremely-intellectual 🧐, unbearably-cool 🤠, sick 🤒, cat 😼, not-ready-for-adult-life 🧖‍♀️, snail 🐌, on-spring-break 🍹
+`States:`  knockout😖, rage 😡, confusion 😖, fear 😱, asleep😴, immortal😎, blind😵, normal, dead🤯
+extremely-intellectual🧐, unbearably-cool🤠, sick🤒, cat😼, not-ready-for-adult-life🧖‍♀️, snail🐌, on-spring-break🍹
 
-Items include their possible uses in the description. As an example, you can read a `green-book` 📗,`blue-book`📘, or `orange-book` 📙 to increase your player skills. Eating an `apple` 🍎 increases your health. See full documentation of item and monster databases below. 
+Items include their possible uses in the description. As an example, you can read a `green-book`📗,`blue-book`📘, or `orange-book`📙 to increase your player skills. Eating an `apple`🍎 increases your health. See full documentation of item and monster databases below. 
 
 Rooms are connected to each other by exits. An exit from a room has a
 direction, which can be any single word, but should be something that
@@ -48,13 +48,10 @@ by finding certain items. Note that when <b>placing</b> an item and typing the n
 
 Combat is simple: the player has an *attack-power* (ATP) level and a *defend-power* (DEF) level. You can increase either one through combat experience or by gaining items in the rooms.  
 
-Only users with a <b>Monster Crystal</b> in their inventory can spawn monsters. Similarly, a player must have a shovel in her inventory to dig 
+Only users with a `crystal` in their inventory can spawn monsters. Similarly, a player must have a shovel in her inventory to dig 
 new rooms. <img src="https://66.media.tumblr.com/c3dee66743dcae9b27be041078173276/tumblr_pq8129ihmp1tk06jno1_250.png" height="100" width="70" align="right">
 
-Multi-player feature has not been implemented because I have a lifelong hatred of multi-player games. Probably because I didn't go to kindergarten
-and thus never learned how to play well with the other kids (‾▿‾)
-
-
+Multi-player feature has not been implemented because I have a lifelong hatred of multi-player games. Probably because I didn't go to kindergarten and thus never learned how to play well with the other kids (‾▿‾)
 
 To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | python3 dungeon.py`. 
 
@@ -81,49 +78,143 @@ _/_/_/         _/_/_/      _/    _/       _/_/_/       _/_/_/      _/_/       _/
                                          _/                                                     
                                        _/_/                                                     
 
-Welcome to the dungeon ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,
+Welcome to the ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,
 'dig' to create a new room, and 'new' to start the dungeon creation process over again.
 Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,
-'view' to check your stats, 'spawn' to create monsters, and 'fight' to engage in combat.
+'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.
+To join a guild, type 'join' & select a Guild. Some guilds can only be joined via events.
+If you have a crystal in your inventory you can spawn a monster: type 'spawn.'
+Type 'purchase' to use your gold to upgrade stats like health, atk_power, and def_power.
+Type 'equip' to equip yourself with weapons and armor from your inventory.
+entrance
+No items in this room.
+There's a dinosaur-of-yore🦕 in this room (ง •̀_•́)ง
+    Show this dinosaur there is a reason his species went extinct! Send him back to yore, o noble adventurer.
+    Health: 160
+    Attack_power : 200
+    Defense_power : 100
+    Exp : 230
+There are exits in these directions: e w s 
+> fight
+Get ready to fight dinosaur-of-yore🦕 (ง •̀_•́)ง 
+Type 'flee' at any point during the battle to stop fighting.
+You may only use the skills double-attack and/or triple-attack once per battle.
+The triple-attack skills lowers your health by 100, and the double-attack skill
+lowers your health by 50.
+╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔╗ ╔═╗╔═╗╦╔╗╔
+╠╩╗╠═╣ ║  ║ ║  ║╣   ╠╩╗║╣ ║ ╦║║║║
+╚═╝╩ ╩ ╩  ╩ ╩═╝╚═╝  ╚═╝╚═╝╚═╝╩╝╚╝
+Possible skills are attack, guard, double-attack, triple-attack,heal.
+Choose a skill to use : triple-attack
+You attack the dinosaur-of-yore🦕 using skill triple-attack, dealing 550.0 damage.
+dinosaur-of-yore🦕 has died. You've won the battle.
+╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔═╗╔╗╔╔╦╗
+╠╩╗╠═╣ ║  ║ ║  ║╣   ║╣ ║║║ ║║
+╚═╝╩ ╩ ╩  ╩ ╩═╝╚═╝  ╚═╝╝╚╝═╩╝
+You've gained 100 experience.
+> look
 You are standing at the entrance of what appears to be a vast, complex cave.
 No items in this room.
-There are exits in these directions: n 
-> dig e w | library | A library? In the middle of a dungeon? How excellent, how unlikely! | tome
-Sorry, only users with a shovel in their inventory can dig rooms.
-> n
-You are in a small, darkly-lit room.
-This room contains a shovel.
-There are exits in these directions: s 
-> take
-Are you sure you want to take shovel?
-Press 1 to confirm: 1
-You took shovel!
+There are exits in these directions: e w s 
+> s
+room of darkness
+No items in this room.
+There's a owl🦉 in this room (ง •̀_•́)ง
+    OooooooooOOOOOOOOooooooooooooooooo
+    Health: 160
+    Attack_power : 200
+    Defense_power : 100
+    Exp : 90
+There are exits in these directions: n e w s 
 > check
-You have in your inventory: shovel 
-> dig e w | library | A library? In the middle of a dungeon? How excellent, how unlikely! | tome
-> look
-You are in a small, darkly-lit room.
-There are exits in these directions: s e 
-> e
-A library? In the middle of a dungeon? How excellent, how unlikely!
-This room contains a tome.
-There are exits in these directions: w 
-> place
-Choose an item from your inventory: shovel
-You've placed shovel in the room.
-> place
-Choose an item from your inventory: potion
-You don't have a potion in your inventory. Use 'check' to survey your current inventory.
+You have in your inventory: money-bag💰  
+Type the name of the item you would like to see the description of: money-bag💰
+    Not sure where this came from. It is best not to look into such things.
+> s
+explosive room
+This room contains a shield.
+There's a jack-o-lantern🎃 in this room (ง •̀_•́)ง
+    He is smirking at you. Go get him.
+    Health: 200
+    Attack_power : 30
+    Defense_power : 200
+    Exp : 45
+There are exits in these directions: n e s 
+> take
+Are you sure you want to take shield?
+Press 1 to confirm: 1
+You took shield!
 > fight
-There are no monsters in this room.
-> spawn
-You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.
-Type the name of a monster object: chimera
-You've spawned a chimera.
-> look
-There's a chimera in this room (ง •̀_•́)ง 
-> fight
-Get ready to fight chimera (ง •̀_•́)ง 
+Get ready to fight jack-o-lantern🎃 (ง •̀_•́)ง 
+Type 'flee' at any point during the battle to stop fighting.
+You may only use the skills double-attack and/or triple-attack once per battle.
+The triple-attack skills lowers your health by 100, and the double-attack skill
+lowers your health by 50.
+╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔╗ ╔═╗╔═╗╦╔╗╔
+╠╩╗╠═╣ ║  ║ ║  ║╣   ╠╩╗║╣ ║ ╦║║║║
+╚═╝╩ ╩ ╩  ╩ ╩═╝╚═╝  ╚═╝╚═╝╚═╝╩╝╚╝
+Possible skills are attack, guard, double-attack, triple-attack,heal.
+Choose a skill to use : double-attack
+You attack the jack-o-lantern🎃 using skill double-attack, dealing 540.0 damage.
+jack-o-lantern🎃 has died. You've won the battle.
+╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔═╗╔╗╔╔╦╗
+╠╩╗╠═╣ ║  ║ ║  ║╣   ║╣ ║║║ ║║
+╚═╝╩ ╩ ╩  ╩ ╩═╝╚═╝  ╚═╝╝╚╝═╩╝
+You've gained 100 experience.
+> view
+STATS
+     Health : 100
+     State : normal
+     Weapon : none
+     Armor : none
+     Class : hero
+     Attack_power : 350
+     Defense_power : 350
+     Exp : 200
+     Guild : none
+     Gold : 50
+> purchase
+You currently have 50 in gold.
+What stat would you like to upgrade?
+Choose (1) health, (2) atk_power, (3) def_power: 1
+It costs 1 piece of gold to upgrade your health by 1.
+Type how much gold you would like to spend to increase your health: 50
+You've increased your health power by 50
+> join
+Select a guild to join: Guild-of-Mages(0), Guild-of-The-Dark-Arts👾(1), Guild-of-Chronic-Procrastinators(2),Guild-of-the-Learned(3). 2
+You have joined the Guild of Chronic Procrastinators!
+As a welcome gift, you have received tent⛺️, beer🥃, ramen🍜, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.
+Your new state is not-ready-for-adult-life🧖‍♀️.
+Your new class is warrior.
+> view
+STATS
+     Health : 150
+     State : not-ready-for-adult-life🧖‍♀️
+     Weapon : none
+     Armor : none
+     Class : warrior
+     Attack_power : 350
+     Defense_power : 350
+     Exp : 200
+     Guild : Guild-of-Chronic-Procrastinators
+     Gold : 0
+> s
+amusement park room
+This room contains a the-american-dream🏠.
+There's a unicorn🦄 in this room (ง •̀_•́)ง
+    She is shiny, she is pink, and she is going to knock you down with that horn unless you pull yourself out of your stupor and fight.
+    Health: 500
+    Attack_power : 800
+    Defense_power : 200
+    Exp : 100
+There are exits in these directions: n e s 
+> take
+Are you sure you want to take the-american-dream🏠?
+Press 1 to confirm: 1
+You took the-american-dream🏠!
+> q
+bye!
+------------------------------------------------------------------------------------------------
 ```
 
 ## About Erebor
