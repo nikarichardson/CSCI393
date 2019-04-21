@@ -60,9 +60,9 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 ## Remaining Implementation/Tweaks 
 - [ ] implement flee
 - [ ] unequipping weapons currently unsupported
-- [ ] set force_florid back on after running build Erebor code
+- [ ] set `force_florid` back on after running build Erebor code
 - [ ] apprentice object bug? 
-- [ ] get rid of multiple printing for 'spawn'monster objs. options 
+- [ ] get rid of multiple printing for `spawn` monster objects
 
 --------
 
