@@ -493,7 +493,7 @@ class Dungeon:
 						# New state is `not-ready-for-adult-life🧖‍♀️`. 
 						query = 'UPDATE stats SET state = ("{}")'.format("not-ready-for-adult-life🧖‍♀️")
 						self.c.execute(query) 
-						print("Your new state is not-ready-for-aduralt-life🧖‍♀️.")
+						print("Your new state is not-ready-for-adult-life🧖‍♀️.")
 
 						# New class is `scholar`.
 						query = 'UPDATE stats SET class = ("{}")'.format("warrior")
@@ -537,11 +537,12 @@ class Dungeon:
 			elif words[0] == 'check':
 				# check inventory for object 
 				self.c.execute("SELECT name FROM inventory") 
-				count = 0 
+				count = 0
+
+				print("You have in your inventory: ",end='') 
 
 				for item in self.c.fetchall():
-					print("You have in your inventory: ",end='')
-					print("{} ".format(item[0]), end='')
+					print("{}  ".format(item[0]), end='')
 					count = count + 1 
 
 				if count == 0:
@@ -571,6 +572,27 @@ class Dungeon:
 					## remove this item from our inventory now 
 					query = 'DELETE FROM inventory WHERE name=("{}")'.format(item)
 					self.c.execute(query)
+
+			elif words[0] == 'teleport':
+				# teleport command 
+				self.c.execute("SELECT name FROM inventory") 
+				has_portal = False 
+
+				for x in self.c.fetchall():
+					if str(x[0]) == "portal🌀": 
+						has_portal = True 
+	
+
+				if has_portal == False:
+					print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format("portal🌀"))
+					continue 
+				else: 
+					room_id = int(input("Type in the room id of the room you want to teleport to: "))
+					#self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
+					self.current_room = room_id
+					#self.c.execute("SELECT id FROM rooms WHERE id={}".format(room_id))
+					#entrance_p = self.c.fetchone()
+
 
 			# fight monster in the room 
 			elif words[0] == 'fight': 
@@ -908,141 +930,169 @@ class Dungeon:
 			calc = curr_gold+100
 			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 100.")
 
 		elif name == 'golden-chest':
 			calc = curr_gold+500
 			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 500.")
 
 		elif name == 'mini-chest': 
 			calc = curr_gold+10
 			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
-
-		elif name == 'golden-chest':
-			calc = curr_gold+500
-			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
-			self.c.execute(query) 
+			print("Your gold has increased by 10.")
 
 		elif name == 'steel-chest':
 			calc = curr_gold+200
 			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 200.")
 
 		elif name == 'mana-crystal':
 			calc = curr_health+300
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 300.")
 
 		elif name == 'potion':
 			calc = curr_health+100
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 100.")
 
 		elif name == 'blue-book📘':
 			calc = curr_exp+50 
 			query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your experience has increased by 50.")
 
 		elif name == 'green-book📗':
 			calc = curr_exp+100
 			query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your experience has increased by 100.")
 
 		elif name == 'orange-book📙':
 			calc = curr_exp+300
 			query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your experience has increased by 300.")
 
 		elif name == 'tome📖':
 			calc = curr_exp+1000
 			query = 'UPDATE stats SET exp = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query)
+			print("Your experience has increased by 1000.")
 
 		elif name == 'apple🍎':
 			calc = curr_health+100
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 100.")
 
 		elif name == 'beer🥃':
 			calc = curr_health+250
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 250.")
 
 		elif name == 'ramen🍜':
 			calc = curr_health+70
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 70.")
 
 		elif name == 'ISS🛰':
 			calc = curr_atk+10000000
 			query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your attack power has increased by 10000000.")
 
 		elif name == 'wheat🌾':
 			calc = curr_health+50
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 50.")
 
 		elif name == 'herb🌿':
 			calc = curr_health+80
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 80.")
 
 		elif name == 'mushroom🍄':
 			calc = curr_health-10000
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has decreased by 10000.")
 
 		elif name == 'bed🛌':
 			calc = curr_health+500
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 500.")
 
 		elif name == 'revival-dove🕊': 
-			## to be implemented
 			## should change state from dead to normal 
-			pass
+			self.c.execute("SELECT state from stats")
+			curr_state = str(self.c.fetchone()[0]) 
+			if curr_state = "dead🤯":
+				query = 'UPDATE stats SET state = ("{}")'.format("normal")
+				self.c.execute(query) 
+				print("Your state has changed from dead🤯 to normal.")
+			else: 
+				print("You are not dead. Oh well. Looks like the revival-dove🕊 is gone now.")
+
 
 		elif name == 'grapes🍇':
 			calc = curr_health+860
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 860.")
 
 		elif name == 'banana🍌':
 			calc = curr_health-250
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has decreased by 250.")
 
 		elif name == 'watermelon🍉':
 			calc = curr_health+450
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 450.")
 
 		elif name == 'peach🍑 ':
 			calc = curr_health+60
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 60.")
 
 		elif name == 'cherry🍒':
 			calc = curr_health+350
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 350.")
 
 		elif name == 'strawberry🍓':
 			calc = curr_health+50
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 50.")
 
 		elif name == 'kiwi🥝':
 			calc = curr_health+75
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 75.")
 
 		elif name == 'corn🌽':
 			calc = curr_health+30
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 30.")
 
 		elif name == 'chinese-takeout🥡':
 			calc = curr_health-250
@@ -1051,31 +1101,37 @@ class Dungeon:
 			calc = curr_atk+300
 			query = 'UPDATE stats SET atk_power = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has decreased by 250, but your attack-power has increased by 300.")
 
 		elif name == 'salt-and-straw-icecream🍨':
 			calc = curr_health+1000
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 1000.")
 
 		elif name == 'grandmas-pie🥧':
 			calc = curr_health+500
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 500.")
 
 		elif name == 'honey🍯':
 			calc = curr_health+150
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 150.")
 
 		elif name == 'tea🍵 ':
 			calc = curr_health+40 
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 40.")
 
 		elif name == 'wine🍷 ':
 			calc = curr_health+500
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 500.")
 
 		elif name == 'amphora-of-the-ancients🏺':
 			## Join the Guild-of-The-Ancients
@@ -1116,11 +1172,13 @@ class Dungeon:
 			calc = curr_def+10000
 			query = 'UPDATE stats SET def_power = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your defense power has increased by 10000.")
 
 		elif name == 'paradise-island🏝':
 			calc = curr_health+12000
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your health has increased by 12000.")
 
 		elif name == 'Athens🏛':
 			## none yet 
@@ -1144,7 +1202,6 @@ class Dungeon:
 				query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("the-american-dream🏠")
 				self.c.execute(query) 
 
-
 				# New class is `warrior`.
 				query = 'UPDATE stats SET class = ("{}")'.format("warrior")
 				self.c.execute(query) 
@@ -1159,21 +1216,25 @@ class Dungeon:
 			calc = curr_gold+50000
 			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 50000.")
 
 		elif name == 'the-Federal-Reserve🏦':
 			calc = curr_gold+500000
 			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 500000.")
 
 		elif name == 'hospital🏥':
 			calc = curr_health+10000
 			query = 'UPDATE stats SET health = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 10000.")
 
 		elif name == 'money-bag💰':
-			calc = curr_gold+10000
+			calc = curr_gold+100000
 			query = 'UPDATE stats SET gold = ("{}") WHERE id=("{}")'.format(calc)
 			self.c.execute(query) 
+			print("Your gold has increased by 100000.")
 
 
 		## remove this item from our inventory now 
@@ -1182,156 +1243,347 @@ class Dungeon:
 
 	# build the monster description table 
 	def buildMonsterTable(self):
-		## populate the monster table with our monster descriptions and stats 
+		## populate the monster table with our monster descriptions and stats
+		# minotaur 
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('minotaur',160,'Wait a second! I thought Theseus killed the Minotaur? Oh well. No point in debating it—that is definitely a minotaur, & he looks eager to fight!',200,100,90)")
+		 
 		# orc
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('orc',500,'This creature wandered all the way from Middle-Earth just to try and kill you. How nice!',1000,300,300)")
 		
 		# plant
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('plant',40,'Show this plant the meaning of Darwinian selection. Survival of the fittest!!',50,0,30)")
 
 		# rat
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('rat',100,'Hmmm. It is a rat.',30,100,50)")
 
 		# ogre
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('ogre',1000,'Looks like the Ogre from the Three Broomsticks has appeared, and he is here to spoil the ending of the next Harry Potter book. Better kill him before he does that.',200,100,90)")
 
 		# scorpion
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('scorpion',300,'Scorpionssssssss are sssssuppppppeeeerrrr scary.',500,10,40)")
 
 		# skeleton
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('skeleton',100,'Send this guy back to the grave!',850,40,200)")
 
 		# giant-ant🐜
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('giant-ant🐜',20,'This forager is out for blood.',10000,0,400)")
 
 		# bat🦇
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('bat🦇',50,'Oooo, bats are spooky. Do you not think battling a bat is a perfect way to spend the fall semester?',200,30,50)")
 
 		# slime
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('slime',100,'This monster looks a bit like jello. Or play-doh. Or transparent clay. You get it. It is slime.',0,400,134)")
 
 		# snake🐍
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('snake🐍',160,'Cmon, get ready to fight and send this snake back to the garden he came from!',200,100,90)")
 
 		# succubus
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('succubus',600,'She is beautiful but pure evil: be cautious.',400,250,200)")
 
 		# werewolf
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('werewolf',800,'Not sure why this werewolf is out on a night like this. No full moon in sight. Anyway, he is here, and it is probably a good idea to get your weapon out.',400,450,200)")
 
 		# zombie
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
-
-		# skeleton
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('zombie',1000,'Yeah, zombiess are creepy, but he just wants a hug. Scary, but harmless.',0,100,60)")
 
 		# vampire
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('vampire',1000,'By day, he is a vampire. By night, he works the night shift in the blood donation center. No one has ever determined how he has managed to come by so much blood . . . ',800,340,200)")
 
 		# chimera
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('chimera',450,'Is it too cheesy to suggest this monster might just be chimerical? Even the stats are suspect.',450,450,450)")
 
 		# cerberus
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('cerberus',430,'I do not think you can deal with a three-headed monster. You cannot even deal with a one-headed monster.',10000,330,240)")
 
 		# spider
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('spider',50,'It is a creepy spider and you do not like it.',200,100,10)")
 
 		# ghost
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('ghost',100,'One moment, he is there. The next, he is...where did he go?!',300,100000,500)")
 
 		# taco🌮
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('taco🌮',1000,' You want to fight the taco, but you also kinda wanna eat it. Friend or foe? Combat opponent or...lunch?',400,0,340)")
 
 		# fairy🧚‍
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('fairy🧚‍',500,'Do not underestimate her tiny size.',700,40,600)")
 
 		# dragon🐉
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('dragon🐉',10000,'There be dragons.',1000,800,480)")
 
-		# dinosaur-of-yore 🦕
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		# dinosaur-of-yore🦕
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('dinosaur-of-yore🦕',160,'Show this dinosaur there is a reason his species went extinct! Send him back to yore, o noble adventurer.',200,100,230)")
 
 		# bee-of-disproportionate-size🐝
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('bee-of-disproportionate-size🐝',700,'It is what it sounds like.',12,32,100)")
 
 		# mostly-friendly-wolf🐺
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('mostly-friendly-wolf🐺',100,'I do not want to encounter this guy when he is mostly unfriendly.',300,100,200)")
 
 		# pineapple🍍
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('pineapple🍍',800,'You have encountered a pineapple. Yellow, large, and let us be honest: it is super spikey. A fearsome opponent.',200,100,260)")
 
 		# kleptomaniac-squirrel-of-doom🐿
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('kleptomaniac-squirrel-of-doom🐿',1000,'You have encountered the squirrel of doom. I hate to be the bearer of bad news, but this is the end for you, truly. Unless you happen to have an acorn in your inventory, the inevitable is coming. Let us just say there is a reason this little guy is called the kleptomaniac squirrel of doom.',100,10000000000,90)")
 
 		# the-great-mage🧙‍ 
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('the-great-mage🧙‍',10000,'Best to flee. A learned mage is a fearsome contender.',1000,1000,40)")
 
-		# apprentice 🧙‍
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		# apprentice🧙‍
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('apprentice🧙‍',5000,'He wants to be more like the great mage and less like himself.',400,300,150)")
 
-		# merman 🧜
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		# merman🧜
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('merman🧜',300,'Maybe we can distract him with a mermaid?',800,140,270)")
 
-		# elf 🧝
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		# elf🧝
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('elf🧝',400,'Looks like Orlando Bloom.',400,200,300)")
 
 		# unicorn🦄
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('unicorn🦄',500,'She is shiny, she is pink, and she is going to knock you down with that horn unless you pull yourself out of your stupor and fight.',800,200,100)")
 
 		# owl🦉
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('owl🦉',160,'OooooooooOOOOOOOOooooooooooooooooo',200,100,90)")
 
 		# whale🐳
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('whale🐳',300,'He is blowing bubbles to tease you. It is all fun and games until it is not fun and games.',400,100,240)")
 
 		# dolphin🐬
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('dolphin🐬',400,'Awwww, it is a dolphin.',200,100,90)")
 
 		# magical-fish-out-of-water🐟
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('magical-fish-out-of-water🐟',30,'What disturbs you more than seeing a fish out of water is seeing an alive fish out of water.',0,100,90)")
 
 		# blowfish🐡
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('blowfish🐡',150,' Let us call him squishy.',400,200,180)")
 
 		# octopus🐙
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('octopus🐙',300,' It seems like an octopus could find a better occupation than monster. He could be a party planner or master organizer, for example.',80,120,50)")
 
 		# caterpillar-of-phenomenal-power🐛
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('caterpillar-of-phenomenal-power🐛',100,'This caterpillar is phenomenally powerful; you can feel it from afar.',20000,30,400)")
 
 		# zombie🧟
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('zombie🧟',300,'Enjoy your undead status while you still can.',240,230,220)")
 
 		# monarch-butterfly🦋
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('monarch-butterfly🦋',50,'Yes, butterflies have numbered days and do not live for long. Do not feel too bad; your days are numbered too.',30,10,30)")
 
 		# evil-shrimp🦐
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('evil-shrimp🦐',200,'He has malicious intentions. Shrimp always do.',200,70,90)")
 
 		# alien🛸
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('alien🛸',160,'Please be a conspiracy theory. Please be a conspiracy theory! You are not supposed to be real!',700,300,550)")
 
 		# time⏱
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('time⏱',100,'Our greatest enemy. We will see how true it is that you cannot be conquered.',1000,0,1000)")
 
 		# bad-weather⛈
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('bad-weather⛈',100,'Humans should be able to control the weather.',40,10,35)")
 
 		# god-of-north-wind🌬
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('god-of-north-wind🌬',250,'He is kinda beautiful, but he keeps blowing a chilly breeze your way. You forgot to bring a sweater, so you are not going to tolerate that kind of behavior.',200,100,300)")
 
 		# umbrella🌂
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('umbrella🌂',600,'An umbrella; it's notoriously hard to open.',200,0,500)")
 
 		# fire🔥
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('fire🔥',200,'Stop, drop and roll.',460,0,200)")
 
 		# jack-o-lantern🎃
-		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'desc',200,200,10)")
+		self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('jack-o-lantern🎃',200,'He is smirking at you. Go get him.',30,200,45)")
 
 	def buildItemTable(self): 
-		pass
+		# plain-chest
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('plain-chest','Well, it is better than nothing. Right?!')")
+
+		# golden-chest
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('golden-chest','The best chest there is.')")
+
+		# steel-chest
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('steel-chest','Seems like it might be hard to open.')")
+
+		# mini-chest
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('mini-chest','Just because it is tiny does not mean it's worthless. Oh, well, actually...')")
+
+		# mana-crystal
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('mana-crystal','Use this to increase your health by +300.')")
+
+		# pick-axe
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('pick-axe','A great medieval weapon. Which would be perfect, if you were living in medieval times. You are not.')")
+
+		# potion
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('potion','No, this potion does not come up with an ingredient list, silly. Just drink it or leave it.')")
+
+		# blue-book📘
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('blue-book📘','It's not perfect, but you suspect this blue book is better than the red book.')")
+
+		# green-book📗
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('green-book📗','Seriously, it is better than the red book. I think.')")
+
+		# orange-book📙
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('orange-book📙','The red book does not even exist, ok? But this book exists. It might help you. ')")
+
+		# tome 📖
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('tome📖','Um, are you sure you want to read this? It looks long.')")
+
+		# ring
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('ring','This does not do anything, but it is shiny. Maybe bring it just in case a lovely lady comes along? ')")
+
+		# shield 
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('shield','The only shield available in this game, because the creator wants to abandon you in a dungeon of monsters with only one piece of armor available. What could go wrong?')")
+
+		# crystal
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('crystal','Use this to spawn any type of monster you want. Maybe it does not make sense to you why a crystal would spawn a monster. Stop trying to figure everything out, kid.')")
+
+		# crown-of-awesome👑
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('crown-of-awesome👑','Has absolutely no useful value, but, let us face it: it is awesome. Is not the awe-inspiring, effusive, magnificent power of awesome enough for you? ')")
+
+		# apple🍎
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('apple🍎','An apple a day, they say...')")
+
+		# beer🥃
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('beer🥃','End the day with some cold beer, and your problems will disappear. Just kidding. But. It tastes good.')")
+
+		# ramen🍜
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('ramen🍜','A primary food group.')")
+
+		# ISS🛰
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('ISS🛰','We do not know what this is doing here. Should not the International Space Station be...in space?')")
+
+		# tent⛺️
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('tent⛺️','If everything is going wrong, you can always hide in this tent. ')")
+
+		# crystal-ball🔮
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('crystal-ball🔮','This ball shows you the future. Not just of your life, but of the entire cosmos. So yes, you can ask the crystal ball questions about the nature of time, but there are also pressing questions you can ask, like: what is for dinner?)")
+
+		# portal🌀
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('portal🌀','Use this to teleport at will to any room. As long as you have the room id, that is.')")
+
+		# flower🌸
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('flower🌸','There is definitely something sinister about this flower. Might want to just put it down—that's it. Now back away.')")
+
+		# wheat🌾
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('wheat🌾','An agricultural relic.')")
+
+		# mushroom🍄
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('mushroom🍄',' I wonder if eating this mysterious, possibly toxic mushroom that you found in the middle of a dungeon would be a fun thing to do.')")
+
+		# tulip🌷
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('tulip🌷','Flowers are pretty, but they do not do much. ')")
+
+		# candle🕯
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('candle🕯','Very mysterious. ')")
+
+		# bed🛌
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('bed🛌','Yawnnnn.')")
+
+		# revival-dove🕊
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('revival-dove🕊','Revives a dead-person.')")
+
+		# shell🐚
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('shell🐚','I wonder how a shell came to be in a dungeon. The other items make sense, but: a shell? That does not make sense. The Federal Reserve, maybe.')")
+
+		# banana🍌
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('banana🍌','Yuck.')")
+
+		# lemon🍋
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('lemon🍋','Too sour to eat. Maybe if you had some water? ')")
+
+		# watermelon🍉
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('watermelon🍉','Watermelons are simply the best.')")
+
+		# grapes🍇
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('grapes🍇','One taste of these grapes leads to instant Dionysian reverie. ')")
+
+		# peach🍑
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('peach🍑','You are beautiful. Love, Peach.')")
+
+		# cherry🍒
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('cherry🍒','Hello, daddy. Hello, mom. I am your ch-ch-ch-cherry bomb!')")
+
+		# strawberry🍓
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('strawberry🍓','If you keep my secret I will give you this strawberry.')")
+
+		# kiwi🥝
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('kiwi🥝',' Kiwi would be a cute name for a child, right? Anyway, this is not the child Kiwi. It is the fruit kiwi.')")
+
+		# corn🌽
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('corn🌽','Some corn.')")
+
+		# popcorn🍿
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('popcorn🍿','Do you think it is a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters? ')")
+
+		# chinese-takeout🥡
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('chinese-takeout🥡',' Nothing says I-hate-cooking as much as some Chinese takeout.')")
+
+		# salt-and-straw-icecream🍨
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('salt-and-straw-icecream🍨','Good thing you got this somehow. The lines are too long; there is no point in battling for ice cream when you have monsters to battle.')")
+
+		# grandmas-pie🥧
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('grandmas-pie🥧','Smells good! Eat an entire pie by yourself.')")
+
+		# honey🍯
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('honey🍯','Belongs to Pooh Bear. On temporary loan to Erebor dungeon.')")
+
+		# tea🍵
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('tea🍵','You just know that the pretentious tea drinkers among us are going to kill us for not specifying the type of tea here. Oh well. Tea people are not exactly the most ferocious. I will take my chances.')")
+
+		# wine🍷
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('wine🍷','Drink up, me hearties, yo ho!')")
+
+		# amphora-of-the-ancients🏺
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('amphora-of-the-ancients🏺','There is writing on the outside of this amphora, but you cannot read Ancient Greek. ')")
+
+		# the-world🌍
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('the-world🌍','It is so tiny, so round, so cute!!')")
+
+		# volcanic-mountain🌋
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('volcanic-mountain🌋','You would prefer a chocolate lava, but hey. ')")
+
+		# paradise-island🏝
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('paradise-island🏝','What if you need a vacation, but your employer does not offer paid vacations? Use this paradise island in your inventory for an immediate escape')")
+
+		# Athens🏛
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('Athens🏛','Some people love Greece so much they want to keep a relic of the Acropolis in their bag. Hey, to each to their own, right? ')")
+
+		# the-american-dream🏠
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('the-american-dream🏠','Hard to attain, harder to keep.')")
+
+		# the-Federal-Reserve🏦
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('the-Federal-Reserve🏦','Wait a second: if the Federal Reserve is in your inventory, who is running the monetary system right now?! ')")
+
+		# hospital🏥
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('hospital🏥','Why go to the hospital if you can keep one at all times in your bag?')")
+
+		# statue-of-liberty🗽
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('statue-of-liberty🗽','Freedom is excellent, freedom is priceless. So do not be too disappointed that this statue does not do anything, k? ')")
+
+		# money-bag💰
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('money-bag💰','Not sure where this came from. It is best not to look into such things.')")
+
+		# sword 
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('sword','A starter weapon.')")
+
+		# bow🏹
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('bow🏹','You are obviously not Katniss, but it will still work. ')")
+
+		# dagger🗡
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('dagger🗡','Great for stabbing friends (or political enemies) in the back. Et tu, Brutes?')")
+
+		# spear
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('spear','It's not a wand.')")
+
+		# claw
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('claw','Nothing like a bear claw.')")
+
+		# crossbow
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('crossbow','You will get the hang of it.')")
+
+		# hammer🔨
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('hammer🔨','Probably better for fixing furniture.')")
+
+		# wand
+		self.c.execute("INSERT INTO TABLE item_desc (name,description) VALUES ('wand','Magic is, after all, the ultimate power.')")
+
 
 	
 	# handle startup
@@ -1348,7 +1600,9 @@ class Dungeon:
 			self.c.execute("DROP TABLE if exists inventory")
 			self.c.execute("DROP TABLE if exists loot")
 			self.c.execute("DROP TABLE if exists exits")
-			self.c.execute("DROP TABLE if exists stats")    
+			self.c.execute("DROP TABLE if exists stats") 
+			self.c.execute("DROP TABLE if exists item_desc") 
+			self.c.execute("DROP TABLE if exists monster_desc")    
 			shovel = False
 			## API: rooms will keep track of the name of the loot item that they contain, if any 
 			self.c.execute("CREATE TABLE rooms (id INTEGER PRIMARY KEY AUTOINCREMENT, short_desc TEXT, florid_desc TEXT, visit INTEGER, loot TEXT)")
@@ -1366,7 +1620,7 @@ class Dungeon:
 			self.c.execute("INSERT INTO rooms (florid_desc, short_desc,visit,loot) VALUES ('You are standing at the entrance of what appears to be a vast, complex cave.', 'entrance',0,'none')")
 
 			# item description table
-			self.c.execute("CREATE TABLE item_desc (name TEXT,use INTEGER, description TEXT")
+			self.c.execute("CREATE TABLE item_desc (name TEXT, description TEXT)")
 
 			# monster description table
 			self.c.execute("CREATE TABLE monster_desc (name TEXT, health INTEGER, description TEXT,atk_power INTEGER,def_power INTEGER,exp INTEGER)")
@@ -1376,8 +1630,7 @@ class Dungeon:
 
 			## populate the monster description table 
 			## build MonsterTable  
-			self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'',200,200,10)") 
-
+			#self.c.execute("INSERT INTO TABLE monster_desc (name,health,description,atk_power,def_power,exp) VALUES ('name',100,'n',200,200,10)") 
 
 			self.db.commit()
 
