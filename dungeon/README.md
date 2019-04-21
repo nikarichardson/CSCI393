@@ -7,8 +7,7 @@ Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX wit
 This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms.  There are <b>6</b> Guilds, <b>16</b> states, <b>6</b> classes,<b>5</b> skills, <b>40+</b> monsters and <b>50+</b> items. 
 Choosing a skill provides a temporary boost to your stats during the battle, and this boost is increased by 5% for every experience (exp) point you have. Similarly, the weapons you choose to equip provide a boost to your character. 
 
-`Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,
-succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
+`Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
 dinosaur-of-yore🦕, bee-of-disproportionate-size🐝, mostly-friendly-wolf🐺, pineapple🍍,
 kleptomaniac-squirrel-of-doom🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜, elf🧝, unicorn🦄
 owl 🦉, whale🐳, dolphin🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power🐛
@@ -305,7 +304,6 @@ Has name of monster, health, description, attack power, defense power, & exp gai
 <br>- `bat🦇:`  <b>Health</b> 50. <i>Oooo, bats are spooky. Do you not think battling a bat is a perfect way to spend the fall semester?</i> <b>Attack power</b> 200. <b>Defense power</b> 30. <b>Exp</b> +50. 
 <br>- `slime:`  <b>Health</b> 100. <i>This monster looks a bit like jello. Or play-doh. Or transparent clay. You get it. It is slime.</i> <b>Attack power</b> 0. <b>Defense power</b> 400. <b>Exp</b> +134. 
 <br>- `snake🐍:`  <b>Health</b> 160. <i>Cmon, get ready to fight and send this snake back to the garden he came from!</i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +90. 
-<br>- `succubus:`  <b>Health</b> 600. <i>She is beautiful but pure evil: be cautious.</i> <b>Attack power</b> 400. <b>Defense power</b> 250. <b>Exp</b> +200. 
 <br>- `werewolf:`  <b>Health</b> 800. <i>Not sure why this werewolf is out on a night like this. No full moon in sight. Anyway, he is here, and it is probably a good idea to get your weapon out.</i> <b>Attack power</b> 400. <b>Defense power</b> 450. <b>Exp</b> +200. 
 <br>- `zombie:`  <b>Health</b> 1000. <i>Yeah, zombiess are creepy, but he just wants a hug. Scary, but harmless.</i> <b>Attack power</b> 0. <b>Defense power</b> 100. <b>Exp</b> +60. 
 <br>- `vampire:`  <b>Health</b> 1000. <i>By day, he is a vampire. By night, he works the night shift in the blood donation center. No one has ever determined how he has managed to come by so much blood . . .</i> <b>Attack power</b> 800. <b>Defense power</b> 340. <b>Exp</b> +200. 
