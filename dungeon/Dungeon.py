@@ -408,13 +408,25 @@ class Dungeon:
 					answer = int(input("Select a guild to join: Guild-of-Mages(0), Guild-of-The-Dark-Arts👾(1), Guild-of-Chronic-Procrastinators(2),Guild-of-the-Learned(3). "))  
 					if (answer == 0):
 						print("You have joined the Guild of Mages!")
-						print("As a welcome gift, you have received revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome.")
+						print("As a welcome gift, you have received revival-dove🕊, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome👑.")
 						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Mages")
 						self.c.execute(query) 
 
-						# Welcome pack: revival-dove, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, crown-of-awesome.
-						#query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
-						#self.c.execute(query) 
+						# Welcome pack: revival-dove🕊, mini-chest, money-bag💰, plain-chest, golden-chest, steel-chest, crown-of-awesome👑.
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("revival-dove🕊")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("mini-chest")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("money-bag💰")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("plain-chest")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("golden-chest")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("steel-chest")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("crown-of-awesome👑")
+						self.c.execute(query) 
 
 						# New class is `mage`.
 						query = 'UPDATE stats SET class = ("{}")'.format("mage")
@@ -429,13 +441,19 @@ class Dungeon:
 
 					elif (answer == 1):
 						print("You have joined the Guild of The Dark Arts👾!")
-						print("As a welcome gift, you have received wand, potion, crystal-ball, and portal. ")
+						print("As a welcome gift, you have received wand, potion, crystal-ball🔮, and portal🌀. ")
 						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Dark-Arts👾")
 						self.c.execute(query) 
 
-						# Welcome pack has wand, potion, crystal-ball, and portal. 
-						#query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
-						#self.c.execute(query) 
+						# Welcome pack has wand, potion, crystal-ball, and portal🌀. 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("wand")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("potion")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("crystal-ball🔮")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("portal🌀")
+						self.c.execute(query) 
 
 						# New class is `necromancer`.
 						query = 'UPDATE stats SET class = ("{}")'.format("nercomancer")
@@ -450,15 +468,29 @@ class Dungeon:
 
 					elif (answer == 2):
 						print("You have joined the Guild of Chronic Procrastinators!")
-						print("As a welcome gift, you have received tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.")
+						print("As a welcome gift, you have received tent⛺️, beer🥃, ramen🍜, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.")
 						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Chronic-Procrastinators")
 						self.c.execute(query) 
 
-						# Welcome pack has tent, beer, ramen, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.
-						#query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
-						#self.c.execute(query)
+						# Welcome pack has tent⛺️, beer🥃, ramen🍜, popcorn🍿, wine🍷, chinese-takeout🥡, salt-and-straw-icecream🍨, and bed🛌.
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("tent⛺️")
+						self.c.execute(query)
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("beer🥃")
+						self.c.execute(query)
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("ramen🍜")
+						self.c.execute(query)
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("popcorn🍿")
+						self.c.execute(query)
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("wine🍷")
+						self.c.execute(query)
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("chinese-takeout🥡")
+						self.c.execute(query)
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("salt-and-straw-icecream🍨")
+						self.c.execute(query)
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("bed🛌")
+						self.c.execute(query)
 
-						# New state is `not-ready-for-adult-life`. 
+						# New state is `not-ready-for-adult-life🧖‍♀️`. 
 						query = 'UPDATE stats SET state = ("{}")'.format("not-ready-for-adult-life🧖‍♀️")
 						self.c.execute(query) 
 						print("Your new state is not-ready-for-aduralt-life🧖‍♀️.")
@@ -471,13 +503,19 @@ class Dungeon:
 
 					elif (answer == 3):
 						print("You have joined the Guild of the Learned!")
-						print("As a welcome gift, you have received red-book, green-book, orange-book, and tome.")
+						print("As a welcome gift, you have received blue-book📘, green-book📗, orange-book📙, and tome📖.")
 						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Learned")
 						self.c.execute(query) 
 
-						# `Welcome pack has red-book, green-book, orange-book, tome.
-						#query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
-						#self.c.execute(query) 
+						# `Welcome pack has blue-book📘, green-book📗, orange-book📙, tome📖.
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("blue-book📘")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("green-book📗")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("orange-book📙")
+						self.c.execute(query) 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("tome📖")
+						self.c.execute(query) 
 
 
 						# New class is `scholar`.
