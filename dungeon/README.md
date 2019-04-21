@@ -62,6 +62,7 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 - [ ] set `force_florid` back on after running build Erebor code
 - [ ] apprentice object bug? 
 - [ ] get rid of multiple printing for `spawn` monster objects
+- [ ] starting player stats too high based on monster objects chosen for Erebor current rooms
 
 --------
 
