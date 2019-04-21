@@ -877,6 +877,7 @@ class Dungeon:
 							if special_skill == False:
 								curr_atk = curr_atk - 100 - .5*curr_exp
 								special_skill = True
+								curr_health = curr_health - 50 
 							else:
 								print("You've already used a special skill once this battle.")
 
@@ -885,6 +886,7 @@ class Dungeon:
 							if special_skill == False:
 								curr_atk = curr_atk - 150 - .5*curr_exp
 								special_skill = True
+								curr_health = curr_health - 100 
 							else:
 								print("You've already used a special skill once this battle.")
 
