@@ -212,6 +212,12 @@ There are exits in these directions: n e s
 Are you sure you want to take the-american-dream🏠?
 Press 1 to confirm: 1
 You took the-american-dream🏠!
+> join
+Select a guild to join: Guild-of-Mages(0), Guild-of-The-Dark-Arts👾(1), Guild-of-Chronic-Procrastinators(2),Guild-of-the-Learned(3). 1
+You have joined the Guild of The Dark Arts👾!
+As a welcome gift, you have received wand, potion, crystal-ball🔮, and portal🌀. 
+Your new class is necromancer.
+Your new state is immortal.
 > q
 bye!
 ------------------------------------------------------------------------------------------------
