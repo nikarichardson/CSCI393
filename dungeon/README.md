@@ -246,9 +246,9 @@ a *reason* this little guy is called the kleptomaniac squirrel of doom. </i> <b>
 <br>`jack-o-lantern 🎃:`  <b>Health</b> 200. <i>He is smirking at you. Go get him.</i> <b>Attack power</b> 30. <b>Defense power</b> 20. <b>Exp</b> +45. 
 
 ## Guilds 
-<br>`Guild of Mages`: Welcome pack has `revival-dove🕊`, `mini-chest`, `money-bag💰`, `plain-chest`, `golden-chest`, `steel-chest`, and `crown-of-awesome👑`. New class is `mage`. New state is `unbearably-cool🤠`. 
-<br>`Guild of The Dark Arts`: Welcome pack has `wand`, `potion`, `crystal-ball🔮`, and `portal🌀`. New state is `immortal`. New class is `necromancer`. 
-<br>`Guild of the Chronic Procrastinators`: Welcome pack has `tent⛺️`, `beer🥃`, `ramen`🍜, `popcorn🍿`, `wine🍷`, `chinese-takeout🥡`, `salt-and-straw-icecream🍨`, and `bed🛌`. New state is `not-ready-for-adult-life🧖‍`. New class is `warrior`.
-<br>`Guild of the Learned`: Welcome pack has `blue-book📘`, `green-book📗`, `orange-book📙`, `tome📖`. New class is `scholar`. New state is `extremely-intellectual🧐`.
-<br>`Guild of the Ancients`: Secret guild. 
-<br>`Guild of Champions`: Secret guild. 
+<br>- `Guild of Mages`: Welcome pack has `revival-dove🕊`, `mini-chest`, `money-bag💰`, `plain-chest`, `golden-chest`, `steel-chest`, and `crown-of-awesome👑`. New class is `mage`. New state is `unbearably-cool🤠`. 
+<br>- `Guild of The Dark Arts`: Welcome pack has `wand`, `potion`, `crystal-ball🔮`, and `portal🌀`. New state is `immortal`. New class is `necromancer`. 
+<br>- `Guild of the Chronic Procrastinators`: Welcome pack has `tent⛺️`, `beer🥃`, `ramen`🍜, `popcorn🍿`, `wine🍷`, `chinese-takeout🥡`, `salt-and-straw-icecream🍨`, and `bed🛌`. New state is `not-ready-for-adult-life🧖‍`. New class is `warrior`.
+<br>- `Guild of the Learned`: Welcome pack has `blue-book📘`, `green-book📗`, `orange-book📙`, `tome📖`. New class is `scholar`. New state is `extremely-intellectual🧐`.
+<br>- `Guild of the Ancients`: Secret guild. 
+<br>- `Guild of Champions`: Secret guild. 
