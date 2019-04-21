@@ -5,6 +5,7 @@ Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon<
 Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map. 
 
 This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms.  There are <b>6</b> Guilds, <b>16</b> states, <b>6</b> classes,<b>5</b> skills, <b>40+</b> monsters and <b>50+</b> items. 
+Choosing a skill provides a temporary boost to your stats during the battle, and this boost is increased by 5% for every experience (exp) point you have. Similarly, the weapons you choose to equip provide a boost to your character. 
 
 `Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
 succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
@@ -43,7 +44,7 @@ etc.). Exits are uni-directional.
 
 A player has a collection of stats: a weapon, an armor item of choice, a health parameter (mana),a state, and a class. If the player
 loses all her mana she will not be able to move around the dungeon anymore. The default class is `hero`. You can only change your class
-by finding certain items. 
+by finding certain items. Note that when <b>placing</b> an item and typing the name of the item in your inventory as input you must include the entire name of the item, which often includes an emoji with no spaces. Be precise and the code will work just fine! 
 
 Combat is simple: the player has an *attack-power* (ATP) level and a *defend-power* (DEF) level. You can increase either one through combat experience or by gaining items in the rooms.  
 
