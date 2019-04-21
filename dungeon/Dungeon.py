@@ -17,7 +17,7 @@ class Dungeon:
 	prompt = '> '
    
 	## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
-	## succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
+	## werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
 	## dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, pineapple 🍍,
 	## kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜 elf 🧝, unicorn 🦄
 	## owl 🦉, whale 🐳, dolphin 🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
@@ -261,7 +261,7 @@ class Dungeon:
 				if yes_crystal == True or my_status == "super":
 					# to-do: only players with Monster Crystal can spawn a monster 
 					# spawn a monster object
-					print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, succubus, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
+					print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
 					my_monster = str(input("Type the name of a monster object: "))
 
 					## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
@@ -1511,10 +1511,7 @@ class Dungeon:
 		# snake🐍
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('snake🐍',160,'Cmon, get ready to fight and send this snake back to the garden he came from!',200,100,90)
 		self.c.execute(query)
-
-		# succubus
-		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('succubus',600,'She is beautiful but pure evil: be cautious.',400,250,200)
-		self.c.execute(query)
+	
 
 		# werewolf
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('werewolf',800,'Not sure why this werewolf is out on a night like this. No full moon in sight. Anyway, he is here, and it is probably a good idea to get your weapon out.',400,450,200)
