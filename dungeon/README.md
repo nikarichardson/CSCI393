@@ -181,7 +181,7 @@ Has name of item, description, and use value.
 <br>`the-Federal-Reserve 🏦:`  <i>Wait a second: if the Federal Reserve is in your inventory, who's running the monetary system right now?!</i> Increases gold by <b>500,000</b>. 
 <br>`hospital 🏥:` <i>Why go to the hospital if you can keep one at all times in your bag?</i> Increases health by <b>10,000</b>. 
 <br>`statue-of-liberty🗽:` <i>Freedom is excellent, freedom is priceless. So don't be too disappointed that this statue doesn't do anything, k?</i>
-<br>`money-bag 💰:` <i>Not sure where this came from. It's best not to look into such things.</i> Increases gold by <b>10000</b>. 
+<br>`money-bag 💰:` <i>Not sure where this came from. It's best not to look into such things.</i> Increases gold by <b>100,000</b>. 
 <br>`sword:` <i>A starter weapon</i>. Increases attack power by <b>100</b>. 
 <br>`bow 🏹:` <i>You're not Katniss but it'll work.</i> Increases attack power by <b>200</b>. 
 <br>`dagger🗡:` <i>Great for stabbing friends (or political enemies) in the back. Et tu, Brutes?</i> Increases attack power by <b>300</b>. 
