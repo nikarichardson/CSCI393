@@ -128,10 +128,10 @@ Get ready to fight chimera (ง •̀_•́)ง
 
 ## About Erebor
 <br><i>Welcome to the Kingdom of Erebor. All who choose to play this game: tread cautiously, brave adventurers of the deep. Beyond these gates is the unknown.</i>
-<center><img src="https://66.media.tumblr.com/86a83a69e2114c4419b2008017c50f74/tumblr_pq8s3rDGQa1tk06jno1_1280.png" width="380" height="80"></center>
+<center><img src="https://66.media.tumblr.com/86a83a69e2114c4419b2008017c50f74/tumblr_pq8s3rDGQa1tk06jno1_1280.png" width="400" height="80"></center>
 
 ## Map of Erebor 
-<img src="https://66.media.tumblr.com/e74f406b093e00dbd70674de4a7ac75e/tumblr_pqc0es53dA1tk06jno1_1280.jpg">
+<img src="https://66.media.tumblr.com/d188bfe37af6219a258f980260af8a37/tumblr_pqc0rsMLF61tk06jno1_1280.jpg" height="750" width="600">
 
 ## Item Database :
 Has name of item, description, and use value. 
