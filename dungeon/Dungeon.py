@@ -1012,8 +1012,24 @@ class Dungeon:
 					## print description of monster 
 					query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
 					self.c.execute(query)
-					desc = str(self.c.fetchone()[0]) #self.c.execute(query) # "{}"
+					desc = str(self.c.fetchone()[0])
 					print("    " + desc)
+					query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_health = str(self.c.fetchone()[0])
+					print("    Health: " + monster_health)
+					query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_atk = str(self.c.fetchone()[0])
+					print("    Attack_power : " + monster_atk)
+					query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_def = str(self.c.fetchone()[0])
+					print("    Defense_power : " + monster_def)
+					query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_def = str(self.c.fetchone()[0])
+					print("    Exp : " + monster_def)
 
 				## update visit integer mark this room as visited
 				self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
@@ -1043,8 +1059,24 @@ class Dungeon:
 					## print description of monster 
 					query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
 					self.c.execute(query)
-					desc = str(self.c.fetchone()[0]) #self.c.execute(query) # "{}"
+					desc = str(self.c.fetchone()[0])
 					print("    " + desc)
+					query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_health = str(self.c.fetchone()[0])
+					print("    Health: " + monster_health)
+					query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_atk = str(self.c.fetchone()[0])
+					print("    Attack_power : " + monster_atk)
+					query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_def = str(self.c.fetchone()[0])
+					print("    Defense_power : " + monster_def)
+					query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					monster_def = str(self.c.fetchone()[0])
+					print("    Exp : " + monster_def)
 
 
 		## Give the full-description since force-florid is switched on. 
@@ -1072,8 +1104,24 @@ class Dungeon:
 				## print description of monster 
 				query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
 				self.c.execute(query)
-				desc = str(self.c.fetchone()[0]) #self.c.execute(query) # "{}"
+				desc = str(self.c.fetchone()[0]) 
 				print("    " + desc)
+				query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
+				self.c.execute(query)
+				monster_health = str(self.c.fetchone()[0])
+				print("    Health: " + monster_health)
+				query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+				self.c.execute(query)
+				monster_atk = str(self.c.fetchone()[0])
+				print("    Attack_power : " + monster_atk)
+				query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+				self.c.execute(query)
+				monster_def = str(self.c.fetchone()[0])
+				print("    Defense_power : " + monster_def)
+				query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
+				self.c.execute(query)
+				monster_def = str(self.c.fetchone()[0])
+				print("    Exp : " + monster_def)
 
 		## Present the available exits, if any 
 		self.c.execute("SELECT dir FROM exits WHERE from_room={}".format(self.current_room))
@@ -1427,10 +1475,6 @@ class Dungeon:
 		# orc
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('orc',500,'This creature wandered all the way from Middle-Earth just to try and kill you. How nice!',1000,300,300)
 		self.c.execute(query) 
-
-		# dinosaur
-		#query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('dinosaur-of-yore🦕',160,'Show this dinosaur there is a reason his species went extinct! Send him back to yore, o noble adventurer.',200,100,230)
-		#self.c.execute(query)
 
 		# plant
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('plant',40,'Show this plant the meaning of Darwinian selection. Survival of the fittest!!',50,0,30)
