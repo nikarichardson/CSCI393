@@ -133,58 +133,58 @@ Has name of item, description, and use value.
 <br>`mana-crystal:` <i>Use this to increase your health by +300.</i> Increases health by <b>300</b>. 
 <br>`pick-axe:` <i>A great medieval weapon. Which would be perfect, if you were living in medieval times. You are not.</i> Increases attack power by <b>30</b>. 
 <br>`potion:` <i>No, this potion does not come up with an ingredient list, silly. Just drink it or leave it. Time will tell.</i> Increases health by <b>100</b>. 
-<br>`blue-book 📘:` <i>It's not perfect, but you suspect this blue book is better than the red book.</i> Increases exp by <b>50</b>. 
-<br>`green-book 📗:` <i>Seriously, it is better than the red book. I think.</i> Increases exp by <b>100</b>. 
-<br>`orange-book 📙:` <i>The red book does not even exist, ok? But this book exists. It might help you.</i> Increases exp by <b>300</b>.
-<br>`tome 📖:` <i>Um, are you sure you want to read this? It looks long.</i> Increases exp by <b>1000</b>. 
+<br>`blue-book📘:` <i>It's not perfect, but you suspect this blue book is better than the red book.</i> Increases exp by <b>50</b>. 
+<br>`green-book📗:` <i>Seriously, it is better than the red book. I think.</i> Increases exp by <b>100</b>. 
+<br>`orange-book📙:` <i>The red book does not even exist, ok? But this book exists. It might help you.</i> Increases exp by <b>300</b>.
+<br>`tome📖:` <i>Um, are you sure you want to read this? It looks long.</i> Increases exp by <b>1000</b>. 
 <br>`ring:` <i>This does not do anything, but it is shiny. Maybe bring it just in case a lovely lady comes along?</i>
 <br>`shield:` <i>The only shield available in this game, because the creator wants to abandon you in a dungeon of monsters with only one piece of armor available. What could go wrong?</i> Increases defense by <b>500</b>. 
 <br>`crystal:` <i>Use this to spawn any type of monster you want. Maybe it does not make sense to you why a crystal would spawn a monster. Stop trying to figure everything out, kid.</i> Spawns monster. 
-<br>`crown-of-awesome 👑:` <i>Has absolutely no useful value, but, let us face it: it is awesome. Is not the awe-inspiring, effusive, magnificent power of awesome enough for you?</i>
-<br>`apple 🍎:` <i>An apple a day, they say. .  .</i> Increases health by <b>100</b>. 
-<br>`beer 🥃:` <i>End the day with some cold beer, and your problems will disappear. Just kidding. But. It tastes good.</i> Increases health by <b>250</b>. 
-<br>`ramen 🍜:` <i>A primary food group.</i> Increases health by <b>70</b>. 
-<br>`ISS 🛰:` <i>We do not know what this is doing here. Should not the International Space Station be...in space?</i> Increases power by <b>10000000</b>.
-<br>`tent ⛺️:` <i>If everything is going wrong, you can always hide in this tent.</i>
-<br>`crystal-ball 🔮:` <i>This ball shows you the future. Not just of your life, but of the entire cosmos. So yes, you can ask the crystal ball questions about the nature of time, but there are also pressing questions you can ask, like: what is for dinner?</i>
-<br>`portal 🌀:` <i>Use this to teleport at will to any room. As long as you have the room id, that is.</i> Use for teleportation. 
-<br>`flower 🌸:` <i>There is definitely something sinister about this flower. Might want to just put it down—that's it. Now back away.</i>
-<br>`wheat 🌾:` <i>An agricultural relic.</i> Increases health by <b>50</b>. 
-<br>`herb 🌿:` <i>Well, it is not exactly a salad, but it is better than nothing.</i> Increases health by <b>80</b>. 
-<br>`mushroom 🍄:` <i>I wonder if eating this mysterious, possibly toxic mushroom that you found in the middle of a dungeon would be a fun thing to do.</i> Decreases health by <b>10000</b>.
-<br>`tulip 🌷:` <i>Flowers are pretty, but they do not do much.</i>
-<br>`candle 🕯:` <i>Very mysterious.</i>
+<br>`crown-of-awesome👑:` <i>Has absolutely no useful value, but, let us face it: it is awesome. Is not the awe-inspiring, effusive, magnificent power of awesome enough for you?</i>
+<br>`apple🍎:` <i>An apple a day, they say. .  .</i> Increases health by <b>100</b>. 
+<br>`beer🥃:` <i>End the day with some cold beer, and your problems will disappear. Just kidding. But. It tastes good.</i> Increases health by <b>250</b>. 
+<br>`ramen🍜:` <i>A primary food group.</i> Increases health by <b>70</b>. 
+<br>`ISS🛰:` <i>We do not know what this is doing here. Should not the International Space Station be...in space?</i> Increases power by <b>10000000</b>.
+<br>`tent⛺️:` <i>If everything is going wrong, you can always hide in this tent.</i>
+<br>`crystal-ball🔮:` <i>This ball shows you the future. Not just of your life, but of the entire cosmos. So yes, you can ask the crystal ball questions about the nature of time, but there are also pressing questions you can ask, like: what is for dinner?</i>
+<br>`portal🌀:` <i>Use this to teleport at will to any room. As long as you have the room id, that is.</i> Use for teleportation. 
+<br>`flower🌸:` <i>There is definitely something sinister about this flower. Might want to just put it down—that's it. Now back away.</i>
+<br>`wheat🌾:` <i>An agricultural relic.</i> Increases health by <b>50</b>. 
+<br>`herb🌿:` <i>Well, it is not exactly a salad, but it is better than nothing.</i> Increases health by <b>80</b>. 
+<br>`mushroom🍄:` <i>I wonder if eating this mysterious, possibly toxic mushroom that you found in the middle of a dungeon would be a fun thing to do.</i> Decreases health by <b>10000</b>.
+<br>`tulip🌷:` <i>Flowers are pretty, but they do not do much.</i>
+<br>`candle🕯:` <i>Very mysterious.</i>
 <br>`bed 🛌:` <i>Yawnnnn.</i> Increases health by <b>500</b>. 
-<br>`revival-dove 🕊:` <i>Revives a dead-person.</i> Changes state from <b>dead</b> to <b>normal</b>. 
-<br>`shell 🐚:` <i>I wonder how a shell came to be in a dungeon. The other items make sense, but: a shell? That does not make sense. The Federal Reserve, maybe.</i>
-<br>`banana 🍌:` <i>Yuck.</i> Decreases health by <b>250</b>. 
-<br>`lemon 🍋:` <i>Too sour to eat. Maybe if you had some water?</i>
-<br>`watermelon 🍉:` <i>Watermelons are simply the best.</i> Increases health by <b>450</b>. 
-<br>`grapes 🍇:` <i>One taste of these grapes leads to instant Dionysian reverie.</i> Increases health by <b>860</b>. 
-<br>`peach 🍑:` <i>You are beautiful. Love, Peach.</i> Increases health by <b>60</b>. 
-<br>`cherry 🍒:` <i>Hello, daddy. Hello, mom. I am your ch-ch-ch-cherry bomb!</i> Increases health by <b>350</b>. 
-<br>`strawberry 🍓:` <i>If you keep my secret I will give you this strawberry.</i> Increases health by <b>50</b>. 
-<br>`kiwi 🥝:` <i>Kiwi would be a cute name for a child, right? Anyway, this is not the child Kiwi. It is the fruit kiwi.</i> Increases health by <b>75</b>. 
+<br>`revival-dove🕊:` <i>Revives a dead-person.</i> Changes state from <b>dead</b> to <b>normal</b>. 
+<br>`shell🐚:` <i>I wonder how a shell came to be in a dungeon. The other items make sense, but: a shell? That does not make sense. The Federal Reserve, maybe.</i>
+<br>`banana🍌:` <i>Yuck.</i> Decreases health by <b>250</b>. 
+<br>`lemon🍋:` <i>Too sour to eat. Maybe if you had some water?</i>
+<br>`watermelon🍉:` <i>Watermelons are simply the best.</i> Increases health by <b>450</b>. 
+<br>`grapes🍇:` <i>One taste of these grapes leads to instant Dionysian reverie.</i> Increases health by <b>860</b>. 
+<br>`peach🍑:` <i>You are beautiful. Love, Peach.</i> Increases health by <b>60</b>. 
+<br>`cherry🍒:` <i>Hello, daddy. Hello, mom. I am your ch-ch-ch-cherry bomb!</i> Increases health by <b>350</b>. 
+<br>`strawberry🍓:` <i>If you keep my secret I will give you this strawberry.</i> Increases health by <b>50</b>. 
+<br>`kiwi🥝:` <i>Kiwi would be a cute name for a child, right? Anyway, this is not the child Kiwi. It is the fruit kiwi.</i> Increases health by <b>75</b>. 
 <br>`corn 🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.
 <br>`popcorn 🍿:` <i>Do you think it is a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters?</i>
-<br>`chinese-takeout 🥡:` <i>Nothing says I-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
+<br>`chinese-takeout🥡:` <i>Nothing says I-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
 <br>`salt-and-straw-icecream 🍨:` <i>Good thing you got this somehow. The lines are too long; there is no point in battling for ice cream when you have monsters to battle.</i> Increases health by <b>1000</b>. 
-<br>`grandmas-pie 🥧:` <i>Smells good! Eat an entire pie by yourself. You are an adult, after all. </i> Increases health by <b>500</b>.
-<br>`honey 🍯:` <i>Belongs to Pooh Bear. On temporary loan to Erebor dungeon.</i> Increases health by <b>150</b>. 
-<br>`tea 🍵 :` <i>You just know that the pretentious tea drinkers among us are going to kill us for not specifying the type of tea here. Oh well. Tea people are not exactly the most ferocious. I will take my chances.</i> Increases health by <b>40</b>. 
-<br>`wine 🍷:` <i>Drink up, me hearties, yo ho!</i> Increases health by <b>500</b>. 
-<br>`amphora-of-the-ancients 🏺:` <i>There is writing on the outside of this amphora, but you cannot read Ancient Greek.</i>
-<br>`the-world 🌍:` <i>It is so tiny, so round, so cute!! </i> Increases defense power by <b>10,000</b>. 
-<br>`volcanic-mountain 🌋:` <i>You would prefer a chocolate lava, but hey.</i> 
-<br>`paradise-island 🏝:` <i>What if you need a vacation, but your employer does not offer paid vacations? Use this paradise island in your inventory for an immediate escape.</i> Increases health by <b>12,000</b>. 
-<br>`Athens 🏛:` <i>Some people love Greece so much they want to keep a relic of the Acropolis in their bag. Hey, to each to their own, right?</i>
-<br>`the-american-dream 🏠:` <i>Hard to attain, harder to keep.</i> Increases gold by <b>50,000</b>.
-<br>`the-Federal-Reserve 🏦:`  <i>Wait a second: if the Federal Reserve is in your inventory, who is running the monetary system right now?!</i> Increases gold by <b>500,000</b>. 
-<br>`hospital 🏥:` <i>Why go to the hospital if you can keep one at all times in your bag?</i> Increases health by <b>10,000</b>. 
+<br>`grandmas-pie🥧:` <i>Smells good! Eat an entire pie by yourself. You are an adult, after all. </i> Increases health by <b>500</b>.
+<br>`honey🍯:` <i>Belongs to Pooh Bear. On temporary loan to Erebor dungeon.</i> Increases health by <b>150</b>. 
+<br>`tea🍵 :` <i>You just know that the pretentious tea drinkers among us are going to kill us for not specifying the type of tea here. Oh well. Tea people are not exactly the most ferocious. I will take my chances.</i> Increases health by <b>40</b>. 
+<br>`wine🍷:` <i>Drink up, me hearties, yo ho!</i> Increases health by <b>500</b>. 
+<br>`amphora-of-the-ancients🏺:` <i>There is writing on the outside of this amphora, but you cannot read Ancient Greek.</i>
+<br>`the-world🌍:` <i>It is so tiny, so round, so cute!! </i> Increases defense power by <b>10,000</b>. 
+<br>`volcanic-mountain🌋:` <i>You would prefer a chocolate lava, but hey.</i> 
+<br>`paradise-island🏝:` <i>What if you need a vacation, but your employer does not offer paid vacations? Use this paradise island in your inventory for an immediate escape.</i> Increases health by <b>12,000</b>. 
+<br>`Athens🏛:` <i>Some people love Greece so much they want to keep a relic of the Acropolis in their bag. Hey, to each to their own, right?</i>
+<br>`the-american-dream🏠:` <i>Hard to attain, harder to keep.</i> Increases gold by <b>50,000</b>.
+<br>`the-Federal-Reserve🏦:`  <i>Wait a second: if the Federal Reserve is in your inventory, who is running the monetary system right now?!</i> Increases gold by <b>500,000</b>. 
+<br>`hospital🏥:` <i>Why go to the hospital if you can keep one at all times in your bag?</i> Increases health by <b>10,000</b>. 
 <br>`statue-of-liberty🗽:` <i>Freedom is excellent, freedom is priceless. So do not be too disappointed that this statue does not do anything, k?</i>
-<br>`money-bag 💰:` <i>Not sure where this came from. It is best not to look into such things.</i> Increases gold by <b>100,000</b>. 
+<br>`money-bag💰:` <i>Not sure where this came from. It is best not to look into such things.</i> Increases gold by <b>100,000</b>. 
 <br>`sword:` <i>A starter weapon</i>. Increases attack power by <b>100</b>. 
-<br>`bow 🏹:` <i>You are obviously not Katniss, but it will still work.</i> Increases attack power by <b>200</b>. 
+<br>`bow🏹:` <i>You are obviously not Katniss, but it will still work.</i> Increases attack power by <b>200</b>. 
 <br>`dagger🗡:` <i>Great for stabbing friends (or political enemies) in the back. Et tu, Brute?</i> Increases attack power by <b>300</b>. 
 <br>`spear:` <i>It is not a wand.</i> Increases attack power by <b>400</b>. 
 <br>`claw:` <i>Nothing like a bear claw</i>. Increases attack power by <b>350</b>. 
@@ -236,15 +236,15 @@ a *reason* this little guy is called the kleptomaniac squirrel of doom. </i> <b>
 <br>`octopus🐙:`  <b>Health</b> 300. <i>It seems like an octopus could find a better occupation than monster. He could be a party planner or master organizer, for example.</i> <b>Attack power</b> 80. <b>Defense power</b> 120. <b>Exp</b> +50. 
 <br>`caterpillar-of-phenomenal-power🐛:`  <b>Health</b> 100. <i>This caterpillar is phenomenally powerful; you can feel it from afar.</i> <b>Attack power</b> 20000. <b>Defense power</b> 30. <b>Exp</b> +400. 
 <br>`zombie🧟:`  <b>Health</b> 300. <i>Enjoy your undead status while you still can.</i> <b>Attack power</b> 240. <b>Defense power</b> 230. <b>Exp</b> +220. 
-<br>`monarch-butterfly 🦋:`  <b>Health</b> 50. <i>Yes, butterflies have numbered days and do not live for long. Do not feel too bad; your days are numbered too.</i> <b>Attack power</b> 30. <b>Defense power</b> 10. <b>Exp</b> +30. 
-<br>`evil-shrimp 🦐:`  <b>Health</b> 200. <i>He has malicious intentions. Shrimp always do.</i> <b>Attack power</b> 200. <b>Defense power</b> 70. <b>Exp</b> +90. 
-<br>`alien 🛸:`  <b>Health</b> 160. <i>Please be a conspiracy theory. Please be a conspiracy theory! You are not supposed to be real!</i> <b>Attack power</b> 700. <b>Defense power</b> 300. <b>Exp</b> +550. 
-<br>`time ⏱:`  <b>Health</b> 100. <i>Our greatest enemy. We will see how true it is that you cannot be conquered.</i> <b>Attack power</b> 1000. <b>Defense power</b> 0. <b>Exp</b> +1000. 
-<br>`bad-weather ⛈:`  <b>Health</b> 100. <i>Humans should be able to control the weather.</i> <b>Attack power</b> 40. <b>Defense power</b> 10. <b>Exp</b> 35. 
-<br>`god-of-north-wind 🌬:`  <b>Health</b> 250. <i>He is kinda beautiful, but he keeps blowing a chilly breeze your way. You forgot to bring a sweater, so you are not going to tolerate that kind of behavior.</i> <b>Attack power</b> 800. <b>Defense power</b> 100. <b>Exp</b> +300. 
-<br>`umbrella 🌂:`  <b>Health</b> 600. <i>An umbrella; it is notoriously hard to open. </i> <b>Attack power</b> 1000. <b>Defense power</b> 0. <b>Exp</b> +500. 
-<br>`fire 🔥:`  <b>Health</b> 200 <i>Stop, drop and roll.</i> <b>Attack power</b>460. <b>Defense power</b> 0. <b>Exp</b> +200. 
-<br>`jack-o-lantern 🎃:`  <b>Health</b> 200. <i>He is smirking at you. Go get him.</i> <b>Attack power</b> 30. <b>Defense power</b> 20. <b>Exp</b> +45. 
+<br>`monarch-butterfly🦋:`  <b>Health</b> 50. <i>Yes, butterflies have numbered days and do not live for long. Do not feel too bad; your days are numbered too.</i> <b>Attack power</b> 30. <b>Defense power</b> 10. <b>Exp</b> +30. 
+<br>`evil-shrimp🦐:`  <b>Health</b> 200. <i>He has malicious intentions. Shrimp always do.</i> <b>Attack power</b> 200. <b>Defense power</b> 70. <b>Exp</b> +90. 
+<br>`alien🛸:`  <b>Health</b> 160. <i>Please be a conspiracy theory. Please be a conspiracy theory! You are not supposed to be real!</i> <b>Attack power</b> 700. <b>Defense power</b> 300. <b>Exp</b> +550. 
+<br>`time⏱:`  <b>Health</b> 100. <i>Our greatest enemy. We will see how true it is that you cannot be conquered.</i> <b>Attack power</b> 1000. <b>Defense power</b> 0. <b>Exp</b> +1000. 
+<br>`bad-weather⛈:`  <b>Health</b> 100. <i>Humans should be able to control the weather.</i> <b>Attack power</b> 40. <b>Defense power</b> 10. <b>Exp</b> 35. 
+<br>`god-of-north-wind🌬:`  <b>Health</b> 250. <i>He is kinda beautiful, but he keeps blowing a chilly breeze your way. You forgot to bring a sweater, so you are not going to tolerate that kind of behavior.</i> <b>Attack power</b> 800. <b>Defense power</b> 100. <b>Exp</b> +300. 
+<br>`umbrella🌂:`  <b>Health</b> 600. <i>An umbrella; it is notoriously hard to open. And to close.</i> <b>Attack power</b> 1000. <b>Defense power</b> 0. <b>Exp</b> +500. 
+<br>`fire🔥:`  <b>Health</b> 200 <i>Stop, drop and roll.</i> <b>Attack power</b>460. <b>Defense power</b> 0. <b>Exp</b> +200. 
+<br>`jack-o-lantern🎃:`  <b>Health</b> 200. <i>He is smirking at you. Go get him.</i> <b>Attack power</b> 30. <b>Defense power</b> 20. <b>Exp</b> +45. 
 
 ## Guilds 
 <br>- `Guild of Mages`: Welcome pack has `revival-dove🕊`, `mini-chest`, `money-bag💰`, `plain-chest`, `golden-chest`, `steel-chest`, and `crown-of-awesome👑`. New class is `mage`. New state is `unbearably-cool🤠`. 
