@@ -141,7 +141,7 @@ Has name of item, description, and use value.
 <br>`crystal:` <i>Use this to spawn any type of monster you want. Maybe it does not make sense to you why a crystal would spawn a monster. Stop trying to figure everything out, kid.</i> Spawns monster. 
 <br>`crown-of-awesome 👑:` <i>Has absolutely no useful value, but, let us face it: it is awesome. Is not the awe-inspiring, effusive, magnificent power of awesome enough for you?</i>
 <br>`apple 🍎:` <i>An apple a day, they say. .  .</i> Increases health by <b>100</b>. 
-<br>`beer 🥃:` <i>End the day with some cold beer and your problems will disappear. Just kidding. But. It tastes good.</i> Increases health by <b>250</b>. 
+<br>`beer 🥃:` <i>End the day with some cold beer, and your problems will disappear. Just kidding. But. It tastes good.</i> Increases health by <b>250</b>. 
 <br>`ramen 🍜:` <i>A primary food group.</i> Increases health by <b>70</b>. 
 <br>`ISS 🛰:` <i>We do not know what this is doing here. Should not the International Space Station be...in space?</i> Increases power by <b>10000000</b>.
 <br>`tent ⛺️:` <i>If everything is going wrong, you can always hide in this tent.</i>
@@ -166,7 +166,7 @@ Has name of item, description, and use value.
 <br>`kiwi 🥝:` <i>Kiwi would be a cute name for a child, right? Anyway, this is not the child Kiwi. It is the fruit kiwi.</i> Increases health by <b>75</b>. 
 <br>`corn 🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.
 <br>`popcorn 🍿:` <i>Do you think it is a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters?</i>
-<br>`chinese-takeout 🥡:` <i>Nothing says i-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
+<br>`chinese-takeout 🥡:` <i>Nothing says I-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
 <br>`salt-and-straw-icecream 🍨:` <i>Good thing you got this somehow. The lines are too long; there is no point in battling for ice cream when you have monsters to battle.</i> Increases health by <b>1000</b>. 
 <br>`grandmas-pie 🥧:` <i>Smells good! Eat an entire pie by yourself. You are an adult, after all. </i> Increases health by <b>500</b>.
 <br>`honey 🍯:` <i>Belongs to Pooh Bear. On temporary loan to Erebor dungeon.</i> Increases health by <b>150</b>. 
@@ -183,9 +183,9 @@ Has name of item, description, and use value.
 <br>`statue-of-liberty🗽:` <i>Freedom is excellent, freedom is priceless. So do not be too disappointed that this statue does not do anything, k?</i>
 <br>`money-bag 💰:` <i>Not sure where this came from. It is best not to look into such things.</i> Increases gold by <b>100,000</b>. 
 <br>`sword:` <i>A starter weapon</i>. Increases attack power by <b>100</b>. 
-<br>`bow 🏹:` <i>You are obviously not Katniss but it will still work.</i> Increases attack power by <b>200</b>. 
+<br>`bow 🏹:` <i>You are obviously not Katniss, but it will still work.</i> Increases attack power by <b>200</b>. 
 <br>`dagger🗡:` <i>Great for stabbing friends (or political enemies) in the back. Et tu, Brutes?</i> Increases attack power by <b>300</b>. 
-<br>`spear:` Increases attack power by <b>400</b>. 
+<br>`spear:` <i>It's not a wand.</i> Increases attack power by <b>400</b>. 
 <br>`claw:` <i>Nothing like a bear claw</i>. Increases attack power by <b>350</b>. 
 <br>`crossbow:` <i>You will get the hang of it.</i> Increases attack power by <b>450</b>. 
 <br>`hammer🔨:`<i>Probably better for fixing furniture.</i> Increases attack power by <b>60</b>. 
