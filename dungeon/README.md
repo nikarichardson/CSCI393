@@ -54,9 +54,18 @@ new rooms. <img src="https://66.media.tumblr.com/c3dee66743dcae9b27be04107817327
 Multi-player feature has not been implemented because I have a lifelong hatred of multi-player games. Probably because I didn't go to kindergarten
 and thus never learned how to play well with the other kids (‾▿‾)
 
+
+
 To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | python3 dungeon.py`. 
 
-All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>. 
+All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>.
+
+## Remaining Implementation/Tweaks 
+- [ ] implement flee
+- [ ] unequipping weapons currently unsupported
+- [ ] set force_florid back on after running build Erebor code
+- [ ] apprentice object bug? 
+- [ ] get rid of multiple printing for 'spawn'monster objs. options 
 
 --------
 
@@ -122,7 +131,7 @@ Get ready to fight chimera (ง •̀_•́)ง
 <center><img src="https://66.media.tumblr.com/86a83a69e2114c4419b2008017c50f74/tumblr_pq8s3rDGQa1tk06jno1_1280.png" width="380" height="80"></center>
 
 ## Map of Erebor 
-Coming soon 
+<img src="https://66.media.tumblr.com/e74f406b093e00dbd70674de4a7ac75e/tumblr_pqc0es53dA1tk06jno1_1280.jpg">
 
 ## Item Database :
 Has name of item, description, and use value. 
