@@ -560,8 +560,16 @@ class Dungeon:
 
 				if count == 0:
 					print("There's nothing in your inventory, you poor penniless pauper!", end='')
+					print("")
+				else: 
+					print("")
+					want = str(input("Type the name of the item you would like to see the description of: ")) 
+					## print description of item 
+					query = 'SELECT description FROM item_desc WHERE name = ("{}")'.format(want)
+					self.c.execute(query)
+					desc = str(self.c.fetchone()[0]) 
+					print("    " + desc)
 				
-				print("")
 
 			elif words[0] == 'place':
 				# place loot command 
@@ -856,7 +864,7 @@ class Dungeon:
 							print("{} has health {} now.".format(monster_name,monster_health))
 
 						## defend: protect yourself against monster attack with defense 
-						damage_suffered = monster_atk - .5*curr_def - .2*curr_exp
+						damage_suffered = monster_atk + .5*curr_def + .2*curr_exp
 						print("{} attacks you, dealing {} damage".format(monster_name,damage_suffered)) 
 						curr_health = curr_health - damage_suffered
 						if curr_health <= 0:
@@ -973,9 +981,7 @@ class Dungeon:
 	# describe this room and its exits
 	def doLook(self,force_florid):
 		# We show the florid description only the first time we visit
-		# a room, or if someone types "look" explicitly (so will
-		# probably want a force_florid optional parameter to this function) 
-
+		# a room, or if someone types "look" explicitly
 		if force_florid == 0:
 			## Determine if we've already visited this room or not. 
 			self.c.execute("SELECT visit FROM rooms WHERE id={}".format(self.current_room))
@@ -1001,8 +1007,13 @@ class Dungeon:
 					pass
 				else:
 					self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-					monster = self.c.fetchone()[0] 
+					monster = str(self.c.fetchone()[0])
 					print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
+					## print description of monster 
+					query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					desc = str(self.c.fetchone()[0]) #self.c.execute(query) # "{}"
+					print("    " + desc)
 
 				## update visit integer mark this room as visited
 				self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
@@ -1027,14 +1038,42 @@ class Dungeon:
 					pass
 				else:
 					self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-					monster = self.c.fetchone()[0] 
-					print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
+					monster = str(self.c.fetchone()[0])  
+					print("There's a {} in this room (ง •̀_•́)ง".format(monster)) 
+					## print description of monster 
+					query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
+					self.c.execute(query)
+					desc = str(self.c.fetchone()[0]) #self.c.execute(query) # "{}"
+					print("    " + desc)
 
 
 		## Give the full-description since force-florid is switched on. 
 		else: 
 			self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
 			print(self.c.fetchone()[0])
+
+			## read off the available loot
+			self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
+			item = str(self.c.fetchone()[0]) 
+
+			if item != 'none':
+				print("This room contains a {}.".format(item)) 
+			else:
+				print("No items in this room.") 
+
+			# inform visitors of monsters, if any
+			self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+			if str(self.c.fetchone()) == 'None':
+				pass
+			else:
+				self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+				monster = str(self.c.fetchone()[0]) 
+				print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
+				## print description of monster 
+				query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
+				self.c.execute(query)
+				desc = str(self.c.fetchone()[0]) #self.c.execute(query) # "{}"
+				print("    " + desc)
 
 		## Present the available exits, if any 
 		self.c.execute("SELECT dir FROM exits WHERE from_room={}".format(self.current_room))
@@ -1157,6 +1196,8 @@ class Dungeon:
 			query = 'UPDATE stats SET health = ("{}")'.format(calc)
 			self.c.execute(query) 
 			print("Your health has increased by 80.")
+			#self.c.execute("SELECT health from stats")
+			#curr_health = int(self.c.fetchone()[0]) 
 
 		elif name == 'mushroom🍄':
 			calc = curr_health-10000
@@ -1385,7 +1426,11 @@ class Dungeon:
 
 		# orc
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('orc',500,'This creature wandered all the way from Middle-Earth just to try and kill you. How nice!',1000,300,300)
-		self.c.execute(query)
+		self.c.execute(query) 
+
+		# dinosaur
+		#query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('dinosaur-of-yore🦕',160,'Show this dinosaur there is a reason his species went extinct! Send him back to yore, o noble adventurer.',200,100,230)
+		#self.c.execute(query)
 
 		# plant
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('plant',40,'Show this plant the meaning of Darwinian selection. Survival of the fittest!!',50,0,30)
@@ -1564,7 +1609,7 @@ class Dungeon:
 		self.c.execute(query)
 
 		# umbrella🌂
-		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('umbrella🌂',600,'An umbrella; it is notoriously hard to open.',200,0,500)
+		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('umbrella🌂',600,'An umbrella; it is notoriously hard to open. And to close.',200,0,500)
 		self.c.execute(query)
 
 		# fire🔥
@@ -1586,7 +1631,6 @@ class Dungeon:
 		query = 'INSERT INTO item_desc (name, description) VALUES ("{}", "{}")'.format("plain-chest", "Well it is better than nothing. Right?!")
 		self.c.execute(query)
 
-		
 		# golden-chest
 		query = 'INSERT INTO item_desc (name, description) VALUES ("{}", "{}")'.format("golden-chest","The best chest there is.")
 		self.c.execute(query)
@@ -1816,7 +1860,7 @@ class Dungeon:
 		self.c.execute(query)
 
 		# dagger🗡
-		query = 'INSERT INTO item_desc (name,description) VALUES ("{}", "{}")'.format('dagger🗡','Great for stabbing friends (or political enemies) in the back. Et tu, Brutes?')
+		query = 'INSERT INTO item_desc (name,description) VALUES ("{}", "{}")'.format('dagger🗡','Great for stabbing friends (or political enemies) in the back. Et tu, Brute?')
 		self.c.execute(query)
 
 		# spear
