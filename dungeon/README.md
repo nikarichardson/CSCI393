@@ -53,7 +53,6 @@ To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | py
 
 All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>.
 
-<b>Warning</b>: Some objects still show up as NoneType. Currently debugging that still! 
 ## Remaining Implementation/Tweaks 
 - [ ] implement flee
 - [ ] unequipping weapons currently unsupported
@@ -64,6 +63,7 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 - [x] starting player stats too high based on monster objects chosen for Erebor current rooms
 > Lowered starter player stats to <i>attack_power</i>: 150 and <i>defense_power</i>: 150. 
 
+`Danger warning:` Some objects still produce Noneype error. Related to EMOJIs. Currently in process of being fixed!!
 --------
 
 Here is an example session:
