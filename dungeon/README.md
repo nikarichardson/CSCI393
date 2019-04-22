@@ -56,13 +56,15 @@ To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | py
 
 All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>.
 
+<b>Warning</b>: Some objects still show up as NoneType. Currently debugging that still! 
 ## Remaining Implementation/Tweaks 
 - [ ] implement flee
 - [ ] unequipping weapons currently unsupported
 - [ ] set `force_florid` back on after running build Erebor code
-- [ ] apprentice object bug? 
+- [ ] apprentice & the-great-mage bug? 
 - [ ] get rid of multiple printing for `spawn` monster objects
-- [ ] starting player stats too high based on monster objects chosen for Erebor current rooms
+- [x] starting player stats too high based on monster objects chosen for Erebor current rooms
+> Lowered starter player stats to 150, 150,150. 
 
 --------
 
@@ -265,8 +267,8 @@ Has name of item, description, and use value.
 <br>- `cherry🍒:` <i>Hello, daddy. Hello, mom. I am your ch-ch-ch-cherry bomb!</i> Increases health by <b>350</b>. 
 <br>- `strawberry🍓:` <i>If you keep my secret I will give you this strawberry.</i> Increases health by <b>50</b>. 
 <br>- `kiwi🥝:` <i>Kiwi would be a cute name for a child, right? Anyway, this is not the child Kiwi. It is the fruit kiwi.</i> Increases health by <b>75</b>. 
-<br>- `corn 🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.
-<br>- `popcorn 🍿:` <i>Do you think it is a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters?</i>
+<br>- `corn🌽:` <i>Some corn. Not much to say about corn, really.</i> Increases health by <b>30</b>.
+<br>- `popcorn🍿:` <i>Do you think it is a good idea to have some popcorn and watch a movie in the middle of a dungeon rife with monsters?</i>
 <br>- `chinese-takeout🥡:` <i>Nothing says I-hate-cooking as much as some Chinese takeout.</i> Decreases health by <b>250</b>. Increases attack power by <b>300</b>. 
 <br>- `salt-and-straw-icecream 🍨:` <i>Good thing you got this somehow. The lines are too long; there is no point in battling for ice cream when you have monsters to battle.</i> Increases health by <b>1000</b>. 
 <br>- `grandmas-pie🥧:` <i>Smells good! Eat an entire pie by yourself. You are an adult, after all. </i> Increases health by <b>500</b>.
@@ -322,8 +324,8 @@ Has name of monster, health, description, attack power, defense power, & exp gai
 <br>- `pineapple🍍:`  <b>Health</b> 800. <i>You have encountered a pineapple. Yellow, large, and let us be honest: it is super spikey. A fearsome opponent. </i> <b>Attack power</b> 200. <b>Defense power</b> 100. <b>Exp</b> +260. 
 <br>- `kleptomaniac-squirrel-of-doom🐿:`  <b>Health</b> 1000. <i>You have encountered the squirrel of doom. I hate to be the bearer of bad news, but this is the end for you, truly. Unless you happen to have an acorn in your inventory, the inevitable is coming. Let us just say there is 
 a *reason* this little guy is called the kleptomaniac squirrel of doom. </i> <b>Attack power</b> 100. <b>Defense power</b> 10000000000. <b>Exp</b> +90. 
-<br>- `the-great-mage 🧙‍:`  <b>Health</b> 10000. <i>Best to flee. A learned mage is a fearsome contender.</i> <b>Attack power</b> 1000. <b>Defense power</b> 1000. <b>Exp</b> +400. 
-<br>- `apprentice 🧙‍:`  <b>Health</b> 5000. <i>He wants to be more like the great mage and less like himself.</i> <b>Attack power</b> 400. <b>Defense power</b> 300. <b>Exp</b> +150. 
+<br>- `the-great-mage:`  <b>Health</b> 10000. <i>Best to flee. A learned mage is a fearsome contender.</i> <b>Attack power</b> 1000. <b>Defense power</b> 1000. <b>Exp</b> +400. 
+<br>- `apprentice:`  <b>Health</b> 5000. <i>He wants to be more like the great mage and less like himself.</i> <b>Attack power</b> 400. <b>Defense power</b> 300. <b>Exp</b> +150. 
 <br>- `merman🧜:` <b>Health</b> 300. <i>Maybe we can distract him with a mermaid?</i> <b>Attack power</b> 800. <b>Defense power</b> 140. <b>Exp</b> +270. 
 <br>- `elf🧝:`  <b>Health</b> 400. <i>Looks like Orlando Bloom.</i> <b>Attack power</b> 400. <b>Defense power</b> 200. <b>Exp</b> +300. 
 <br>- `unicorn🦄:`  <b>Health</b> 500. <i>She is shiny, she is pink, and she is going to knock you down with that horn unless you pull yourself out of your stupor and fight.</i> <b>Attack power</b> 800. <b>Defense power</b> 200. <b>Exp</b> +100. 
