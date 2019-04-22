@@ -652,11 +652,7 @@ class Dungeon:
 					self.c.execute("SELECT exp FROM mobs WHERE room_id={}".format(self.current_room))
 					monster_exp = int(self.c.fetchone()[0])
 
-					if state == 'dead🤯':
-						print("You are dead! Game over.")
-						break
-
-					elif state == 'knockout😖':
+					if state == 'knockout😖':
 						## Knockout decreases attack power by 200  
 						calc = curr_atk-200
 						query = 'UPDATE stats SET atk_power = ("{}")'.format(calc)
@@ -920,7 +916,8 @@ class Dungeon:
 						# New state is dead🤯
 						query = 'UPDATE stats SET state = ("{}")'.format("dead🤯")
 						self.c.execute(query) 
-						print("Your new state is dead🤯.")
+						print("Your new state is dead🤯. Game over!")
+						break; 
 
 					# set stats back to normal from boost (weapon;armor;state)
 					if my_weapon == 'pick-axe':
