@@ -16,34 +16,34 @@ class Dungeon:
 	dungeon_map = "dungeon.map"
 	prompt = '> '
    
-	## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant 🐜 ,bat 🦇,slime, snake🐍,
+	## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,
 	## werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
-	## dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf 🐺, pineapple 🍍,
-	## kleptomaniac-squirrel-of-doom 🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜 elf 🧝, unicorn 🦄
-	## owl 🦉, whale 🐳, dolphin 🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
-	## zombie🧟, monarch-butterfly 🦋, evil-shrimp 🦐, alien 🛸, time ⏱, bad-weather ⛈, god-of-north-wind 🌬, umbrella 🌂, fire 🔥
+	## dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf🐺, pineapple🍍,
+	## kleptomaniac-squirrel-of-doom 🐿, apprentice 🧙‍♀️, merman🧜, elf🧝, unicorn🦄
+	## owl🦉, whale🐳, dolphin 🐬, magical-fish-out-of-water🐟, blowfish🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
+	## zombie🧟, monarch-butterfly🦋, evil-shrimp🦐, alien🛸, time⏱, bad-weather⛈, god-of-north-wind🌬, umbrella🌂, fire 🔥
 	## jack-o-lantern 🎃
 
 	## LOOT / ITEMS : plain-chest, golden-chest, steel-chest, mini-chest, mana-crystal, pick-axe, potion, blue-book 📘, 
-	## green-book 📗, orange-book 📙, tome 📖, ring, shield, crystal, crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, 
-	## ISS 🛰 (the international space station), tent ⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, 
-	## mushroom 🍄, tulip 🌷, beer 🥃, candle 🕯, bed 🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, 
-	## watermelon 🍉, grapes 🍇, peach 🍑, cherry 🍒, strawberry 🍓, kiwi 🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡,
-	## salt-and-straw-icecream 🍨, grandma's-pie 🥧, honey 🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍,
-	## volcanic-mountain 🌋, paradise-island 🏝, Athens 🏛 , the-american-dream 🏠, the-Federal-Reserve 🏦, hospital 🏥, 
-	## statue-of-liberty 🗽, money-bag 💰 
+	## green-book📗, orange-book📙, tome📖, ring, shield, crystal, crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, 
+	## ISS🛰 (the international space station), tent⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, 
+	## mushroom🍄, tulip 🌷, beer🥃, candle🕯, bed🛌, revival-dove🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, 
+	## watermelon🍉, grapes🍇, peach🍑, cherry🍒, strawberry🍓, kiwi🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡,
+	## salt-and-straw-icecream🍨, grandma's-pie🥧, honey🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍,
+	## volcanic-mountain🌋, paradise-island🏝, Athens🏛, the-american-dream🏠, the-Federal-Reserve🏦, hospital🏥, 
+	## statue-of-liberty🗽, money-bag💰 
 
-	## WEAPONS : sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨, wand 
+	## WEAPONS : sword,pick-axe,bow 🏹,dagger🗡,spear,claw,crossbow, hammer 🔨, wand 
 
-	## GUILDS:  Guild-of-Mages, Guild-of-The-Dark-Arts 👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
-	## Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions 🏆  
+	## GUILDS:  Guild-of-Mages, Guild-of-The-Dark-Arts👾, Guild-of-Chronic-Procrastinators, Guild-of-the-Learned, 
+	## Guild-of-the-Ancients (a *secret* guild), Guild-of-Champions🏆  
 
 	## CLASSES : hero, warrior, mage, priest, scholar
 
 	## SKILLS : attack, guard, double-attack,triple-attack,heal
 
-	## STATES : knockout 😖, rage 😡, confusion 😖, fear 😱, asleep 😴, immortal 😎, blind 😵, normal, dead 🤯
-	## extremely-intellectual🧐, unbearably-cool 🤠, sick 🤒, cat 😼, not-ready-for-adult-life 🧖‍♀️, snail 🐌, on-spring-break 🍹
+	## STATES : knockout😖, rage😡, confusion 😖, fear😱, asleep😴, immortal😎, blind😵, normal, dead🤯
+	## extremely-intellectual🧐, unbearably-cool🤠, sick🤒, cat😼, not-ready-for-adult-life🧖‍♀️, snail🐌, on-spring-break🍹
 
 	def repl(self):
 		cmd = ''
@@ -259,9 +259,8 @@ class Dungeon:
 						yes_crystal = True 
 
 				if yes_crystal == True or my_status == "super":
-					# to-do: only players with Monster Crystal can spawn a monster 
+					# only players with a crystal can spawn a monster 
 					# spawn a monster object
-					print("You can spawn the following monster objects: minotaur, orc, plant, rat, ogre, scorpion, skeleton, slime, snake, werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost, fairy, dragon.")
 					my_monster = str(input("Type the name of a monster object: "))
 
 					## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
@@ -1573,8 +1572,8 @@ class Dungeon:
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('kleptomaniac-squirrel-of-doom🐿',1000,'You have encountered the squirrel of doom. I hate to be the bearer of bad news, but this is the end for you, truly. Unless you happen to have an acorn in your inventory, the inevitable is coming. Let us just say there is a reason this little guy is called the kleptomaniac squirrel of doom.',100,10000000000,90)
 		self.c.execute(query)
 
-		# the-great-mage🧙‍ 
-		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('the-great-mage🧙‍',10000,'Best to flee. A learned mage is a fearsome contender.',1000,1000,40)
+		# the-great-mage
+		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('the-great-mage',10000,'Best to flee. A learned mage is a fearsome contender.',1000,1000,40)
 		self.c.execute(query)
 
 		# apprentice🧙‍
