@@ -64,7 +64,7 @@ print("s") # back inside water room
 print("dig s n | library | A library? In the middle of a dungeon? How excellent, how unlikely! | tome") 
 print("s") # inside library 
 print("spawn")
-print("the-great-mage🧙‍♂️")
+print("the-great-mage")
 print("dig s n | circus room | It's a circus! Too bad it looks like the troupe is full. 🎪 | revival-dove🕊")
 print("s") # inside circus room
 print("spawn")
