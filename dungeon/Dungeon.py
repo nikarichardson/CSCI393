@@ -1948,7 +1948,7 @@ class Dungeon:
 			self.c.execute("CREATE TABLE exits (from_room INTEGER, to_room INTEGER, dir TEXT)")
 			# table for stats 
 			self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atk_power INTEGER,def_power INTEGER,exp INTEGER,guild TEXT, gold INTEGER,status TEXT)")
-			self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',350,350,0,'none',50,'normal')")
+			self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',100,100,0,'none',50,'normal')")
 
 			# table for loot items 
 			self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
