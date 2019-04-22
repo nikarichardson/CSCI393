@@ -2,9 +2,7 @@ SQLite Dungeon
 ==============
 <img src="https://66.media.tumblr.com/d471e4f3dee7aca7d07468ae89225edb/tumblr_ppnk1hKli51tk06jno1_540.jpg" align="right"> 
 Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon</a> code from Spring 2019 Operating systems. 
-Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map. 
-
-This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. Users with a shovel in their inventory can <i>dig</i>  rooms.  There are <b>6</b> Guilds, <b>16</b> states, <b>6</b> classes,<b>5</b> skills, <b>40+</b> monsters and <b>50+</b> items. 
+Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map.  This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. You can <i>purchase</i> stats upgrades with gold, <i>equip</i> yourself with weapons and armors, <i>join</i> a guild for state and class changes and item bonuses. Users with a shovel in their inventory can <i>dig</i> rooms. Users with a <i>crystal</i> can spawn monsters.  There are <b>6</b> Guilds, <b>16</b> states, <b>6</b> classes,<b>5</b> skills, <b>40+</b> monsters and <b>50+</b> items. 
 Choosing a skill provides a temporary boost to your stats during the battle, and this boost is increased by 5% for every experience (exp) point you have. Similarly, the weapons you choose to equip provide a boost to your character. 
 
 `Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
@@ -41,8 +39,7 @@ direction, which can be any single word, but should be something that
 sounds like a direction (e.g., north, south, up, down, northeast,
 etc.). Exits are uni-directional.
 
-A player has a collection of stats: a weapon, an armor item of choice, a health parameter (mana),a state, and a class. If the player
-loses all her mana she will not be able to move around the dungeon anymore. The default class is `hero`. You can only change your class
+A player has a collection of stats: a weapon, an armor item of choice, a health parameter (mana),a state, and a class. If the player loses all her mana she will not be able to move around the dungeon anymore. The default class is `hero`. You can only change your class
 by finding certain items. Note that when <b>placing</b> an item and typing the name of the item in your inventory as input you must include the entire name of the item, which often includes an emoji with no spaces. Be precise and the code will work just fine! 
 
 Combat is simple: the player has an *attack-power* (ATP) level and a *defend-power* (DEF) level. You can increase either one through combat experience or by gaining items in the rooms.  
@@ -62,9 +59,10 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 - [ ] unequipping weapons currently unsupported
 - [ ] set `force_florid` back on after running build Erebor code
 - [ ] apprentice & the-great-mage bug? 
+- [ ] dead state bug 
 - [ ] get rid of multiple printing for `spawn` monster objects
 - [x] starting player stats too high based on monster objects chosen for Erebor current rooms
-> Lowered starter player stats to 150, 150,150. 
+> Lowered starter player stats to <i>attack_power</i>: 150 and <i>defense_power</i>: 150. 
 
 --------
 
