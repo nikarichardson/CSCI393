@@ -71,67 +71,74 @@ class Dungeon:
 
 			# purchase stat upgrades
 			elif words[0] == 'purchase':
-				# get current amount of gold  
-				self.c.execute("SELECT gold from stats") 
-				my_gold = self.c.fetchone()[0] 
-				self.c.execute("SELECT health from stats")
-				curr_health = int(self.c.fetchone()[0]) 
-				self.c.execute("SELECT atk_power from stats")
-				curr_atk = int(self.c.fetchone()[0]) 
-				self.c.execute("SELECT def_power from stats")
-				curr_def = int(self.c.fetchone()[0]) 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-				print("You currently have {} in gold.".format(my_gold)) 
-				print("What stat would you like to upgrade?")  
-				answer = int(input("Choose (1) health, (2) atk_power, (3) def_power: "))
-				if answer == 1:
-					print("It costs 1 piece of gold to upgrade your health by 1.")
-					gold_to_spend = int(input("Type how much gold you would like to spend to increase your health: "))
-					if gold_to_spend > my_gold:
-						print("You can't afford that stat increase.")
-					else: 
-						query = 'UPDATE stats SET health = ("{}")'.format(curr_health+gold_to_spend)
-						self.c.execute(query)
-						print("You've increased your health power by {}".format(gold_to_spend)) 
+				if state == 'dead🤯':
+					print("Dead🤯 people can't purchase stat upgrades!")
+					self.callEnd() 
+				else: 
+					# get current amount of gold  
+					self.c.execute("SELECT gold from stats") 
+					my_gold = self.c.fetchone()[0] 
+					self.c.execute("SELECT health from stats")
+					curr_health = int(self.c.fetchone()[0]) 
+					self.c.execute("SELECT atk_power from stats")
+					curr_atk = int(self.c.fetchone()[0]) 
+					self.c.execute("SELECT def_power from stats")
+					curr_def = int(self.c.fetchone()[0]) 
 
-						# update your gold stat
-						calc = my_gold-gold_to_spend
-						query = 'UPDATE stats SET gold = ("{}")'.format(calc)
-						self.c.execute(query) 
+					print("You currently have {} in gold.".format(my_gold)) 
+					print("What stat would you like to upgrade?")  
+					answer = int(input("Choose (1) health, (2) atk_power, (3) def_power: "))
+					if answer == 1:
+						print("It costs 1 piece of gold to upgrade your health by 1.")
+						gold_to_spend = int(input("Type how much gold you would like to spend to increase your health: "))
+						if gold_to_spend > my_gold:
+							print("You can't afford that stat increase.")
+						else: 
+							query = 'UPDATE stats SET health = ("{}")'.format(curr_health+gold_to_spend)
+							self.c.execute(query)
+							print("You've increased your health power by {}".format(gold_to_spend)) 
+
+							# update your gold stat
+							calc = my_gold-gold_to_spend
+							query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+							self.c.execute(query) 
 
 
-				elif answer == 2:
-					print("It costs 5 piece of gold to upgrade your attack power by 1.")
-					gold_to_spend = int(input("Type how much gold you would like to spend to increase your attack power: "))
-					if gold_to_spend > my_gold:
-						print("You can't afford that stat increase.")
-					else: 
-						stat_add = gold_to_spend/5 
-						query = 'UPDATE stats SET atk_power = ("{}")'.format(curr_atk+stat_add)
-						self.c.execute(query) 
-						print("You've increased your attack power by {}".format(stat_add))
+					elif answer == 2:
+						print("It costs 5 piece of gold to upgrade your attack power by 1.")
+						gold_to_spend = int(input("Type how much gold you would like to spend to increase your attack power: "))
+						if gold_to_spend > my_gold:
+							print("You can't afford that stat increase.")
+						else: 
+							stat_add = gold_to_spend/5 
+							query = 'UPDATE stats SET atk_power = ("{}")'.format(curr_atk+stat_add)
+							self.c.execute(query) 
+							print("You've increased your attack power by {}".format(stat_add))
 
-						# update your gold stat
-						calc = my_gold-gold_to_spend
-						query = 'UPDATE stats SET gold = ("{}")'.format(calc)
-						self.c.execute(query) 
+							# update your gold stat
+							calc = my_gold-gold_to_spend
+							query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+							self.c.execute(query) 
 
-				elif answer == 3: 
-					print("It costs 5 piece of gold to upgrade your defense power by 1.")
-					gold_to_spend = int(input("Type how much gold you would like to spend to increase your defense power: "))
-					if gold_to_spend > my_gold:
-						print("You can't afford that stat increase.")
-					else: 
-						stat_add = gold_to_spend/5 
-						calc = curr_def + stat_add
-						query = 'UPDATE stats SET def_power = ("{}")'.format(calc)
-						self.c.execute(query) 
-						print("You've increased your defense power by {}".format(stat_add))
+					elif answer == 3: 
+						print("It costs 5 piece of gold to upgrade your defense power by 1.")
+						gold_to_spend = int(input("Type how much gold you would like to spend to increase your defense power: "))
+						if gold_to_spend > my_gold:
+							print("You can't afford that stat increase.")
+						else: 
+							stat_add = gold_to_spend/5 
+							calc = curr_def + stat_add
+							query = 'UPDATE stats SET def_power = ("{}")'.format(calc)
+							self.c.execute(query) 
+							print("You've increased your defense power by {}".format(stat_add))
 
-						# update your gold stat
-						calc = my_gold-gold_to_spend
-						query = 'UPDATE stats SET gold = ("{}")'.format(calc)
-						self.c.execute(query) 
+							# update your gold stat
+							calc = my_gold-gold_to_spend
+							query = 'UPDATE stats SET gold = ("{}")'.format(calc)
+							self.c.execute(query) 
 
 
 			# destroy the dungeon and start over
@@ -158,150 +165,197 @@ class Dungeon:
 
 			elif words[0] == 'go':
 				# move to an adjacent room.
-				if len(words) < 2:
-					print("usage: go <direction>")
-					continue
-				self.c.execute("SELECT to_room FROM exits WHERE from_room = {} AND dir='{}'".format(self.current_room, words[1]))
-				new_room_p = self.c.fetchone()
-				if (new_room_p == None):
-					print("You can't go that way!! ಥ_ಥ")
-				else:
-					self.current_room = new_room_p[0]
-					self.doLook(0)
+				## state 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
+
+				if state == 'dead🤯':
+					print("You can't move anywhere—you're dead🤯!")
+					self.callEnd() 
+				else: 
+
+					if len(words) < 2:
+						print("usage: go <direction>")
+						continue
+					self.c.execute("SELECT to_room FROM exits WHERE from_room = {} AND dir='{}'".format(self.current_room, words[1]))
+					new_room_p = self.c.fetchone()
+					if (new_room_p == None):
+						print("You can't go that way!! ಥ_ಥ")
+					else:
+						self.current_room = new_room_p[0]
+						self.doLook(0)
 
 			elif words[0] == 'e' or words[0] == 'w' or words[0] == 'n' or words[0] == 's': 
 				# move to an adjacent room.
 				# we allow someone to type the direction of an
 				# adjacent room without "go"
-				self.c.execute("SELECT to_room FROM exits WHERE from_room = {} AND dir='{}'".format(self.current_room, words[0]))
-				new_room_p = self.c.fetchone()
-				if (new_room_p == None):
-					print("You can't go that way!! ಥ_ಥ")
-				else:
-					self.current_room = new_room_p[0]
-					self.doLook(0)
+				## state 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
+
+				if state == 'dead🤯':
+					print("You can't move anywhere—you're dead🤯!")
+					self.callEnd() 
+				else: 
+
+					self.c.execute("SELECT to_room FROM exits WHERE from_room = {} AND dir='{}'".format(self.current_room, words[0]))
+					new_room_p = self.c.fetchone()
+					if (new_room_p == None):
+						print("You can't go that way!! ಥ_ಥ")
+					else:
+						self.current_room = new_room_p[0]
+						self.doLook(0)
 
 			elif words[0] == 'use':
 				# make sure we have the first, firstly 
-				item = str(input("Choose an item from your inventory: "))
-				# update the room with the chosen loot 
-				self.c.execute("SELECT name FROM inventory") 
-				has_item = False 
+				## state 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-				for x in self.c.fetchall():
-					if str(x[0]) == item: 
-						has_item = True 
-
-				if has_item == False:
-					print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(item))
-					continue 
+				if state == 'dead🤯':
+					print("Dead🤯 people can't use items!")
+					self.callEnd() 
 				else: 
-					## user has the item 
-					## call getItem function 
-					self.useItem(item) 
+
+					item = str(input("Choose an item from your inventory: "))
+					# update the room with the chosen loot 
+					self.c.execute("SELECT name FROM inventory") 
+					has_item = False 
+
+					for x in self.c.fetchall():
+						if str(x[0]) == item: 
+							has_item = True 
+
+					if has_item == False:
+						print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(item))
+						continue 
+					else: 
+						## user has the item 
+						## call getItem function 
+						self.useItem(item) 
 
 			elif words[0] == 'dig':
 				# only users with a shovel in their inventory can dig rooms
-				yes_shovel = False
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-				# get current user status 
-				self.c.execute("SELECT status from stats") 
-				my_status = self.c.fetchone()[0] 
+				if state == 'dead🤯':
+					print("Dead🤯 people can't dig rooms!")
+					self.callEnd() 
+				else: 
+					yes_shovel = False
 
-				# check inventory for a shovel 
-				self.c.execute("SELECT name FROM inventory") 
+					# get current user status 
+					self.c.execute("SELECT status from stats") 
+					my_status = self.c.fetchone()[0] 
 
-				for item in self.c.fetchall():
-					if item[0] == 'shovel': 
-						yes_shovel = True 
+					# check inventory for a shovel 
+					self.c.execute("SELECT name FROM inventory") 
 
-				if yes_shovel == True or my_status == "super":  
-					descs = line.split("|")
-					words = descs[0].split()
-					if len(words) < 3 or len(descs) != 4:
-						print("usage: dig <direction> <reverse> | <brief description of new room> | <florid description of new room> | <loot item>")
-						continue
-					forward = words[1]
-					reverse = words[2]
-					brief = descs[1].strip() # strip removes whitespace around |'s
-					florid = descs[2].strip()
-					loot = descs[3].strip()
-					# now that we have the directions and descriptions,
-					# add the new room, and stitch it in to the dungeon
-					# via its exits
-					query = 'INSERT INTO rooms (short_desc, florid_desc,visit,loot) VALUES ("{}", "{}","{}","{}")'.format(brief,florid,0,loot)
-					# print (query)
-					self.c.execute(query)
-					new_room_id = self.c.lastrowid
-					# now add tunnels in both directions
-					query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(self.current_room, new_room_id, forward)
-					self.c.execute(query)
-					query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, self.current_room, reverse)
-					self.c.execute(query)
+					for item in self.c.fetchall():
+						if item[0] == 'shovel': 
+							yes_shovel = True 
 
-				else:
-					print("Sorry, only users with a shovel in their inventory can dig rooms.")
+					if yes_shovel == True or my_status == "super":  
+						descs = line.split("|")
+						words = descs[0].split()
+						if len(words) < 3 or len(descs) != 4:
+							print("usage: dig <direction> <reverse> | <brief description of new room> | <florid description of new room> | <loot item>")
+							continue
+						forward = words[1]
+						reverse = words[2]
+						brief = descs[1].strip() # strip removes whitespace around |'s
+						florid = descs[2].strip()
+						loot = descs[3].strip()
+						# now that we have the directions and descriptions,
+						# add the new room, and stitch it in to the dungeon
+						# via its exits
+						query = 'INSERT INTO rooms (short_desc, florid_desc,visit,loot) VALUES ("{}", "{}","{}","{}")'.format(brief,florid,0,loot)
+						# print (query)
+						self.c.execute(query)
+						new_room_id = self.c.lastrowid
+						# now add tunnels in both directions
+						query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(self.current_room, new_room_id, forward)
+						self.c.execute(query)
+						query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, self.current_room, reverse)
+						self.c.execute(query)
+
+					else:
+						print("Sorry, only users with a shovel in their inventory can dig rooms.")
 
 
 			elif words[0] == 'spawn':
-				# only users with a shovel in their inventory can dig rooms
-				yes_crystal = False
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
+
+				if state == 'dead🤯':
+					print("Dead🤯 people can't spawn monsters!")
+					self.callEnd() 
+				else: 
+					# only users with a shovel in their inventory can dig rooms
+					yes_crystal = False
  
-				# get current user status 
-				self.c.execute("SELECT status from stats") 
-				my_status = self.c.fetchone()[0] 
+					# get current user status 
+					self.c.execute("SELECT status from stats") 
+					my_status = self.c.fetchone()[0] 
 
-				# check inventory for a shovel 
-				self.c.execute("SELECT name FROM inventory") 
+					# check inventory for a shovel 
+					self.c.execute("SELECT name FROM inventory") 
 
-				for item in self.c.fetchall():
-					if item[0] == 'crystal': 
-						yes_crystal = True 
+					for item in self.c.fetchall():
+						if item[0] == 'crystal': 
+							yes_crystal = True 
 
-				if yes_crystal == True or my_status == "super":
-					# only players with a crystal can spawn a monster 
-					# spawn a monster object
-					my_monster = str(input("Type the name of a monster object: "))
+					if yes_crystal == True or my_status == "super":
+						# only players with a crystal can spawn a monster 
+						# spawn a monster object
+						my_monster = str(input("Type the name of a monster object: "))
 
-					## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
+						## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
 
-					## now we need to update the table of monster objects and 'place' the monster in the room 
-					query = 'INSERT INTO mobs (name,health,atk_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
-					self.c.execute(query)
+						## now we need to update the table of monster objects and 'place' the monster in the room 
+						query = 'INSERT INTO mobs (name,health,atk_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
+						self.c.execute(query)
 			
-					# Debugging stuff here ...
-					self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-					monster = self.c.fetchone()[0] 
-					print("You've spawned a {}.".format(monster))
+						# Debugging stuff here ...
+						self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+						monster = self.c.fetchone()[0] 
+						print("You've spawned a {}.".format(monster))
 
-				else:
-					if (never_before == True):
-						print("I know, I know. It sounds like fun to just spawn a monster out of nothing. But there are limitations in life. I'd like to snap my hands and have all my wishes come true.")
-						print("This is the adult world, and in order to spawn a monster you need a crystal. So: go get a crystal, and then try again!")
-						never_before = False
 					else:
-						print("Come back when you have a monster crystal!!")
+						if (never_before == True):
+							print("I know, I know. It sounds like fun to just spawn a monster out of nothing. But there are limitations in life. I'd like to snap my hands and have all my wishes come true.")
+							print("This is the adult world, and in order to spawn a monster you need a crystal. So: go get a crystal, and then try again!")
+							never_before = False
+						else:
+							print("Come back when you have a monster crystal!!")
 
 			 
 
 			elif words[0] == 'take':
 				# we only allow one object per room 
 				# get the name of the loot available in this room 
-				self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
-				item = self.c.fetchone()[0] 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-				print("Are you sure you want to take {}?".format(str(item)))  
-				answer = int(input("Press 1 to confirm: "))
+				if state == 'dead🤯':
+					print("Dead🤯 people can't take items!")
+					self.callEnd() 
+				else: 
+					self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
+					item = self.c.fetchone()[0] 
+
+					print("Are you sure you want to take {}?".format(str(item)))  
+					answer = int(input("Press 1 to confirm: "))
 		
-				if answer == 1:
-					# insert item into inventory 
-					query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
-					self.c.execute(query) 
+					if answer == 1:
+						# insert item into inventory 
+						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(item)
+						self.c.execute(query) 
 
-					print("You took {}!".format(item))
-					# remove loot from the room (update table)
-					self.c.execute("UPDATE rooms SET loot = 'none' WHERE id={}".format(self.current_room))
-				continue 
+						print("You took {}!".format(item))
+						# remove loot from the room (update table)
+						self.c.execute("UPDATE rooms SET loot = 'none' WHERE id={}".format(self.current_room))
 
 				
 			elif words[0] == 'view':
@@ -361,46 +415,53 @@ class Dungeon:
 				continue
 
 			elif words[0] == 'equip':
-				answer = int(input("Would you to like to equip yourself with (1) armor or (2) weapon? "))
-				if answer == 1:
-					# EQUIP ARMOR 
-					armor = str(input("Choose armor to equip from your inventory: "))
-					self.c.execute("SELECT name FROM inventory") 
-					has_armor = False 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-					for x in self.c.fetchall():
-						if str(x[0]) == armor: 
-							has_armor = True 
+				if state == 'dead🤯':
+					print("Dead🤯 people can't equip armor!")
+					self.callEnd() 
+				else: 
+					answer = int(input("Would you to like to equip yourself with (1) armor or (2) weapon? "))
+					if answer == 1:
+						# EQUIP ARMOR 
+						armor = str(input("Choose armor to equip from your inventory: "))
+						self.c.execute("SELECT name FROM inventory") 
+						has_armor = False 
 
-					if has_armor == False:
-						print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(armor))
-						continue 
-					else: 
-						query = 'UPDATE stats SET armor = ("{}")'.format(armor)
-						self.c.execute(query) 
-						print("You've equipped yourself with {}!".format(armor))
-						query = 'DELETE FROM inventory WHERE name=("{}")'.format(armor)
-						self.c.execute(query)
+						for x in self.c.fetchall():
+							if str(x[0]) == armor: 
+								has_armor = True 
 
-				elif answer == 2: 
-					# EQUIP WEAPON 
-					weapon = str(input("Choose a weapon to equip from your inventory: "))
-					self.c.execute("SELECT name FROM inventory") 
-					has_weapon = False 
+						if has_armor == False:
+							print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(armor))
+							continue 
+						else: 
+							query = 'UPDATE stats SET armor = ("{}")'.format(armor)
+							self.c.execute(query) 
+							print("You've equipped yourself with {}!".format(armor))
+							query = 'DELETE FROM inventory WHERE name=("{}")'.format(armor)
+							self.c.execute(query)
 
-					for x in self.c.fetchall():
-						if str(x[0]) == weapon: 
-							has_weapon = True 
+					elif answer == 2: 
+						# EQUIP WEAPON 
+						weapon = str(input("Choose a weapon to equip from your inventory: "))
+						self.c.execute("SELECT name FROM inventory") 
+						has_weapon = False 
 
-					if has_weapon == False:
-						print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(weapon))
-						continue 
-					else: 
-						query = 'UPDATE stats SET weapon = ("{}")'.format(weapon)
-						self.c.execute(query) 
-						print("You've equipped yourself with {}!".format(weapon))
-						query = 'DELETE FROM inventory WHERE name=("{}")'.format(weapon)
-						self.c.execute(query)
+						for x in self.c.fetchall():
+							if str(x[0]) == weapon: 
+								has_weapon = True 
+
+						if has_weapon == False:
+							print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(weapon))
+							continue 
+						else: 
+							query = 'UPDATE stats SET weapon = ("{}")'.format(weapon)
+							self.c.execute(query) 
+							print("You've equipped yourself with {}!".format(weapon))
+							query = 'DELETE FROM inventory WHERE name=("{}")'.format(weapon)
+							self.c.execute(query)
 		
 
 
@@ -412,206 +473,234 @@ class Dungeon:
 			elif words[0] == 'join': 
 				# join a guild for item bonuses 
 				# make sure you are not in a guild already
-				self.c.execute("SELECT guild from stats") 
-				if (self.c.fetchone()[0] != 'none'):
-					print("Sorry, but you are already in the ",end='')
-					self.c.execute("SELECT guild from stats") 
-					print("{}".format(self.c.fetchone()[0]))
-					print("You may only join one guild at a time.")
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
+
+				if state == 'dead🤯':
+					print("Pleh, dead🤯 people can't join guilds!")
+					self.callEnd() 
 				else: 
-					answer = int(input("Select a guild to join: Guild-of-Mages(0), Guild-of-The-Dark-Arts👾(1), Guild-of-Chronic-Procrastinators(2),Guild-of-the-Learned(3). "))  
-					if (answer == 0):
-						print("You have joined the Guild of Mages!")
-						print("As a welcome gift, you have received revival-dove🕊, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome👑.")
-						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Mages")
-						self.c.execute(query) 
+					self.c.execute("SELECT guild from stats") 
+					if (self.c.fetchone()[0] != 'none'):
+						print("Sorry, but you are already in the ",end='')
+						self.c.execute("SELECT guild from stats") 
+						print("{}".format(self.c.fetchone()[0]))
+						print("You may only join one guild at a time.")
+					else: 
+						answer = int(input("Select a guild to join: Guild-of-Mages(0), Guild-of-The-Dark-Arts👾(1), Guild-of-Chronic-Procrastinators(2),Guild-of-the-Learned(3). "))  
+						if (answer == 0):
+							print("You have joined the Guild of Mages!")
+							print("As a welcome gift, you have received revival-dove🕊, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome👑.")
+							query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Mages")
+							self.c.execute(query) 
 
-						# Welcome pack: revival-dove🕊, mini-chest, money-bag💰, plain-chest, golden-chest, steel-chest, crown-of-awesome👑.
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("revival-dove🕊")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("mini-chest")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("money-bag💰")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("plain-chest")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("golden-chest")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("steel-chest")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("crown-of-awesome👑")
-						self.c.execute(query) 
+							# Welcome pack: revival-dove🕊, mini-chest, money-bag💰, plain-chest, golden-chest, steel-chest, crown-of-awesome👑.
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("revival-dove🕊")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("mini-chest")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("money-bag💰")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("plain-chest")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("golden-chest")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("steel-chest")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("crown-of-awesome👑")
+							self.c.execute(query) 
 
-						# New class is `mage`.
-						query = 'UPDATE stats SET class = ("{}")'.format("mage")
-						self.c.execute(query) 
-						print("Your new class is mage.")
+							# New class is `mage`.
+							query = 'UPDATE stats SET class = ("{}")'.format("mage")
+							self.c.execute(query) 
+							print("Your new class is mage.")
 
-						# New state is `unbearably cool`. 
-						query = 'UPDATE stats SET state = ("{}")'.format("unbearably-cool🤠")
-						self.c.execute(query) 
-						print("Your new state is unbearably-cool🤠.")
-
-
-					elif (answer == 1):
-						print("You have joined the Guild of The Dark Arts👾!")
-						print("As a welcome gift, you have received wand, potion, crystal-ball🔮, and portal🌀. ")
-						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Dark-Arts👾")
-						self.c.execute(query) 
-
-						# Welcome pack has wand, potion, crystal-ball, and portal🌀. 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("wand")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("potion")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("crystal-ball🔮")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("portal🌀")
-						self.c.execute(query) 
-
-						# New class is `necromancer`.
-						query = 'UPDATE stats SET class = ("{}")'.format("nercomancer")
-						self.c.execute(query) 
-						print("Your new class is necromancer.")
-
-						# New state is `immortal`. 
-						query = 'UPDATE stats SET state = ("{}")'.format("immortal")
-						self.c.execute(query) 
-						print("Your new state is immortal.")
+							# New state is `unbearably cool`. 
+							query = 'UPDATE stats SET state = ("{}")'.format("unbearably-cool🤠")
+							self.c.execute(query) 
+							print("Your new state is unbearably-cool🤠.")
 
 
-					elif (answer == 2):
-						print("You have joined the Guild of Chronic Procrastinators!")
-						print("As a welcome gift, you have received tent⛺️, beer🥃, ramen🍜, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.")
-						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Chronic-Procrastinators")
-						self.c.execute(query) 
+						elif (answer == 1):
+							print("You have joined the Guild of The Dark Arts👾!")
+							print("As a welcome gift, you have received wand, potion, crystal-ball🔮, and portal🌀. ")
+							query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Dark-Arts👾")
+							self.c.execute(query) 
 
-						# Welcome pack has tent⛺️, beer🥃, ramen🍜, popcorn🍿, wine🍷, chinese-takeout🥡, salt-and-straw-icecream🍨, and bed🛌.
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("tent⛺️")
-						self.c.execute(query)
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("beer🥃")
-						self.c.execute(query)
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("ramen🍜")
-						self.c.execute(query)
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("popcorn🍿")
-						self.c.execute(query)
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("wine🍷")
-						self.c.execute(query)
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("chinese-takeout🥡")
-						self.c.execute(query)
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("salt-and-straw-icecream🍨")
-						self.c.execute(query)
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("bed🛌")
-						self.c.execute(query)
+							# Welcome pack has wand, potion, crystal-ball, and portal🌀. 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("wand")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("potion")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("crystal-ball🔮")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("portal🌀")
+							self.c.execute(query) 
 
-						# New state is `not-ready-for-adult-life🧖‍♀️`. 
-						query = 'UPDATE stats SET state = ("{}")'.format("not-ready-for-adult-life🧖‍♀️")
-						self.c.execute(query) 
-						print("Your new state is not-ready-for-adult-life🧖‍♀️.")
+							# New class is `necromancer`.
+							query = 'UPDATE stats SET class = ("{}")'.format("nercomancer")
+							self.c.execute(query) 
+							print("Your new class is necromancer.")
 
-						# New class is `scholar`.
-						query = 'UPDATE stats SET class = ("{}")'.format("warrior")
-						self.c.execute(query) 
-						print("Your new class is warrior.")
+							# New state is `immortal`. 
+							query = 'UPDATE stats SET state = ("{}")'.format("immortal")
+							self.c.execute(query) 
+							print("Your new state is immortal.")
 
 
-					elif (answer == 3):
-						print("You have joined the Guild of the Learned!")
-						print("As a welcome gift, you have received blue-book📘, green-book📗, orange-book📙, and tome📖.")
-						query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Learned")
-						self.c.execute(query) 
+						elif (answer == 2):
+							print("You have joined the Guild of Chronic Procrastinators!")
+							print("As a welcome gift, you have received tent⛺️, beer🥃, ramen🍜, popcorn, wine, chinese-takeout, salt-and-straw-icecream, and bed.")
+							query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Chronic-Procrastinators")
+							self.c.execute(query) 
 
-						# `Welcome pack has blue-book📘, green-book📗, orange-book📙, tome📖.
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("blue-book📘")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("green-book📗")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("orange-book📙")
-						self.c.execute(query) 
-						query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("tome📖")
-						self.c.execute(query) 
+							# Welcome pack has tent⛺️, beer🥃, ramen🍜, popcorn🍿, wine🍷, chinese-takeout🥡, salt-and-straw-icecream🍨, and bed🛌.
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("tent⛺️")
+							self.c.execute(query)
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("beer🥃")
+							self.c.execute(query)
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("ramen🍜")
+							self.c.execute(query)
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("popcorn🍿")
+							self.c.execute(query)
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("wine🍷")
+							self.c.execute(query)
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("chinese-takeout🥡")
+							self.c.execute(query)
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("salt-and-straw-icecream🍨")
+							self.c.execute(query)
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("bed🛌")
+							self.c.execute(query)
 
-						# New class is `scholar`.
-						query = 'UPDATE stats SET class = ("{}")'.format("scholar")
-						self.c.execute(query) 
-						print("Your new class is scholar.")
+							# New state is `not-ready-for-adult-life🧖‍♀️`. 
+							query = 'UPDATE stats SET state = ("{}")'.format("not-ready-for-adult-life🧖‍♀️")
+							self.c.execute(query) 
+							print("Your new state is not-ready-for-adult-life🧖‍♀️.")
 
-						# New state is extremely-intellectual🧐
-						query = 'UPDATE stats SET state = ("{}")'.format("extremely-intellectual🧐")
-						self.c.execute(query) 
-						print("Your new state is extremely-intellectual🧐.")
+							# New class is `scholar`.
+							query = 'UPDATE stats SET class = ("{}")'.format("warrior")
+							self.c.execute(query) 
+							print("Your new class is warrior.")
 
-					else:
-						print("That's not a valid guild number!")
-						continue
+
+						elif (answer == 3):
+							print("You have joined the Guild of the Learned!")
+							print("As a welcome gift, you have received blue-book📘, green-book📗, orange-book📙, and tome📖.")
+							query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-the-Learned")
+							self.c.execute(query) 
+
+							# `Welcome pack has blue-book📘, green-book📗, orange-book📙, tome📖.
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("blue-book📘")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("green-book📗")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("orange-book📙")
+							self.c.execute(query) 
+							query = 'INSERT INTO inventory (name) VALUES ("{}")'.format("tome📖")
+							self.c.execute(query) 
+
+							# New class is `scholar`.
+							query = 'UPDATE stats SET class = ("{}")'.format("scholar")
+							self.c.execute(query) 
+							print("Your new class is scholar.")
+
+							# New state is extremely-intellectual🧐
+							query = 'UPDATE stats SET state = ("{}")'.format("extremely-intellectual🧐")
+							self.c.execute(query) 
+							print("Your new state is extremely-intellectual🧐.")
+
+						else:
+							print("That's not a valid guild number!")
+							continue
 
 
 			elif words[0] == 'check':
 				# check inventory for object 
-				self.c.execute("SELECT name FROM inventory") 
-				count = 0
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-				print("You have in your inventory: ",end='') 
-
-				for item in self.c.fetchall():
-					print("{}  ".format(item[0]), end='')
-					count = count + 1 
-
-				if count == 0:
-					print("There's nothing in your inventory, you poor penniless pauper!", end='')
-					print("")
+				if state == 'dead🤯':
+					print("You are dead🤯— you don't have an inventory.")
+					self.callEnd() 
 				else: 
-					print("")
-					want = str(input("Type the name of the item you would like to see the description of: ")) 
-					## print description of item 
-					query = 'SELECT description FROM item_desc WHERE name = ("{}")'.format(want)
-					self.c.execute(query)
-					desc = str(self.c.fetchone()[0]) 
-					print("    " + desc)
+					self.c.execute("SELECT name FROM inventory") 
+					count = 0
+
+					print("You have in your inventory: ",end='') 
+
+					for item in self.c.fetchall():
+						print("{}  ".format(item[0]), end='')
+						count = count + 1 
+
+					if count == 0:
+						print("There's nothing in your inventory, you poor penniless pauper!", end='')
+						print("")
+					else: 
+						print("")
+						want = str(input("Type the name of the item you would like to see the description of: ")) 
+						## print description of item 
+						query = 'SELECT description FROM item_desc WHERE name = ("{}")'.format(want)
+						self.c.execute(query)
+						desc = str(self.c.fetchone()[0]) 
+						print("    " + desc)
 				
 
 			elif words[0] == 'place':
-				# place loot command 
-				item = str(input("Choose an item from your inventory: "))
-				# update the room with the chosen loot 
-				self.c.execute("SELECT name FROM inventory") 
-				has_item = False 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-				for x in self.c.fetchall():
-					if str(x[0]) == item: 
-						has_item = True 
-
-				if has_item == False:
-					print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(item))
-					continue 
+				if state == 'dead🤯':
+					print("Dead🤯 people can't place items!")
+					self.callEnd() 
 				else: 
-					query = 'UPDATE rooms SET loot = ("{}") WHERE id=("{}")'.format(item,self.current_room)
-					self.c.execute(query) 
-					print("You've placed {} in the room.".format(item))
+					# place loot command 
+					item = str(input("Choose an item from your inventory: "))
+					# update the room with the chosen loot 
+					self.c.execute("SELECT name FROM inventory") 
+					has_item = False 
+
+					for x in self.c.fetchall():
+						if str(x[0]) == item: 
+							has_item = True 
+
+					if has_item == False:
+						print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format(item))
+						continue 
+					else: 
+						query = 'UPDATE rooms SET loot = ("{}") WHERE id=("{}")'.format(item,self.current_room)
+						self.c.execute(query) 
+						print("You've placed {} in the room.".format(item))
 				
-					## remove this item from our inventory now 
-					query = 'DELETE FROM inventory WHERE name=("{}")'.format(item)
-					self.c.execute(query)
+						## remove this item from our inventory now 
+						query = 'DELETE FROM inventory WHERE name=("{}")'.format(item)
+						self.c.execute(query)
 
 			elif words[0] == 'teleport':
-				# teleport command 
-				self.c.execute("SELECT name FROM inventory") 
-				has_portal = False 
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
 
-				for x in self.c.fetchall():
-					if str(x[0]) == "portal🌀": 
-						has_portal = True 
+				if state == 'dead🤯':
+					print("Dead🤯 people can't teleport . . . except to the Underworld, maybe.")
+					self.callEnd() 
+				else: 
+					# teleport command 
+					self.c.execute("SELECT name FROM inventory") 
+					has_portal = False 
+
+					for x in self.c.fetchall():
+						if str(x[0]) == "portal🌀": 
+							has_portal = True 
 	
 
-				if has_portal == False:
-					print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format("portal🌀"))
-					continue 
-				else: 
-					room_id = int(input("Type in the room id of the room you want to teleport to: "))
-					#self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
-					self.current_room = room_id
-					#self.c.execute("SELECT id FROM rooms WHERE id={}".format(room_id))
-					#entrance_p = self.c.fetchone()
+					if has_portal == False:
+						print("You don't have a {} in your inventory. Use 'check' to survey your current inventory.".format("portal🌀"))
+						continue 
+					else: 
+						room_id = int(input("Type in the room id of the room you want to teleport to: "))
+						#self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
+						self.current_room = room_id
+						#self.c.execute("SELECT id FROM rooms WHERE id={}".format(room_id))
+						#entrance_p = self.c.fetchone()
 
 
 			# fight monster in the room 
@@ -657,6 +746,12 @@ class Dungeon:
 						calc = curr_atk-200
 						query = 'UPDATE stats SET atk_power = ("{}")'.format(calc)
 						self.c.execute(query) 
+
+					elif state == 'dead🤯':
+						## 
+						print("You are dead🤯—you can't fight any monsters.")
+						print("Besides, why would you want to? It didn't go great the last time, remember?")
+						self.callEnd() 
 
 					elif state == 'rage😡': 
 						## Rage gives attack power boost of 100 
@@ -917,7 +1012,21 @@ class Dungeon:
 						query = 'UPDATE stats SET state = ("{}")'.format("dead🤯")
 						self.c.execute(query) 
 						print("Your new state is dead🤯. Game over!")
-						break; 
+						print("Unless you have a revival-dove🕊 in your inventory . . .")
+						self.c.execute("SELECT name FROM inventory") 
+						has_item = False 
+
+						for x in self.c.fetchall():
+							if str(x[0]) == 'revival-dove🕊': 
+								has_item = True 
+
+						if has_item == True:
+							print("You've used revival-dove🕊 to resurrect yourself!") 
+							## remove this item from our inventory now 
+							query = 'DELETE FROM inventory WHERE name=("{}")'.format('revival-dove🕊')
+							self.c.execute(query)
+						else: 
+							break; 
 
 					# set stats back to normal from boost (weapon;armor;state)
 					if my_weapon == 'pick-axe':
@@ -974,6 +1083,10 @@ class Dungeon:
 		self.db.commit()
 		self.db.close()
 
+
+	def callEnd(self):
+		exit()
+
 	# describe this room and its exits
 	def doLook(self,force_florid):
 		# We show the florid description only the first time we visit
@@ -983,56 +1096,106 @@ class Dungeon:
 			self.c.execute("SELECT visit FROM rooms WHERE id={}".format(self.current_room))
 			status = self.c.fetchone()[0]
 
-			if status == 0:        
-				## we have not visited this room yet—give florid description
-				self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
-				print(self.c.fetchone()[0])
+			## state 
+			self.c.execute("SELECT state from stats")
+			state = self.c.fetchone()[0]
 
-				## read off the available loot
-				self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
-				item = str(self.c.fetchone()[0])
+			if state != 'dead🤯': 
+				if status == 0:        
+					## we have not visited this room yet—give florid description
+					self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
+					print(self.c.fetchone()[0])
 
-				if item != 'none':
-					print("This room contains a {}.".format(item)) 
-				else:
-					print("No items in this room.") 
+					## read off the available loot
+					self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
+					item = str(self.c.fetchone()[0])
 
-				## inform visitor of monsters, if any 
-				self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-				if str(self.c.fetchone()) == 'None':
-					pass
-				else:
+					if item != 'none':
+						print("This room contains a {}.".format(item)) 
+					else:
+						print("No items in this room.") 
+
+					## inform visitor of monsters, if any 
 					self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-					monster = str(self.c.fetchone()[0])
-					print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
-					## print description of monster 
-					query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
-					self.c.execute(query)
-					desc = str(self.c.fetchone()[0])
-					print("    " + desc)
-					query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
-					self.c.execute(query)
-					monster_health = str(self.c.fetchone()[0])
-					print("    Health: " + monster_health)
-					query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
-					self.c.execute(query)
-					monster_atk = str(self.c.fetchone()[0])
-					print("    Attack_power : " + monster_atk)
-					query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
-					self.c.execute(query)
-					monster_def = str(self.c.fetchone()[0])
-					print("    Defense_power : " + monster_def)
-					query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
-					self.c.execute(query)
-					monster_def = str(self.c.fetchone()[0])
-					print("    Exp : " + monster_def)
+					if str(self.c.fetchone()) == 'None':
+						pass
+					else:
+						self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+						monster = str(self.c.fetchone()[0])
+						print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
+						## print description of monster 
+						query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						desc = str(self.c.fetchone()[0])
+						print("    " + desc)
+						query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_health = str(self.c.fetchone()[0])
+						print("    Health: " + monster_health)
+						query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_atk = str(self.c.fetchone()[0])
+						print("    Attack_power : " + monster_atk)
+						query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_def = str(self.c.fetchone()[0])
+						print("    Defense_power : " + monster_def)
+						query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_def = str(self.c.fetchone()[0])
+						print("    Exp : " + monster_def)
 
-				## update visit integer mark this room as visited
-				self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
+					## update visit integer mark this room as visited
+					self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
 
-			else:                   
-				## we've visited this room already—give simple description
-				self.c.execute("SELECT short_desc FROM rooms WHERE id={}".format(self.current_room))
+				else:                   
+					## we've visited this room already—give simple description
+					self.c.execute("SELECT short_desc FROM rooms WHERE id={}".format(self.current_room))
+					print(self.c.fetchone()[0])
+
+					## read off the available loot
+					self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
+					item = str(self.c.fetchone()[0]) 
+
+					if item != 'none':
+						print("This room contains a {}.".format(item)) 
+					else:
+						print("No items in this room.") 
+
+					# inform visitors of monsters, if any
+					self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+					if str(self.c.fetchone()) == 'None':
+						pass
+					else:
+						self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+						monster = str(self.c.fetchone()[0])  
+						print("There's a {} in this room (ง •̀_•́)ง".format(monster)) 
+						## print description of monster 
+						query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						desc = str(self.c.fetchone()[0])
+						print("    " + desc)
+						query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_health = str(self.c.fetchone()[0])
+						print("    Health: " + monster_health)
+						query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_atk = str(self.c.fetchone()[0])
+						print("    Attack_power : " + monster_atk)
+						query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_def = str(self.c.fetchone()[0])
+						print("    Defense_power : " + monster_def)
+						query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_def = str(self.c.fetchone()[0])
+						print("    Exp : " + monster_def)
+
+
+			## Give the full-description since force-florid is switched on. 
+			else: 
+				self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
 				print(self.c.fetchone()[0])
 
 				## read off the available loot
@@ -1050,12 +1213,12 @@ class Dungeon:
 					pass
 				else:
 					self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-					monster = str(self.c.fetchone()[0])  
-					print("There's a {} in this room (ง •̀_•́)ง".format(monster)) 
+					monster = str(self.c.fetchone()[0]) 
+					print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
 					## print description of monster 
 					query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
 					self.c.execute(query)
-					desc = str(self.c.fetchone()[0])
+					desc = str(self.c.fetchone()[0]) 
 					print("    " + desc)
 					query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
 					self.c.execute(query)
@@ -1074,61 +1237,19 @@ class Dungeon:
 					monster_def = str(self.c.fetchone()[0])
 					print("    Exp : " + monster_def)
 
-
-		## Give the full-description since force-florid is switched on. 
+			## Present the available exits, if any 
+			self.c.execute("SELECT dir FROM exits WHERE from_room={}".format(self.current_room))
+			print("There are exits in these directions: ", end='')
+			count = 0 
+			for exit in self.c.fetchall():
+				print("{} ".format(exit[0]), end='')
+				count = count + 1 
+			if count == 0:
+				print("none found", end='')
+			print("")
 		else: 
-			self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
-			print(self.c.fetchone()[0])
-
-			## read off the available loot
-			self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
-			item = str(self.c.fetchone()[0]) 
-
-			if item != 'none':
-				print("This room contains a {}.".format(item)) 
-			else:
-				print("No items in this room.") 
-
-			# inform visitors of monsters, if any
-			self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-			if str(self.c.fetchone()) == 'None':
-				pass
-			else:
-				self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
-				monster = str(self.c.fetchone()[0]) 
-				print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
-				## print description of monster 
-				query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
-				self.c.execute(query)
-				desc = str(self.c.fetchone()[0]) 
-				print("    " + desc)
-				query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
-				self.c.execute(query)
-				monster_health = str(self.c.fetchone()[0])
-				print("    Health: " + monster_health)
-				query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
-				self.c.execute(query)
-				monster_atk = str(self.c.fetchone()[0])
-				print("    Attack_power : " + monster_atk)
-				query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
-				self.c.execute(query)
-				monster_def = str(self.c.fetchone()[0])
-				print("    Defense_power : " + monster_def)
-				query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
-				self.c.execute(query)
-				monster_def = str(self.c.fetchone()[0])
-				print("    Exp : " + monster_def)
-
-		## Present the available exits, if any 
-		self.c.execute("SELECT dir FROM exits WHERE from_room={}".format(self.current_room))
-		print("There are exits in these directions: ", end='')
-		count = 0 
-		for exit in self.c.fetchall():
-			print("{} ".format(exit[0]), end='')
-			count = count + 1 
-		if count == 0:
-			print("none found", end='')
-		print("")
+			print("Sorry, you are dead🤯!")
+			self.callEnd()
 
 	# locate item in item table
 	def useItem(self,name):
