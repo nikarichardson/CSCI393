@@ -905,6 +905,7 @@ class Dungeon:
 					## me: curr_health, curr_def, curr_atk, curr_exp
 					special_skill = False 
 					won = False 
+					flee = False 
 
 					while True:
 
@@ -940,7 +941,8 @@ class Dungeon:
 							curr_health = curr_health + 30 + .2*curr_exp
 
 						if my_skill == 'flee':
-							print("You flee the battle! ಥ_ಥ No, it's **noble**, but sometimes cowardice is necessary!")
+							print("You flee the battle! (ဓ д ဓ) No, it's not **noble**, but sometimes cowardice is necessary!")
+							flee = True 
 							break 
 						else:
 							print("Not a valid skill.")
@@ -1011,7 +1013,8 @@ class Dungeon:
 						query = 'UPDATE stats SET exp = ("{}")'.format(calc)
 						self.c.execute(query) 
 						print("You've gained {} experience.".format(monster_exp)) 
-					else:
+
+					elif won == False and flee == False: 
 						# New state is dead🤯
 						query = 'UPDATE stats SET state = ("{}")'.format("dead🤯")
 						self.c.execute(query) 
@@ -1030,7 +1033,7 @@ class Dungeon:
 							query = 'DELETE FROM inventory WHERE name=("{}")'.format('revival-dove🕊')
 							self.c.execute(query)
 						else: 
-							break; 
+							break
 
 					# set stats back to normal from boost (weapon;armor;state)
 					if my_weapon == 'pick-axe':
