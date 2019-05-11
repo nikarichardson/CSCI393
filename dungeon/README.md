@@ -54,9 +54,12 @@ To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | py
 All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>, excluding (naturally) the original drawings. 
 
 ## Remaining Implementation/Tweaks 
-
-- [ ] set `force_florid` back on after running build Erebor code
 - [ ] seems to be some error with `spawn` function! fix — (you should not be able to spawn if a monster already exists) 
+
+
+## Completed Implementation/Tweaks
+- [x] set `force_florid` back on after running build Erebor code
+> Now running the build Erebor code will call superuser privileges (as before) but will also remove superuser privileges at the end of the code. Whenever `doLook()` with superuser privileges is called, the typical `visit = 1` code is skipped. This ensures that the players running dungeon code after building Erebor will be able to see all the florid descriptions in their initial exploration of the pre-made dungeon.
 
 - [x] implement flee
 - [x] unequipping weapons is now supported
