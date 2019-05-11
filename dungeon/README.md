@@ -54,19 +54,20 @@ To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | py
 All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>, excluding (naturally) the original drawings. 
 
 ## Remaining Implementation/Tweaks 
-- [ ] implement flee
+
 - [ ] unequipping weapons currently unsupported
 - [ ] set `force_florid` back on after running build Erebor code
 - [ ] apprentice & the-great-mage object bug  
-
 - [ ] get rid of multiple printing for `spawn` monster objects
+
+- [x] implement flee
 - [x] starting player stats too high based on monster objects chosen for Erebor current rooms
 > Lowered starter player stats to <i>attack_power</i>: 150 and <i>defense_power</i>: 150. 
-- [x ] dead state fix
+- [x] dead state fix
 
-> Dead state now makes it impossible for user to purchase stats, equip armor, move around the room, etc. You get the point: if you are dead, you are dead. Game over.  
+> Dead state now makes it impossible for user to purchase stats, equip armor, move around the room, etc. You get the point: if you are dead, you are dead. Game over. There was a bug with the addition of the comprehensive dead state involving doLook(), which is now fixed. 
 
-`Danger warning:` Some objects still produce Noneype error. Related to EMOJIs. Currently in process of being fixed!!
+*Danger warning:* Some objects still produce Nonetype error, which is related to the emojis. Not all items/monsters have been tested.
 --------
 
 Here is an example session:
