@@ -25,11 +25,11 @@ class Dungeon:
 	## jack-o-lantern 🎃
 
 	## LOOT / ITEMS : plain-chest, golden-chest, steel-chest, mini-chest, mana-crystal, pick-axe, potion, blue-book 📘, 
-	## green-book📗, orange-book📙, tome📖, ring, shield, crystal, crown-of-awesome 👑, apple 🍎, beer 🥃, ramen 🍜, 
-	## ISS🛰 (the international space station), tent⛺️, crystal-ball 🔮,portal 🌀, flower 🌸, wheat 🌾, herb 🌿, 
-	## mushroom🍄, tulip 🌷, beer🥃, candle🕯, bed🛌, revival-dove🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, 
-	## watermelon🍉, grapes🍇, peach🍑, cherry🍒, strawberry🍓, kiwi🥝, corn 🌽, popcorn 🍿, chinese-takeout 🥡,
-	## salt-and-straw-icecream🍨, grandma's-pie🥧, honey🍯, tea 🍵, wine 🍷, amphora-of-the-ancients 🏺, the-world 🌍,
+	## green-book📗, orange-book📙, tome📖, ring, shield, crystal, crown-of-awesome 👑, apple 🍎, beer🥃, ramen 🍜, 
+	## ISS🛰 (the international space station), tent⛺️, crystal-ball🔮,portal🌀, flower🌸, wheat 🌾, herb 🌿, 
+	## mushroom🍄, tulip🌷, beer🥃, candle🕯, bed🛌, revival-dove🕊, shell🐚, grapes 🍇, banana 🍌, lemon 🍋, 
+	## watermelon🍉, grapes🍇, peach🍑, cherry🍒, strawberry🍓, kiwi🥝, corn 🌽, popcorn🍿, chinese-takeout🥡,
+	## salt-and-straw-icecream🍨, grandma's-pie🥧, honey🍯, tea 🍵, wine🍷, amphora-of-the-ancients🏺, the-world 🌍,
 	## volcanic-mountain🌋, paradise-island🏝, Athens🏛, the-american-dream🏠, the-Federal-Reserve🏦, hospital🏥, 
 	## statue-of-liberty🗽, money-bag💰 
 
@@ -56,7 +56,7 @@ class Dungeon:
 
 		self.doLook(0)
 		
-		self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
+		# self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
 
 		while True:
 			line = input(self.prompt)
@@ -256,7 +256,7 @@ class Dungeon:
 						if item[0] == 'shovel': 
 							yes_shovel = True 
 
-					if yes_shovel == True or my_status == "super":  
+					if yes_shovel == True or my_status == "super": 
 						descs = line.split("|")
 						words = descs[0].split()
 						if len(words) < 3 or len(descs) != 4:
@@ -279,7 +279,6 @@ class Dungeon:
 						self.c.execute(query)
 						query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, self.current_room, reverse)
 						self.c.execute(query)
-
 					else:
 						print("Sorry, only users with a shovel in their inventory can dig rooms.")
 
@@ -297,7 +296,7 @@ class Dungeon:
  
 					# get current user status 
 					self.c.execute("SELECT status from stats") 
-					my_status = self.c.fetchone()[0] 
+					my_status = self.c.fetchone()[0]  
 
 					# check inventory for a shovel 
 					self.c.execute("SELECT name FROM inventory") 
@@ -521,6 +520,12 @@ class Dungeon:
 				query = 'UPDATE stats SET status = ("{}")'.format("super")
 				self.c.execute(query) 
 				print("You now have super-user privileges.")
+
+			elif words[0] == 'set_status:normal':
+				query = 'UPDATE stats SET status = ("{}")'.format("normal")
+				self.c.execute(query) 
+				print("Super-user privileges have been removed.")
+
 
 			elif words[0] == 'join': 
 				# join a guild for item bonuses 
@@ -1158,11 +1163,14 @@ class Dungeon:
 		if force_florid == 0:
 			## Determine if we've already visited this room or not. 
 			self.c.execute("SELECT visit FROM rooms WHERE id={}".format(self.current_room))
-			status = self.c.fetchone()[0]
+			visit = self.c.fetchone()[0]
 
+			# get current user status 
+			self.c.execute("SELECT status from stats") 
+			my_status = self.c.fetchone()[0] 
 
-			if state != 'dead🤯': 
-				if status == 0:        
+			if state != 'dead🤯':  
+				if visit == 0 and my_status != "super":        
 					## we have not visited this room yet—give florid description
 					self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
 					print(self.c.fetchone()[0])
@@ -1209,6 +1217,51 @@ class Dungeon:
 					## update visit integer mark this room as visited
 					self.c.execute("UPDATE rooms SET visit = 1 WHERE id={}".format(self.current_room))
 
+				elif my_status == "super": 
+					## make sure if we are super that we DO NOT mark room as visited 
+					## we have not visited this room yet—give florid description
+					self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
+					print(self.c.fetchone()[0])
+
+					## read off the available loot
+					self.c.execute("SELECT loot FROM rooms WHERE id={}".format(self.current_room))
+					item = str(self.c.fetchone()[0])
+
+					if item != 'none':
+						print("This room contains a {}.".format(item)) 
+					else:
+						print("No items in this room.") 
+
+					## inform visitor of monsters, if any 
+					self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+					if str(self.c.fetchone()) == 'None':
+						pass
+					else:
+						self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+						monster = str(self.c.fetchone()[0])
+						print("There's a {} in this room (ง •̀_•́)ง ".format(monster))
+						## print description of monster 
+						query = 'SELECT description FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						desc = str(self.c.fetchone()[0])
+						print("    " + desc)
+						query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_health = str(self.c.fetchone()[0])
+						print("    Health: " + monster_health)
+						query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_atk = str(self.c.fetchone()[0])
+						print("    Attack_power : " + monster_atk)
+						query = 'SELECT def_power FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_def = str(self.c.fetchone()[0])
+						print("    Defense_power : " + monster_def)
+						query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(monster)
+						self.c.execute(query)
+						monster_def = str(self.c.fetchone()[0])
+						print("    Exp : " + monster_def)
+
 				else:                   
 					## we've visited this room already—give simple description
 					self.c.execute("SELECT short_desc FROM rooms WHERE id={}".format(self.current_room))
@@ -1253,8 +1306,20 @@ class Dungeon:
 						monster_def = str(self.c.fetchone()[0])
 						print("    Exp : " + monster_def)
 
+				## Present the available exits, if any 
+				self.c.execute("SELECT dir FROM exits WHERE from_room={}".format(self.current_room))
+				print("There are exits in these directions: ", end='')
+				count = 0 
+				for exit in self.c.fetchall():
+					print("{} ".format(exit[0]), end='')
+					count = count + 1 
+					if count == 0:
+						print("none found", end='')
+				
+				print("")
+
 			## if state = dead
-			else:
+			else: # state = 'dead🤯':
 				print("Sorry, you are dead🤯!")
 				self.callEnd()
 
@@ -1311,11 +1376,12 @@ class Dungeon:
 				for exit in self.c.fetchall():
 					print("{} ".format(exit[0]), end='')
 					count = count + 1 
-				if count == 0:
-					print("none found", end='')
+					if count == 0:
+						print("none found", end='')
+				
 				print("")
-			## if state = dead
-			else:
+
+			else: ## state == 'dead🤯': 
 				print("Sorry, you are dead🤯!")
 				self.callEnd()
 
@@ -1852,8 +1918,6 @@ class Dungeon:
 																										
 
 	def buildItemTable(self): 
-		# query = 'INSERT INTO exits (from_room, to_room, dir) VALUES ({}, {}, "{}")'.format(new_room_id, entrance_p[0],"w")
-		# self.c.execute(query)
 		# plain-chest
 
 		query = 'INSERT INTO item_desc (name, description) VALUES ("{}", "{}")'.format("plain-chest", "Well it is better than nothing. Right?!")
@@ -2137,26 +2201,20 @@ class Dungeon:
 			# table for stats 
 			self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atk_power INTEGER,def_power INTEGER,exp INTEGER,guild TEXT, gold INTEGER,status TEXT)")
 			self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',100,100,0,'none',50,'normal')")
-
 			# table for loot items 
 			self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
 			# table for inventory 
 			self.c.execute("CREATE TABLE inventory (name TEXT)")
 			## create entrance
 			self.c.execute("INSERT INTO rooms (florid_desc, short_desc,visit,loot) VALUES ('You are standing at the entrance of what appears to be a vast, complex cave.', 'entrance',0,'none')")
-
 			# item description table
 			self.c.execute("CREATE TABLE item_desc (name TEXT, description TEXT)")
-
 			# monster description table
 			self.c.execute("CREATE TABLE monster_desc (name TEXT, health INTEGER, description TEXT,atk_power INTEGER,def_power INTEGER,exp INTEGER)")
-
 			## populate the item table
 			self.buildItemTable() 
-
 			## populate the monster description table 
 			self.buildMonsterTable() 
-		
 			self.db.commit()
 
 		# now we know the db exists - fetch the first room, which is
