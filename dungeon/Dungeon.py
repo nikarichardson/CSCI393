@@ -907,6 +907,7 @@ class Dungeon:
 					won = False 
 
 					while True:
+
 						#  get all the information from the monster 
 						## attack: choose skill to use
 						print("Possible skills are attack, guard, double-attack, triple-attack,heal.")
@@ -938,6 +939,9 @@ class Dungeon:
 						elif my_skill == 'heal':
 							curr_health = curr_health + 30 + .2*curr_exp
 
+						if my_skill == 'flee':
+							print("You flee the battle! ಥ_ಥ No, it's **noble**, but sometimes cowardice is necessary!")
+							break 
 						else:
 							print("Not a valid skill.")
 							my_skill = 'none' 
@@ -947,7 +951,7 @@ class Dungeon:
 						monster_health = monster_health - damage_dealt 
 						print("You attack the {} using skill {}, dealing {} damage.".format(monster_name,my_skill,damage_dealt)) 
 						if monster_health <= 0:
-							print("{} has died. You've won the battle.".format(monster_name))
+							print("{} has died. You've won the battle ᕦ( ▨̅ . ▨̅ )ᕥ".format(monster_name))
 							won = True 
 							break 
 						else:
@@ -1091,14 +1095,16 @@ class Dungeon:
 	def doLook(self,force_florid):
 		# We show the florid description only the first time we visit
 		# a room, or if someone types "look" explicitly
+
+		## state 
+		self.c.execute("SELECT state from stats")
+		state = self.c.fetchone()[0]
+
 		if force_florid == 0:
 			## Determine if we've already visited this room or not. 
 			self.c.execute("SELECT visit FROM rooms WHERE id={}".format(self.current_room))
 			status = self.c.fetchone()[0]
 
-			## state 
-			self.c.execute("SELECT state from stats")
-			state = self.c.fetchone()[0]
 
 			if state != 'dead🤯': 
 				if status == 0:        
@@ -1192,9 +1198,15 @@ class Dungeon:
 						monster_def = str(self.c.fetchone()[0])
 						print("    Exp : " + monster_def)
 
+			## if state = dead
+			else:
+				print("Sorry, you are dead🤯!")
+				self.callEnd()
 
-			## Give the full-description since force-florid is switched on. 
-			else: 
+
+		## Give the full-description since force-florid is switched on. 
+		else: 
+			if state != 'dead🤯': 
 				self.c.execute("SELECT florid_desc FROM rooms WHERE id={}".format(self.current_room))
 				print(self.c.fetchone()[0])
 
@@ -1237,19 +1249,22 @@ class Dungeon:
 					monster_def = str(self.c.fetchone()[0])
 					print("    Exp : " + monster_def)
 
-			## Present the available exits, if any 
-			self.c.execute("SELECT dir FROM exits WHERE from_room={}".format(self.current_room))
-			print("There are exits in these directions: ", end='')
-			count = 0 
-			for exit in self.c.fetchall():
-				print("{} ".format(exit[0]), end='')
-				count = count + 1 
-			if count == 0:
-				print("none found", end='')
-			print("")
-		else: 
-			print("Sorry, you are dead🤯!")
-			self.callEnd()
+				## Present the available exits, if any 
+				self.c.execute("SELECT dir FROM exits WHERE from_room={}".format(self.current_room))
+				print("There are exits in these directions: ", end='')
+				count = 0 
+				for exit in self.c.fetchall():
+					print("{} ".format(exit[0]), end='')
+					count = count + 1 
+				if count == 0:
+					print("none found", end='')
+				print("")
+			## if state = dead
+			else:
+				print("Sorry, you are dead🤯!")
+				self.callEnd()
+
+	
 
 	# locate item in item table
 	def useItem(self,name):
