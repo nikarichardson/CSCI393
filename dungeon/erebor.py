@@ -77,4 +77,5 @@ print("dig w e | fountain room | Hey, there's a fountain here! ⛲ | orange-book
 print("w") # inside fountain room
 print("spawn")
 print("octopus🐙")
+print("set_status:normal")
 print("q")
