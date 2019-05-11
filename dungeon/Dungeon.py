@@ -414,6 +414,58 @@ class Dungeon:
 
 				continue
 
+			elif words[0] == 'unequip':
+				self.c.execute("SELECT state from stats")
+				state = self.c.fetchone()[0]
+
+
+				if state == 'dead🤯':
+					print("Dead🤯 people can't unequip armor!")
+					self.callEnd() 
+				else: 
+					answer = int(input("Would you to like to unequip (1) armor or (2) weapon? "))
+					if answer == 1:
+						# UNEQUIP ARMOR 
+						self.c.execute("SELECT armor FROM stats") 
+						my_armor = str(self.c.fetchone()[0]) 
+						if my_armor != 'none': 
+							print("You currently have {} as armor.".format(my_armor))
+							print("Are you sure you want to unequip? ")
+							answer = int(input("Type 1 to unequip. "))
+							if answer == 1:
+								# yes, unequip 
+								# remove from user 
+								query = 'UPDATE stats SET armor = ("{}")'.format('none')
+								self.c.execute(query)
+								# return to inventory 
+								query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(my_armor)
+								print("The armor {} was returned to your inventory.".format(my_armor))
+								self.c.execute(query)
+						else:
+							print("You don't have any armor!")
+	
+
+					elif answer == 2: 
+						# UNEQUIP WEAPON 
+						my_weapon = str(self.c.fetchone()[0]) 
+						if my_weapon != 'none': 
+							print("You currently have {} as a weapon".format(my_weapon)) 
+							print("Are you sure you want to unequip? ")
+							answer = int(input("Type 1 to unequip. ")) 
+							if answer == 1:
+								# yes, unequip 
+								# remove from user 
+								query = 'UPDATE stats SET weapon = ("{}")'.format('none')
+								self.c.execute(query)
+								# return to inventory 
+								query = 'INSERT INTO inventory (name) VALUES ("{}")'.format(my_weapon)
+								self.c.execute(query)
+								print("The armor {} was returned to your inventory.".format(my_weapon))
+						else:
+							print("You don't have any weapon!") 
+
+
+
 			elif words[0] == 'equip':
 				self.c.execute("SELECT state from stats")
 				state = self.c.fetchone()[0]
@@ -2158,4 +2210,6 @@ if __name__ == '__main__':
 	print("If you have a crystal in your inventory you can spawn a monster: type 'spawn.'")
 	print("Type 'purchase' to use your gold to upgrade stats like health, atk_power, and def_power.")
 	print("Type 'equip' to equip yourself with weapons and armor from your inventory.")
+	print("Type 'unequip' to unequip yourself, i.e. remove existing weapons/armor.")
+	print("Type 'q' to exit the dungeon.")
 	d.repl()
