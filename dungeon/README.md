@@ -55,10 +55,9 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 
 ## Remaining Implementation/Tweaks 
 
-- [ ] unequipping weapons currently unsupported
+- [ ] make unequipping weapons supported
 - [ ] set `force_florid` back on after running build Erebor code
-- [ ] apprentice & the-great-mage object bug  
-- [ ] seems to be some error with `spawn` function! fix —
+- [ ] seems to be some error with `spawn` function! fix — (you should not be able to spawn if a monster already exists) 
 - [x] implement flee
 - [x] starting player stats too high based on monster objects chosen for Erebor current rooms
 > Lowered starter player stats to <i>attack_power</i>: 150 and <i>defense_power</i>: 150. 
