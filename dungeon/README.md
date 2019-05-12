@@ -9,7 +9,7 @@ Choosing a skill provides a temporary boost to your stats during the battle, and
 dinosaur-of-yore🦕, bee-of-disproportionate-size🐝, mostly-friendly-wolf🐺, pineapple🍍,
 kleptomaniac-squirrel-of-doom🐿, the-great-mage, apprentice, merman🧜, elf🧝, unicorn🦄, owl🦉, whale🐳, dolphin🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power🐛,zombie🧟, monarch-butterfly🦋, evil-shrimp🦐, alien🛸, time⏱, bad-weather⛈, god-of-north-wind 🌬, umbrella🌂, fire🔥, jack-o-lantern🎃
 
-`Loot/Items:` plain-chest, golden-chest, steel-chest, mini-chest, pick-axe, potion, blue-book📘, green-book📗, orange-book📙, tome 📖, ring, herb, shield, crystal,crown-of-awesome👑, apple🍎, beer🥃, ramen🍜, ISS🛰 (the international space station), tent⛺️, crystal-ball🔮,portal🌀,flower🌸, wheat🌾, herb🌿, mushroom🍄, tulip🌷, beer🥃, 
+`Loot/Items:` plain-chest, golden-chest, steel-chest, mini-chest, potion, blue-book📘, green-book📗, orange-book📙, tome 📖, ring, herb, shield, crystal,crown-of-awesome👑, apple🍎, beer🥃, ramen🍜, ISS🛰 (the international space station), tent⛺️, crystal-ball🔮,portal🌀,flower🌸, wheat🌾, herb🌿, mushroom🍄, tulip🌷, beer🥃, 
 candle🕯, bed🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, peach🍑
 cherry🍒, strawberry🍓, kiwi🥝, corn🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream🍨, grandma's-pie 🥧, honey🍯, tea🍵, wine🍷, amphora-of-the-ancients🏺, the-world🌍, volcanic-mountain🌋, paradise-island🏝, 
 Athens🏛 , the-american-dream🏠, the-Federal-Reserve🏦, hospital🏥, statue-of-liberty🗽, money-bag💰 
