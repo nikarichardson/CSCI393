@@ -293,20 +293,20 @@ class Dungeon:
 
 				if existing_monster != 'None':
 					print("There's already a monster in this room! Only one monster per room, that's the rule.")
-		
 
 				if state == 'dead🤯' and existing_monster == 'None':
 					print("Dead🤯 people can't spawn monsters!")
 					self.callEnd() 
+
 				elif  state != 'dead🤯' and existing_monster == 'None':
-					# only users with a shovel in their inventory can dig rooms
+					# only users with a crystal can spawn monsters
 					yes_crystal = False
  
 					# get current user status 
 					self.c.execute("SELECT status from stats") 
 					my_status = self.c.fetchone()[0]  
 
-					# check inventory for a shovel 
+					# check inventory for a crystal 
 					self.c.execute("SELECT name FROM inventory") 
 
 					for item in self.c.fetchall():
@@ -318,10 +318,25 @@ class Dungeon:
 						# spawn a monster object
 						my_monster = str(input("Type the name of a monster object: "))
 
-						## to do: connect to second monster type database that holds all the descriptions and stats of each type of monster 
+						## connect to second monster type database that holds all the descriptions and stats of each type of monster 
+						query = 'SELECT health FROM monster_desc WHERE name = ("{}")'.format(my_monster)
+						self.c.execute(query)
+						get_health = int(self.c.fetchone()[0]) 
+		
+						query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(my_monster)
+						self.c.execute(query)
+						get_atk_power = int(self.c.fetchone()[0]) 
+
+						query = 'SELECT atk_power FROM monster_desc WHERE name = ("{}")'.format(my_monster)
+						self.c.execute(query)
+						get_def_power = int(self.c.fetchone()[0]) 
+
+						query = 'SELECT exp FROM monster_desc WHERE name = ("{}")'.format(my_monster)
+						self.c.execute(query)
+						get_exp = int(self.c.fetchone()[0]) 
 
 						## now we need to update the table of monster objects and 'place' the monster in the room 
-						query = 'INSERT INTO mobs (name,health,atk_power,def_power,exp,room_id) VALUES ("{}",500,100,100,100,"{}")'.format(my_monster,self.current_room)
+						query = 'INSERT INTO mobs (name,health,atk_power,def_power,exp,room_id) VALUES ("{}","{}","{}","{}","{}","{}")'.format(my_monster,get_health,get_atk_power,get_def_power,get_exp,self.current_room)
 						self.c.execute(query)
 			
 						# Debugging stuff here ...
@@ -967,8 +982,8 @@ class Dungeon:
 					print("Type 'flee' at any point during the battle to stop fighting.")
 
 					print("You may only use the skills double-attack and/or triple-attack once per battle.")
-					print("The triple-attack skills lowers your health by 100, and the double-attack skill")
-					print("lowers your health by 50.")
+					#print("The triple-attack skills lowers your health by 100, and the double-attack skill")
+					#print("lowers your health by 50.")
 
 					# begin battle code
 					print("╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔╗ ╔═╗╔═╗╦╔╗╔") 
@@ -981,8 +996,9 @@ class Dungeon:
 					won = False 
 					flee = False 
 
-					while True:
+					print("{} has health {}.".format(monster_name,monster_health)) 
 
+					while True:
 						#  get all the information from the monster 
 						## attack: choose skill to use
 						print("Possible skills are attack, guard, double-attack, triple-attack,heal.")
@@ -1014,27 +1030,33 @@ class Dungeon:
 						elif my_skill == 'heal':
 							curr_health = curr_health + 30 + .2*curr_exp
 
-						if my_skill == 'flee':
+						elif my_skill == 'flee':
 							print("You flee the battle! (ဓ д ဓ) No, it's not **noble**, but sometimes cowardice is necessary!")
 							flee = True 
 							break 
+		
 						else:
 							print("Not a valid skill.")
 							my_skill = 'none' 
 
 						## attack: increase power of skill by attack_power and experience 
-						damage_dealt = curr_atk + .2*curr_exp + monster_def*.5 
-						monster_health = monster_health - damage_dealt 
-						print("You attack the {} using skill {}, dealing {} damage.".format(monster_name,my_skill,damage_dealt)) 
-						if monster_health <= 0:
-							print("{} has died. You've won the battle ᕦ( ▨̅ . ▨̅ )ᕥ".format(monster_name))
-							won = True 
-							break 
+						damage_dealt = curr_atk + .2*curr_exp - .2*monster_def
+						if damage_dealt > 0:
+							monster_health = monster_health - damage_dealt
+							print("You attack the {} using skill {}, dealing {} damage. Monster health is now {}".format(monster_name,my_skill,damage_dealt,monster_health)) 
+							if monster_health <= 0:
+								print("{} has died. You've won the battle ᕦ( ▨̅ . ▨̅ )ᕥ".format(monster_name))
+								won = True 
+								break 
+							else:
+								print("{} has health {} now.".format(monster_name,monster_health)) 
 						else:
-							print("{} has health {} now.".format(monster_name,monster_health))
+							print("You are not strong enough to deal any damage at this time.")
+
+						
 
 						## defend: protect yourself against monster attack with defense 
-						damage_suffered = monster_atk + .5*curr_def + .2*curr_exp
+						damage_suffered = monster_atk + .2*curr_def + .2*curr_exp
 						print("{} attacks you, dealing {} damage".format(monster_name,damage_suffered)) 
 						curr_health = curr_health - damage_suffered
 						if curr_health <= 0:
@@ -1046,14 +1068,14 @@ class Dungeon:
 						## update:
 						## now subtract the temporary stat boost from the chosen skill for this round 
 						if my_skill == 'attack':
-							curr_atk = curr_atk - 80 - .5*curr_exp
+							curr_atk = curr_atk - 80 - curr_exp
 
 						elif my_skill == 'guard':
-							curr_def = curr_def - 80 - .5*curr_exp
+							curr_def = curr_def - 80 - curr_exp
 
 						elif my_skill == 'double-attack':
 							if special_skill == False:
-								curr_atk = curr_atk - 100 - .5*curr_exp
+								curr_atk = curr_atk - 100 - curr_exp
 								special_skill = True
 								curr_health = curr_health - 50 
 							else:
@@ -1062,14 +1084,14 @@ class Dungeon:
 
 						elif my_skill == 'triple-attack': 
 							if special_skill == False:
-								curr_atk = curr_atk - 150 - .5*curr_exp
+								curr_atk = curr_atk - 150 - curr_exp
 								special_skill = True
 								curr_health = curr_health - 100 
 							else:
 								print("You've already used a special skill once this battle.")
 
 						elif my_skill == 'heal':
-							curr_health = curr_health - 30 - .5*curr_exp 
+							curr_health = curr_health - 30 - curr_exp 
 	
 				   
 					print("╔╗ ╔═╗╔╦╗╔╦╗╦  ╔═╗  ╔═╗╔╗╔╔╦╗")
@@ -2217,7 +2239,7 @@ class Dungeon:
 			self.c.execute("CREATE TABLE exits (from_room INTEGER, to_room INTEGER, dir TEXT)")
 			# table for stats 
 			self.c.execute("CREATE TABLE stats (health INTEGER,state TEXT,weapon TEXT,armor TEXT,class TEXT,atk_power INTEGER,def_power INTEGER,exp INTEGER,guild TEXT, gold INTEGER,status TEXT)")
-			self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold,status) VALUES (100,'normal','none','none','hero',100,100,0,'none',50,'normal')")
+			self.c.execute("INSERT INTO stats (health,state,weapon,armor,class,atk_power,def_power,exp,guild,gold,status) VALUES (200,'normal','none','none','hero',200,200,0,'none',100,'normal')")
 			# table for loot items 
 			self.c.execute("CREATE TABLE loot (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, des TEXT, available INTEGER)")
 			# table for inventory 
@@ -2232,6 +2254,7 @@ class Dungeon:
 			self.buildItemTable() 
 			## populate the monster description table 
 			self.buildMonsterTable() 
+
 			self.db.commit()
 
 		# now we know the db exists - fetch the first room, which is
@@ -2280,7 +2303,7 @@ if __name__ == '__main__':
 	print("Welcome to the dungeon ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
 	print("'dig' to create a new room, and 'new' to start the dungeon creation process over again.")
 	print("Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,")
-	print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
+	print("'view' to see your stats, 'use' to employ an item and 'fight' to engage in combat.")
 	print("To join a guild, type 'join' & select a Guild. Some guilds can only be joined via events.")
 	print("If you have a crystal in your inventory you can spawn a monster: type 'spawn.'")
 	print("Type 'purchase' to use your gold to upgrade stats like health, atk_power, and def_power.")
