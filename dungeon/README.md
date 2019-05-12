@@ -229,7 +229,7 @@ bye!
 <center><img src="https://66.media.tumblr.com/86a83a69e2114c4419b2008017c50f74/tumblr_pq8s3rDGQa1tk06jno1_1280.png" width="400" height="80"></center>
 
 ## Map of Erebor 
-<img src="https://66.media.tumblr.com/d188bfe37af6219a258f980260af8a37/tumblr_pqc0rsMLF61tk06jno1_1280.jpg" height="750" width="600">
+<img src="https://raw.githubusercontent.com/nikarichardson/CSCI393/master/dungeon/dungeon_map.jpg" height="750" width="600">
 
 ## Item Database :
 Has name of item, description, and use value. 
