@@ -49,6 +49,7 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 
 ## Remaining Implementation/Tweaks 
 - [ ] *Danger warning:* Some objects still produce Nonetype error, which is related to the emojis. Not all items/monsters have been tested.
+- [ ]  We need to fetch the monster stats from the monster database. Right now all the monsters have the same initial stats, which is pointless. Currently in development.
 
 ## Completed Implementation/Tweaks
 - [x] set `force_florid` back on after running build Erebor code
