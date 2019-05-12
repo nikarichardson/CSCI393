@@ -54,12 +54,14 @@ To run the dungeon I've created named <b>Erebor</b>, use `python3 erebor.py | py
 All graphics are credited to <a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-vx">RPG Maker VX</a>, excluding (naturally) the original drawings. 
 
 ## Remaining Implementation/Tweaks 
-- [ ] seems to be some error with `spawn` function! fix — (you should not be able to spawn if a monster already exists) 
-
+- [ ] *Danger warning:* Some objects still produce Nonetype error, which is related to the emojis. Not all items/monsters have been tested.
 
 ## Completed Implementation/Tweaks
 - [x] set `force_florid` back on after running build Erebor code
 > Now running the build Erebor code will call superuser privileges (as before) but will also remove superuser privileges at the end of the code. Whenever `doLook()` with superuser privileges is called, the typical `visit = 1` code is skipped. This ensures that the players running dungeon code after building Erebor will be able to see all the florid descriptions in their initial exploration of the pre-made dungeon.
+
+- [x] seems to be some error with `spawn` function! fix — (you should not be able to spawn if a monster already exists) 
+> Now users can only spawn monsters in rooms without a monster. Also, users cannot place items (loot) in a room that already contains loot. 
 
 - [x] implement flee
 - [x] unequipping weapons is now supported
@@ -69,7 +71,6 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 
 > Dead state now makes it impossible for user to purchase stats, equip armor, move around the room, etc. You get the point: if you are dead, you are dead. Game over. There was a bug with the addition of the comprehensive dead state involving doLook(), which is now fixed. 
 
-*Danger warning:* Some objects still produce Nonetype error, which is related to the emojis. Not all items/monsters have been tested.
 --------
 
 Here is an example session:
