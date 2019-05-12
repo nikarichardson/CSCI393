@@ -2277,7 +2277,7 @@ if __name__ == '__main__':
 	print("                                         _/                                                     ") 
 	print("                                       _/_/                                                     ")
 	print("")
-	print("Welcome to the ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
+	print("Welcome to the dungeon ( ͡° ͜ʖ ͡°) Try 'look' to see room descriptions, 'go' to use an exit,")
 	print("'dig' to create a new room, and 'new' to start the dungeon creation process over again.")
 	print("Use 'check' to survey your inventory, 'take' to steal loot, 'place' to leave loot behind,")
 	print("'view' to check your stats, 'use' to employ an item and 'fight' to engage in combat.")
