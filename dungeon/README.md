@@ -89,7 +89,7 @@ Your gold has increased by 100000.
   ```
 Again, in order to use money-bag💰, user must copy and paste emoji with no space. 
 
-Finally, in order to spawn a monster with an attached emoji, the emoji must be provided. Many examples of this are given in `erebor.py`'. 
+Finally, in order to spawn a monster with an attached emoji, the emoji must be provided. Many examples of this are given in `erebor.py`. 
 
 ```
 print("dig s n | room of artemis | There are nine women in this forested room holding bows and glaring at you menacingly. | bow🏹") 
