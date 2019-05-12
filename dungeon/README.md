@@ -69,6 +69,12 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 
 Build Erebor with the code `python3 erebor.py | python3 Dungeon.py`. Then run `python3 Dungeon.py` to play inside the dungeon.
 
+Warning: If you make reference to an item or monster with an emoji, an emoji must be used. We provide a code example below.
+`You have in your inventory: revival-dove🕊  mini-chest  money-bag💰  plain-chest  golden-chest  steel-chest  crown-of-awesome👑  
+Type the name of the item you would like to see the description of: money-bag💰
+    Not sure where this came from. It is best not to look into such things.`
+  User must copy-and-paste emoji 💰 when asking for the item description of money-bag. Forgetting to do so will break the code.
+
 --------
 
 Here is an example session:
