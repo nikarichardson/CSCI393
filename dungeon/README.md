@@ -71,6 +71,7 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 
 
 
+## Running the Code
 Build Erebor with the code `python3 erebor.py | python3 Dungeon.py`. Then run `python3 Dungeon.py` to play inside the dungeon.
 
 Warning: If you make reference to an item or monster with an emoji, an emoji must be used. We provide a code example below.
