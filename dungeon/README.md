@@ -49,7 +49,7 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 
 ## Remaining Implementation/Tweaks 
 - [ ] *Danger warning:* Some objects still produce Nonetype error, which is related to the emojis. Not all items/monsters have been tested.
-- [ ]  We need to fetch the monster stats from the monster database. Right now all the monsters have the same initial stats, which is pointless. Currently in development.
+
 
 ## Completed Implementation/Tweaks
 - [x] set `force_florid` back on after running build Erebor code
@@ -59,6 +59,9 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 > Now users can only spawn monsters in rooms without a monster. Also, users cannot place items (loot) in a room that already contains loot. 
 
 - [x] implement flee
+- [ ] fetch the monster stats from the monster database
+> Now the stats of spawned monsters is actually fetched from the monster description database, as was intended. `buildMonsterTable` was the existing command that builds this monster description database at dungeon creation. When a user spawns a monster, like `jack-o-lantern🎃`, the monster's stats are fetched from the table. Then the monster is placed in the dungeon in the current room.
+
 - [x] unequipping weapons is now supported
 - [x] starting player stats too high based on monster objects chosen for Erebor current rooms
 > Lowered starter player stats to <i>attack_power</i>: 150 and <i>defense_power</i>: 150. 
