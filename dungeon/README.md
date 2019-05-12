@@ -65,6 +65,10 @@ All graphics are credited to <a href="http://www.rpgmakerweb.com/products/progra
 
 > Dead state now makes it impossible for user to purchase stats, equip armor, move around the room, etc. You get the point: if you are dead, you are dead. Game over. There was a bug with the addition of the comprehensive dead state involving doLook(), which is now fixed. 
 
+
+
+Build Erebor with the code `python3 erebor.py | python3 Dungeon.py`. Then run `python3 Dungeon.py` to play inside the dungeon.
+
 --------
 
 Here is an example session:
