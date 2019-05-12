@@ -287,10 +287,18 @@ class Dungeon:
 				self.c.execute("SELECT state from stats")
 				state = self.c.fetchone()[0]
 
-				if state == 'dead🤯':
+				## determine if there is already a monster inside the room  
+				self.c.execute("SELECT name FROM mobs WHERE room_id={}".format(self.current_room))
+				existing_monster = str(self.c.fetchone())
+
+				if existing_monster != 'None':
+					print("There's already a monster in this room! Only one monster per room, that's the rule.")
+		
+
+				if state == 'dead🤯' and existing_monster == 'None':
 					print("Dead🤯 people can't spawn monsters!")
 					self.callEnd() 
-				else: 
+				elif  state != 'dead🤯' and existing_monster == 'None':
 					# only users with a shovel in their inventory can dig rooms
 					yes_crystal = False
  
@@ -706,10 +714,19 @@ class Dungeon:
 				self.c.execute("SELECT state from stats")
 				state = self.c.fetchone()[0]
 
-				if state == 'dead🤯':
+				## determine if there is already an item in the room  
+				query = 'SELECT loot FROM rooms WHERE id=("{}")'.format(self.current_room)
+				self.c.execute(query) 
+
+				existing_item = str(self.c.fetchone())
+				if existing_item != 'None':
+					print("There's already an item in this room! Only one item per room, that's the rule.")
+
+				if state == 'dead🤯' and existing_item == 'None':
 					print("Dead🤯 people can't place items!")
 					self.callEnd() 
-				else: 
+
+				elif state != 'dead🤯' and existing_item == 'None':
 					# place loot command 
 					item = str(input("Choose an item from your inventory: "))
 					# update the room with the chosen loot 
