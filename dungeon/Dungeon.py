@@ -555,7 +555,7 @@ class Dungeon:
 						answer = int(input("Select a guild to join: Guild-of-Mages(0), Guild-of-The-Dark-Arts👾(1), Guild-of-Chronic-Procrastinators(2),Guild-of-the-Learned(3). "))  
 						if (answer == 0):
 							print("You have joined the Guild of Mages!")
-							print("As a welcome gift, you have received revival-dove🕊, mini-chest, money-bag, plain-chest, golden-chest, steel-chest, and crown-of-awesome👑.")
+							print("As a welcome gift, you have received revival-dove🕊, mini-chest, money-bag💰, plain-chest, golden-chest, steel-chest, and crown-of-awesome👑.")
 							query = 'UPDATE stats SET guild = ("{}")'.format("Guild-of-Mages")
 							self.c.execute(query) 
 
@@ -719,14 +719,14 @@ class Dungeon:
 				self.c.execute(query) 
 
 				existing_item = str(self.c.fetchone())
-				if existing_item != 'None':
+				if existing_item != 'none':
 					print("There's already an item in this room! Only one item per room, that's the rule.")
 
-				if state == 'dead🤯' and existing_item == 'None':
+				if state == 'dead🤯' and existing_item == 'none':
 					print("Dead🤯 people can't place items!")
 					self.callEnd() 
 
-				elif state != 'dead🤯' and existing_item == 'None':
+				elif state != 'dead🤯' and existing_item == 'none':
 					# place loot command 
 					item = str(input("Choose an item from your inventory: "))
 					# update the room with the chosen loot 
