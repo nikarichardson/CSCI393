@@ -224,6 +224,7 @@ bye!
 
 ## Map of Erebor 
 <img src="https://raw.githubusercontent.com/nikarichardson/CSCI393/master/dungeon/dungeon_map.jpg" height="750" width="600">
+<img src="https://raw.githubusercontent.com/nikarichardson/CSCI393/master/dungeon/dungeon-map2.jpg" height="750" width="600">
 
 ## Item Database :
 Has name of item, description, and use value. 
