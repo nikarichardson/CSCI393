@@ -18,8 +18,8 @@ class Dungeon:
    
 	## MONSTERS :  minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,
 	## werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
-	## dinosaur-of-yore 🦕, bee-of-disproportionate-size 🐝, mostly-friendly-wolf🐺, pineapple🍍,
-	## kleptomaniac-squirrel-of-doom 🐿, apprentice 🧙‍♀️, merman🧜, elf🧝, unicorn🦄
+	## dinosaur-of-yore🦕, the-great-mage, bee-of-disproportionate-size 🐝, mostly-friendly-wolf🐺, pineapple🍍,
+	## kleptomaniac-squirrel-of-doom🐿, apprentice, merman, elf🧝, unicorn🦄
 	## owl🦉, whale🐳, dolphin 🐬, magical-fish-out-of-water🐟, blowfish🐡, octopus 🐙, caterpillar-of-phenomenal-power 🐛
 	## zombie🧟, monarch-butterfly🦋, evil-shrimp🦐, alien🛸, time⏱, bad-weather⛈, god-of-north-wind🌬, umbrella🌂, fire 🔥
 	## jack-o-lantern 🎃
@@ -1815,8 +1815,8 @@ class Dungeon:
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('taco🌮',1000,' You want to fight the taco, but you also kinda wanna eat it. Friend or foe? Combat opponent or...lunch?',400,0,340)
 		self.c.execute(query)
 
-		# fairy🧚‍
-		query = 'INSERT INTO  monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('fairy🧚‍',500,'Do not underestimate her tiny size.',700,40,600)
+		# fairy
+		query = 'INSERT INTO  monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('fairy',500,'Do not underestimate her tiny size.',700,40,600)
 		self.c.execute(query)
 
 		# dragon🐉
@@ -1847,12 +1847,12 @@ class Dungeon:
 		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('the-great-mage',10000,'Best to flee. A learned mage is a fearsome contender.',1000,1000,40)
 		self.c.execute(query)
 
-		# apprentice🧙‍
-		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('apprentice🧙‍',5000,'He wants to be more like the great mage and less like himself.',400,300,150)
+		# apprentice
+		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('apprentice',5000,'He wants to be more like the great mage and less like himself.',400,300,150)
 		self.c.execute(query)
 
-		# merman🧜
-		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('merman🧜',300,'Maybe we can distract him with a mermaid?',800,140,270)
+		# merman
+		query = 'INSERT INTO monster_desc (name,health,description,atk_power,def_power,exp) VALUES ("{}",{},"{}",{},{},{})'.format('merman',300,'Maybe we can distract him with a mermaid?',800,140,270)
 		self.c.execute(query)
 
 		# elf🧝
