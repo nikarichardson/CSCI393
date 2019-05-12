@@ -5,14 +5,13 @@ Adapted from <a href="https://github.com/dylanmc/SQLiteDungeon">Dylan's Dungeon<
 Written in Python with SQLite3 as back-end. Image on right from RPG Maker VX with my character sprite in a designed dungeon map.  This dungeon has rooms and exits. You can <i>spawn</i> a monster, <i>place</i>  loot, <i>take</i>  loot, and engage in combat with the monsters inside the dungeon. You can <i>purchase</i> stats upgrades with gold, <i>equip</i> yourself with weapons and armors, <i>join</i> a guild for state and class changes and item bonuses. Users with a shovel in their inventory can <i>dig</i> rooms. Users with a <i>crystal</i> can spawn monsters.  There are <b>6</b> Guilds, <b>16</b> states, <b>6</b> classes,<b>5</b> skills, <b>40+</b> monsters and <b>50+</b> items. 
 Choosing a skill provides a temporary boost to your stats during the battle, and this boost is increased by 5% for every experience (exp) point you have. Similarly, the weapons you choose to equip provide a boost to your character. 
 
-`Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy🧚‍, dragon 🐉,
+`Monsters:` minotaur, orc, plant, rat, ogre, scorpion, skeleton, giant-ant🐜 ,bat🦇,slime, snake🐍,werewolf, zombie, skeleton, vampire, chimera, cerberus, spider, ghost,taco 🌮,fairy, dragon 🐉,
 dinosaur-of-yore🦕, bee-of-disproportionate-size🐝, mostly-friendly-wolf🐺, pineapple🍍,
-kleptomaniac-squirrel-of-doom🐿, the-great-mage 🧙‍♂️ apprentice 🧙‍♀️, merman 🧜, elf🧝, unicorn🦄, owl🦉, whale🐳, dolphin🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power🐛,zombie🧟, monarch-butterfly🦋, evil-shrimp🦐, alien🛸, time⏱, bad-weather⛈, god-of-north-wind 🌬, umbrella🌂, fire🔥, jack-o-lantern🎃
+kleptomaniac-squirrel-of-doom🐿, the-great-mage, apprentice, merman🧜, elf🧝, unicorn🦄, owl🦉, whale🐳, dolphin🐬, magical-fish-out-of-water 🐟, blowfish 🐡, octopus 🐙, caterpillar-of-phenomenal-power🐛,zombie🧟, monarch-butterfly🦋, evil-shrimp🦐, alien🛸, time⏱, bad-weather⛈, god-of-north-wind 🌬, umbrella🌂, fire🔥, jack-o-lantern🎃
 
 `Loot/Items:` plain-chest, golden-chest, steel-chest, mini-chest, pick-axe, potion, blue-book📘, green-book📗, orange-book📙, tome 📖, ring, herb, shield, crystal,crown-of-awesome👑, apple🍎, beer🥃, ramen🍜, ISS🛰 (the international space station), tent⛺️, crystal-ball🔮,portal🌀,flower🌸, wheat🌾, herb🌿, mushroom🍄, tulip🌷, beer🥃, 
 candle🕯, bed🛌, revival-dove 🕊, shell 🐚, grapes 🍇,  banana 🍌, lemon 🍋, watermelon 🍉, peach🍑
-cherry🍒, strawberry 🍓, kiwi🥝, corn🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream🍨, grandma's-pie 🥧
-honey🍯, tea🍵, wine🍷, amphora-of-the-ancients🏺, the-world🌍, volcanic-mountain🌋, paradise-island🏝, 
+cherry🍒, strawberry🍓, kiwi🥝, corn🌽, popcorn 🍿, chinese-takeout 🥡, salt-and-straw-icecream🍨, grandma's-pie 🥧, honey🍯, tea🍵, wine🍷, amphora-of-the-ancients🏺, the-world🌍, volcanic-mountain🌋, paradise-island🏝, 
 Athens🏛 , the-american-dream🏠, the-Federal-Reserve🏦, hospital🏥, statue-of-liberty🗽, money-bag💰 
 
 `Weapons:` sword, pick-axe,bow 🏹 ,dagger🗡,spear,claw,crossbow, hammer 🔨, wand
