@@ -1,4 +1,4 @@
-// Veronica Richardson
+// VR
 // Block Map
 
 #include "block_device.h"
