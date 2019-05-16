@@ -1,0 +1,111 @@
+Welcome! You can exit by pressing Ctrl+C at any time...
+inode map - 16 inodes, 128 bytes per inode, 2048 bytes & 8 blocks total
+created testpy.dev with 100 blocks of 256 bytes per block
+
+testpy.dev successfully mounted
+allocated 10
+allocated 11
+allocated 12
+allocated 13
+allocated 14
+allocated 15
+allocated 16
+allocated 17
+allocated 18
+allocated 19
+allocated 20
+allocated 21
+allocated 22
+allocated 23
+allocated 24
+allocated 25
+allocated 26
+allocated 27
+allocated 28
+allocated 29
+allocated 30
+allocated 31
+allocated 32
+allocated 33
+allocated 34
+allocated 35
+allocated 36
+allocated 37
+allocated 38
+allocated 39
+allocated 40
+allocated 41
+allocated 42
+allocated 43
+allocated 44
+allocated 45
+allocated 46
+allocated 47
+allocated 48
+allocated 49
+allocated 50
+allocated 51
+allocated 52
+allocated 53
+allocated 54
+allocated 55
+allocated 56
+allocated 57
+allocated 58
+allocated 59
+allocated 60
+allocated 61
+allocated 62
+allocated 63
+allocated 64
+allocated 65
+allocated 66
+allocated 67
+allocated 68
+allocated 69
+allocated 70
+allocated 71
+allocated 72
+allocated 73
+allocated 74
+allocated 75
+allocated 76
+allocated 77
+allocated 78
+allocated 79
+allocated 80
+allocated 81
+allocated 82
+allocated 83
+allocated 84
+allocated 85
+allocated 86
+allocated 87
+allocated 88
+allocated 89
+allocated 90
+allocated 91
+allocated 92
+allocated 93
+allocated 94
+allocated 95
+allocated 96
+allocated 97
+allocated 98
+allocated 99
+unable to allocate block
+unable to allocate block
+unable to allocate block
+unable to allocate block
+unable to allocate block
+unable to allocate block
+unable to allocate block
+unable to allocate block
+unable to allocate block
+unable to allocate block
+100 blocks in Block Map
+1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+allocated 1
+allocated 2
+
+unmount successful
